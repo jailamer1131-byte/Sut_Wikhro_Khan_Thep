@@ -1,0 +1,847 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>สูตรวิเคราะห์ขั้นเทพ</title><style>
+:root{font-family:Tahoma,'Segoe UI',sans-serif;color:#24344a;background:#f2f7ff}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(120deg,#2453c5,#8d54e8);color:white;padding:28px 18px}main{max-width:1200px;margin:auto;padding:18px}.card{background:white;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 5px 22px #294b8414}h1{margin:0;font-size:30px}h2{font-size:20px;margin:0 0 15px}small,.muted{color:#6c7b8d}header small{color:#e7edff}textarea{width:100%;height:180px;border:1px solid #cdd8eb;border-radius:12px;padding:12px;font:16px monospace}select,input{border:1px solid #cbd7e8;border-radius:9px;padding:10px;background:white;font-size:15px;max-width:100%}label{display:flex;flex-direction:column;gap:6px;font-weight:bold}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.controls label{flex:1;min-width:160px}button{background:#285bd1;color:white;border:0;border-radius:10px;padding:12px 19px;cursor:pointer;font-weight:bold}button.secondary{background:#edf3ff;color:#2954a3}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.stat{background:#f2f6ff;border-radius:12px;padding:14px}.stat strong{display:block;font-size:25px;color:#284fc0}.digits{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.digit{background:#365bd3;color:white;border-radius:12px;min-width:42px;text-align:center;padding:11px;font-size:23px;font-weight:bold}.tablewrap{overflow:auto;max-height:550px}table{border-collapse:collapse;width:100%;min-width:780px}th,td{padding:11px 10px;border-bottom:1px solid #e6ebf3;text-align:left;white-space:nowrap}th{position:sticky;top:0;background:#edf3ff}tr:hover{background:#f8faff}.tag{display:inline-block;background:#eaf2ff;color:#2454ba;padding:5px 9px;border-radius:8px;margin:3px}.notice{background:#fff8e6;border-radius:10px;padding:12px;color:#765c18;margin-top:12px}#status{margin:10px 0;color:#4263a3}.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}@media(max-width:700px){.two{grid-template-columns:1fr}h1{font-size:24px}} .linkgroup{margin:15px 0 22px}.linkgroup h3{padding:9px 13px;background:#eaf1ff;border-radius:9px;color:#244fa6}.linkgroup .linkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:9px} .sync-prominent{background:linear-gradient(135deg,#75f58a,#20c55a,#087d36)!important;color:#ffffff!important;font-weight:900!important;border:2px solid #b4ffd0!important;box-shadow:0 4px 14px #087d3666!important;font-size:1.05rem!important;padding:12px 20px!important}.sync-prominent:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+/* Lucky 999 refreshed visual theme — presentation only */
+:root{color-scheme:light;--ink:#18213d;--muted:#64708c;--border:#dce3f4;--purple:#6942d9;--pink:#ef467c;--teal:#079c99;--gold:#f6b846}
+html{background:#f4f5ff}body{color:var(--ink);background:radial-gradient(ellipse at 5% 0%,#fbe5f2 0%,transparent 35%),radial-gradient(ellipse at 95% 12%,#dbeafa 0%,transparent 42%),linear-gradient(180deg,#f6f3ff,#f4f8ff 70%,#f9f5ff);min-height:100vh}
+header{background:linear-gradient(112deg,#1d214b 0%,#48369c 38%,#ad367e 75%,#ec6672 100%);border-bottom:4px solid #ffcf77;box-shadow:0 12px 32px #48369c33;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:290px;height:290px;border:52px solid #ffffff0c;border-radius:50%;right:-90px;top:-160px;pointer-events:none}
+header h1{color:white;text-shadow:0 2px 12px #160d453d;letter-spacing:.3px}header small{color:#f9eafc}
+main{max-width:1240px}.card{background:linear-gradient(155deg,#ffffff 65%,#fcfaff);border:1px solid #e5e2f5;border-radius:20px;box-shadow:0 8px 28px #29225a12,0 1px 3px #29225a08;padding:22px}
+h2{color:#302366;letter-spacing:.1px;border-left:5px solid #ed5289;padding-left:12px;line-height:1.4}h3{color:#49318a}small,.muted{color:var(--muted)}
+textarea,select,input{background:#fff;border:1.5px solid #d6d9ef;color:#24264a;box-shadow:0 2px 5px #38338a06;transition:border-color .18s,box-shadow .18s}
+textarea:focus,select:focus,input:focus{outline:none;border-color:#8464e9;box-shadow:0 0 0 4px #8464e922}
+button{background:linear-gradient(125deg,#7352e5,#a64bd6);color:#fff;border:1px solid #ffffff22;box-shadow:0 4px 11px #5a3ab92e;transition:transform .15s,filter .15s,box-shadow .15s}button:hover{filter:brightness(1.07);transform:translateY(-1px);box-shadow:0 6px 16px #5a3ab93d}button:active{transform:translateY(1px)}button.secondary{background:linear-gradient(125deg,#f0efff,#e5f2ff);color:#4a358f;border:1px solid #d7d8f5;box-shadow:none}
+button:focus-visible,a:focus-visible{outline:3px solid #f4b33b;outline-offset:3px}
+.stat{background:linear-gradient(135deg,#f2eeff,#e9f7ff);border:1px solid #e0ddfa;border-radius:15px}.stat:nth-child(3n+2){background:linear-gradient(135deg,#fff0f5,#fff6e9);border-color:#f9dce9}.stat:nth-child(3n){background:linear-gradient(135deg,#e5fbf6,#eff5ff);border-color:#cdece6}.stat strong{color:#5939b9;font-weight:900}
+.digit{background:linear-gradient(140deg,#fa5d82,#b32991 65%,#6135b4);border:1px solid #ffffff66;box-shadow:0 4px 12px #b3299133;color:#fff;border-radius:13px}
+.tablewrap{border:1px solid #e2dff4;border-radius:14px}th{background:#eeeaff;color:#3f3083;border-bottom:2px solid #cfc5f5}td{border-bottom-color:#eae7f5}tr:nth-child(even){background:#fbfaff}tr:hover{background:#f1edff}
+.tag{background:linear-gradient(120deg,#eae4ff,#e6f8fa);color:#4c3a99;border:1px solid #e2dcf8;font-weight:700}.notice{background:#fff6e5;color:#805018;border:1px solid #ffe0a0;border-left:4px solid #f3ad38}#status{color:#4c3b9c;font-weight:600}
+.linkgroup h3{background:linear-gradient(100deg,#eee8ff,#e8f7ff);border-left:4px solid #8b55db;color:#4d358f}.linkgroup a{color:#5e35a9}.linkgroup a:hover{color:#d52c78}
+.sync-prominent{background:linear-gradient(125deg,#7cf49a,#22c45f,#087d36)!important;color:#fff!important;border:2px solid #b4ffd0!important;box-shadow:0 5px 15px #087d3655!important}
+@media(max-width:700px){.card{padding:16px;border-radius:16px}header{padding:24px 16px}button{min-height:43px}h2{font-size:19px}}
+@media(prefers-reduced-motion:reduce){button,textarea,select,input{transition:none}}
+
+/* Cute luxury edition: champagne, pearl, blush, emerald and gilded accents. */
+:root{--ink:#3c2943;--muted:#806b82;--border:#e9d8df;--gold:#c59a42;--purple:#a46eb7;--pink:#e68eae;color-scheme:light}
+html{background:#fcf6f6}
+body{background:radial-gradient(circle at 9% 5%,#ffe3ee 0,transparent 31%),radial-gradient(circle at 91% 10%,#f4e7ff 0,transparent 35%),radial-gradient(circle at 50% 78%,#fff1d5 0,transparent 48%),#fffaf8;color:#3d2c42}
+header{background:linear-gradient(115deg,#49304d 0%,#81517d 38%,#bf789a 73%,#d7a96b 100%);border-bottom:5px solid #f6db98;box-shadow:0 12px 30px #6c416344}
+header:before{content:'✦  ✧  ✦';position:absolute;right:5%;top:17px;color:#fff1bb;font-size:29px;letter-spacing:13px;opacity:.7;pointer-events:none}
+header h1{color:#fff8e9;text-shadow:0 3px 12px #4e254b55}header small{color:#fff4ee}
+.appnav{background:#fff9f7!important;border:1px solid #f0dfe6!important;border-radius:20px!important;box-shadow:0 5px 18px #75517213!important}
+.card{background:linear-gradient(145deg,#fffdfd,#fff6f7);border:1.5px solid #ead6df;border-radius:24px;box-shadow:0 10px 30px #68425814,0 2px 4px #68425809}
+h2{color:#674267;border-left:6px solid #e7b665}h3{color:#754c78}
+/* Each numbered area gets a pastel jewel-box treatment. */
+main section.card:nth-of-type(3){background:linear-gradient(145deg,#f2faff,#e8f3ff 75%,#fffdf9);border-color:#c9e4f4}
+main section.card:nth-of-type(4){background:linear-gradient(145deg,#f4fff4,#eaf9eb 72%,#fffbea);border-color:#ccebd4}
+#summary{background:linear-gradient(145deg,#fff7fa,#ffe9ef 75%,#fff8ed);border-color:#f5cbd9}
+#multiSection{background:linear-gradient(145deg,#fbf6ff,#f0e9ff 75%,#fff8fd);border-color:#dfcef4}
+#fourCheckSection{background:linear-gradient(145deg,#fff8f7,#ffeaed 75%,#fff9ee);border-color:#f2d0d5}
+textarea,select,input{background:#fffefe;border:1.5px solid #e4cadb;border-radius:13px;color:#4b3652;box-shadow:0 2px 7px #70416c0b}
+textarea:focus,select:focus,input:focus{border-color:#d4a455;box-shadow:0 0 0 4px #f8dcaa66}
+button{background:linear-gradient(125deg,#a56f9f,#d48ca8 55%,#e8b581);border:1px solid #ffe4c1;color:#fff;box-shadow:0 4px 12px #915f8450;border-radius:13px;font-weight:800}
+button.secondary{background:linear-gradient(125deg,#fff9ef,#fff0f5);border:1px solid #ebd3d7;color:#794a6b}
+button:hover{filter:brightness(1.05);box-shadow:0 6px 16px #915f8440}
+.sync-prominent{background:linear-gradient(130deg,#5bd9a2,#14a870,#067a5e)!important;border:2px solid #b9f8db!important;color:white!important}
+.stat{background:linear-gradient(140deg,#fffdf9,#fbeafa);border:1px solid #ead3e6;box-shadow:0 2px 8px #845e7c12}
+.stat:nth-child(3n+2){background:linear-gradient(140deg,#fff8e6,#fff0ee);border-color:#f3dfb7}
+.stat:nth-child(3n){background:linear-gradient(140deg,#effdf8,#f3edff);border-color:#d7e8e0}
+.stat strong{color:#a15a88}.digit{background:linear-gradient(145deg,#dba1c0,#b778a7,#8763a9);border:1px solid #ffe3d6;box-shadow:0 4px 12px #986a9b30}
+th{background:#f8eaf2;color:#75486e;border-bottom:2px solid #e7c6d7}tr:nth-child(even){background:#fffafc}tr:hover{background:#f9eaf1}
+.tag{background:linear-gradient(110deg,#fff2e0,#f9eaf8);border:1px solid #eed9db;color:#825479}
+.notice{background:#fff8e9;border-color:#f2d9a4;color:#8a6532}
+.linkgroup h3{background:linear-gradient(105deg,#fff0f7,#fff4df);border-left-color:#d5a459;color:#75486e}
+.linkgroup a{color:#925a91}#status{color:#8c5d7d}
+@media(max-width:700px){header:before{font-size:16px;right:0;letter-spacing:6px}.card{border-radius:19px}}
+
+/* Highest-ranked tied formulas: show all distinct predicted digits and their historical hit rate. */
+#summary .digits{display:flex!important;flex-wrap:wrap!important;align-items:flex-end!important;gap:12px!important}
+#summary .tied-digit-item{display:inline-flex;flex-direction:column;align-items:center;gap:4px;flex:0 0 auto}
+#summary .tied-digit-rate{display:block;color:#fff;background:#205a2c;border-radius:8px;padding:3px 7px;font-size:13px;font-weight:800;line-height:1.3;white-space:nowrap}
+#summary .tied-digit-item .digit{display:flex!important;align-items:center;justify-content:center;line-height:1!important}
+
+#summary .two{grid-template-columns:minmax(0,1fr)}
+#summary .two>div[hidden]{display:none!important}
+</style><style>.linkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:9px}.resultlink{display:block;text-decoration:none;background:#f1f6ff;border:1px solid #dbe6fb;border-radius:10px;padding:11px;color:#234caa;font-weight:600}.resultlink:hover{background:#dfeaff}.linktools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.linktools input{flex:1;min-width:200px}.linkcount{color:#68788b;margin:0 0 10px}</style><style>.history-picker{background:#e9fff1;border:2px solid #54ca7c;border-radius:13px;padding:14px;margin:12px 0;display:grid;gap:9px}.history-picker input,.history-picker select{width:100%;padding:12px;border:1px solid #a4d7b4;border-radius:9px;background:white;font:inherit}.history-picker small{color:#37694b}</style><style>.appnav{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}.navbtn{background:#e7efff;color:#264a92;font-size:16px}.navbtn.active{background:#285bd1;color:white}.app-page[hidden]{display:none!important}#history-page .linkgroup h3{background:#dff7e8;color:#096739;border-left:6px solid #08a34b}#history-page .linkgrid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))}#history-page .resultlink{padding:8px 10px;background:#f7fff9;border-color:#cbe9d6;font-size:14px}#history-page .resultlink:hover{background:#dff8e9} .featured-number{display:flex;align-items:center;gap:18px;margin:20px 0 8px}.featured-number span{font-size:27px;font-weight:800;color:#d62828}.featured-number strong{display:inline-flex;align-items:center;justify-content:center;min-width:110px;height:110px;padding:10px 20px;border:4px solid #e12424;border-radius:22px;font-size:76px;line-height:1;color:#e12424;background:#fff7f7} </style><style>
+#summary{background:linear-gradient(130deg,#fff4f0 0%,#fff 37%,#ffe6e6 100%);border:2px solid #f5a2a2;box-shadow:0 12px 32px #b8191940;color:#211519}
+#summary h2{color:#b00018;font-size:24px;text-shadow:0 1px #fff}
+#summary h3{color:#191919}
+#summary .stat{background:linear-gradient(135deg,#171717,#641015 58%,#e12727);color:#fff;border:1px solid #ff6767;box-shadow:0 5px 14px #9b111133}
+#summary .stat strong{color:#fff;font-size:29px;text-shadow:0 2px 6px #0008}
+#summary .digit{background:linear-gradient(145deg,#ff6262,#b90018 60%,#151515);color:#fff;box-shadow:0 4px 9px #a3000044;border:1px solid #ff8d8d}
+#summary .featured-number{background:linear-gradient(120deg,#170d10,#a50016 60%,#f33b3b);border-radius:24px;padding:20px;justify-content:center;flex-wrap:wrap;box-shadow:0 10px 24px #6b000044}
+#summary .featured-number span{color:#fff;font-size:23px;text-shadow:0 2px 4px #000}
+#summary .featured-number strong{font-size:clamp(90px,13vw,155px);width:190px;height:175px;border:5px solid #fff;color:#fff;background:linear-gradient(145deg,#ff4d4d 0%,#c00019 45%,#160a0a 100%);border-radius:28px;text-shadow:0 5px 9px #0009;box-shadow:0 7px 22px #0007,inset 0 3px 12px #ffb4b466}
+#summary #votes>div{padding:6px 10px;border-radius:10px;background:linear-gradient(90deg,#fff,#ffe2e2);border:1px solid #ffd0d0}
+#summary #votes>div:first-child{background:linear-gradient(90deg,#ffb5b5,#ffeded);border:2px solid #c81024}
+#summary #votes>div>div{background:#f7b9b9!important;height:17px!important}
+#summary #votes>div>div>div{background:linear-gradient(90deg,#191919,#bc001a,#ff4a4a)!important}
+.group-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:18px 0}.group-option{display:flex;flex-direction:row;align-items:center;padding:14px;background:#fff1f1;border:2px solid #efb6b6;border-radius:12px;cursor:pointer;color:#7d0714}.group-option input{width:20px;height:20px;accent-color:#c90020}.group-card{border:2px solid #dd1a29;background:linear-gradient(135deg,#fff,#fff1f1)}.group-output{background:linear-gradient(135deg,#250b10,#a6001d);color:white;padding:18px;border-radius:16px;margin:15px 0}.group-output .muted{color:#ffe1e1}.group-digits{display:flex;flex-wrap:wrap;gap:9px}.group-digits span{font-size:36px;font-weight:900;min-width:54px;text-align:center;background:linear-gradient(145deg,#ff4a4a,#bd001c,#181010);padding:9px;border:2px solid #ff9797;border-radius:12px}#ranking-page #rankSection{display:block}</style><style>.multi-table{min-width:690px}.multi-table th{background:#ffdb28;color:#1d1010;font-size:16px}.multi-table td{white-space:normal}.multi-table select{min-width:105px;border:2px solid #b51b22;font-weight:700}.multi-digit{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:43px;margin:2px;padding:3px 6px;background:linear-gradient(145deg,#ff4a4a,#c30019 60%,#171717);color:white;border-radius:8px;font-size:24px;font-weight:900;box-shadow:0 3px 6px #8003}.multi-table tbody tr:nth-child(even){background:#fff0f0}#multiSection{border:2px solid #e42d2d;background:linear-gradient(135deg,#fff,#fff2f2)}#multiSection h2{color:#aa061b}</style><style>.group-options{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.group-pick,.group-filter{background:linear-gradient(140deg,#3b1117,#a80921);border:2px solid #ee7a80;color:white;min-height:56px}.group-pick.active,.group-filter.active{background:linear-gradient(130deg,#ffbc33,#f44336,#8b0014);border-color:#ffe27e;color:white;box-shadow:0 0 0 3px #ff9a9a66}.group-filters{display:flex;flex-wrap:wrap;gap:9px}.group-filter{min-height:42px;padding:10px 13px}.number-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:9px;max-height:650px;overflow:auto}.number-chip{text-align:center;padding:12px 5px;border-radius:10px;background:linear-gradient(145deg,#ff5858,#b50020 60%,#250a10);border:1px solid #ff9898;color:white;font-size:23px;font-weight:900;font-variant-numeric:tabular-nums}.group-output .muted{color:#ffe6e6}</style><style>#fourCheckSection{border:2px solid #b91c2b;background:linear-gradient(145deg,#fff,#fff3f3)}#fourCheckSection h2{color:#9e071a}.four-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.four-controls input{width:100%;border:2px solid #db3548;font-weight:800;letter-spacing:1px}.four-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}.four-stat{border-radius:12px;background:linear-gradient(130deg,#220d13,#c30d2a);color:white;padding:14px}.four-stat strong{display:block;font-size:28px}.four-result{border:1px solid #f0c4cc;border-radius:14px;overflow:hidden;margin:14px 0}.four-result h3{margin:0;padding:13px 16px;background:linear-gradient(100deg,#290a12,#bd0c2c);color:white}.four-result pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:15px;font:600 15px/1.85 Consolas,monospace;background:#fff8f9;color:#30131b}.four-result .four-count{padding:10px 15px;background:#ffe6eb;font-weight:700;color:#8b0922}.responsive-number-list{display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px 0;padding:15px;background:#fff8f9;line-height:1.7;max-width:100%;box-sizing:border-box}.responsive-number{display:inline-flex;white-space:nowrap;align-items:center;font:700 16px/1.6 Consolas,monospace;color:#30131b}.responsive-number:not(:last-child)::after{content:"-";padding:0 5px;color:#9c5361}.responsive-number:last-child::after{content:""}@media(max-width:480px){.responsive-number-list{padding:10px}.responsive-number{font-size:15px}.responsive-number:not(:last-child)::after{padding:0 3px}}</style><style>.toggle-condition{display:flex;align-items:center;gap:9px;margin:12px 0;padding:12px 15px;border-radius:12px;background:linear-gradient(120deg,#31070d,#8d1527);color:white;font-weight:700}.toggle-condition input{width:22px;height:22px;accent-color:#ff455c}.toggle-condition:has(input:not(:checked)){background:#e9e9ed;color:#444}</style><style>
+.analyze-main-button{display:flex;align-items:center;justify-content:center;width:100%;max-width:540px;min-height:76px;margin:22px auto 12px;padding:18px 32px;border:3px solid #ffdf84;border-radius:20px;background:linear-gradient(125deg,#ff4b52 0%,#d8002b 42%,#750016 75%,#22040a 100%);color:#fff;font-size:clamp(23px,3.5vw,34px);font-weight:900;letter-spacing:.5px;text-shadow:0 2px 3px #4a0012;box-shadow:0 9px 0 #670014,0 15px 24px #68001555;cursor:pointer;transition:transform .15s,box-shadow .15s,filter .15s}
+.analyze-main-button:hover{filter:brightness(1.12);transform:translateY(-2px);box-shadow:0 11px 0 #670014,0 18px 27px #68001566}
+.analyze-main-button:active{transform:translateY(5px);box-shadow:0 3px 0 #670014,0 7px 12px #68001555}
+.analyze-main-button:focus-visible{outline:4px solid #ffcf35;outline-offset:4px}
+@media(max-width:480px){.analyze-main-button{min-height:70px;padding:14px 20px}}
+</style><style id="dark-section-theme">
+:root{color-scheme:dark;--ink:#f4f6ff;--muted:#b7c1d5;--border:#354052}
+html,body{background:#080b12!important;color:#f3f6ff!important}
+body{background:radial-gradient(circle at 15% 10%,#19233c 0%,transparent 38%),radial-gradient(circle at 90% 70%,#201124 0%,transparent 35%),#080b12!important}
+header{background:linear-gradient(110deg,#07090e,#171b29 48%,#262030)!important;border-bottom:3px solid #6d748e}
+.card{--accent:#68b6ff;--accent-soft:#112c46;--accent-border:#24618c;background:linear-gradient(140deg,#141c29,#0e131e 75%)!important;border:1.5px solid var(--accent-border)!important;color:#f3f6ff!important;box-shadow:0 8px 28px #0008,0 0 0 1px #ffffff08!important}
+.card h2{color:var(--accent)!important;border-left:5px solid var(--accent)!important}
+.card h3{color:#e9efff!important}
+.card .muted,.card small,.card p.muted{color:#bdc9dd!important}
+#analysis-page>section.card:first-child{--accent:#62c8ff;--accent-soft:#10344e;--accent-border:#1f78ad;background:linear-gradient(135deg,#112d48,#0b1929 70%,#0c141e)!important}
+#analysis-page>section.card:nth-child(2){--accent:#72ee9c;--accent-soft:#103d2c;--accent-border:#238b5a;background:linear-gradient(135deg,#123b2b,#0b211a 70%,#10171b)!important}
+#summary{--accent:#ff7384;--accent-soft:#4a1422;--accent-border:#a72c46;background:linear-gradient(135deg,#411624,#1f0c15 65%,#121018)!important}
+#multiSection{--accent:#c8a2ff;--accent-soft:#321c58;--accent-border:#8251b9;background:linear-gradient(135deg,#30204c,#1b1430 70%,#11101c)!important}
+#fourCheckSection{--accent:#ff7680;--accent-soft:#461722;--accent-border:#ba3649;background:linear-gradient(135deg,#451622,#260d17 70%,#150e15)!important}
+#analysis-page>section.card:last-child,#ranking-page .card,#history-page .card{--accent:#a9b9df;--accent-border:#435273;background:linear-gradient(135deg,#171f30,#0f1420)!important}
+input,select,textarea{background:#f8fbff!important;color:#172339!important;border:2px solid var(--accent-border,#405a7c)!important}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--accent,#79b6ff)!important;outline-offset:1px}
+button.secondary,.navbtn{background:linear-gradient(130deg,#2c3448,#1c2435)!important;color:#eaf0ff!important;border:1px solid #596681!important}
+.navbtn.active{background:linear-gradient(120deg,#406bd7,#8648c8)!important;border-color:#a3adff!important}
+button:not(.secondary):not(.sync-prominent):not(.analyze-main-button):not(.navbtn){background:linear-gradient(120deg,var(--accent-border,#2b5ca7),var(--accent-soft,#1d315a))!important;border:1px solid var(--accent,#6b9cff)!important;color:white!important}
+.stat,.four-stat{background:linear-gradient(135deg,var(--accent-soft,#223044),#171c29)!important;border:1px solid var(--accent-border,#435273)!important;color:white!important}
+.stat strong{color:var(--accent,#fff)!important}
+.tablewrap{border-color:var(--accent-border,#435273)!important}
+th,.multi-table th{background:#2c2441!important;color:#f8edff!important;border-bottom:2px solid #7559aa!important}
+td{border-color:#ffffff24!important;color:#edf0fa!important}
+tr:nth-child(even),.multi-table tbody tr:nth-child(even){background:#ffffff09!important}tr:hover{background:#ffffff13!important}
+.four-result{border-color:#ad485b!important;background:#160f19!important}
+.four-result h3{background:linear-gradient(100deg,#5c1627,#9c253e)!important;color:white!important}
+.responsive-number-list,.four-result pre{background:#1b1420!important;color:#fff0f3!important}
+.responsive-number{color:#fff0f3!important}.four-result .four-count{background:#3b1724!important;color:#ffd3dc!important}
+.featured-number strong{background:linear-gradient(135deg,#ff6b7b,#ad112e,#270913)!important;color:#fff!important;border-color:#ffabb4!important}
+.featured-number span{color:#ffb5bd!important}
+.history-picker{background:#102d2d!important;border-color:#2c9e8b!important}.history-picker small{color:#b8f3e0!important}
+.resultlink{background:#1b2b43!important;color:#d7e8ff!important;border-color:#405d83!important}.resultlink:hover{background:#284367!important}
+#history-page .resultlink{background:#142b24!important;color:#d8ffea!important;border-color:#356c54!important}
+#history-page .linkgroup h3{background:#1b3c32!important;color:#b4fbd6!important}
+.toggle-condition:has(input:not(:checked)){background:#30333c!important;color:#d5d9e2!important}
+.sync-prominent{background:linear-gradient(135deg,#58f28a,#16a94e,#07692d)!important;color:white!important}
+@media(max-width:700px){.card{padding:16px!important}}
+
+/* Distinct black + requested accent + white for each numbered panel */
+#analysis-page>section.card:first-child{--accent:#86dfff;--accent-border:#238ee0}
+#analysis-page>section.card:nth-child(2){--accent:#ffe96a;--accent-border:#38c875}
+#summary{--accent:#fff;--accent-border:#ef4c64}
+#multiSection{--accent:#fff;--accent-border:#a86bef}
+#fourCheckSection{--accent:#fff;--accent-border:#ef4c64}
+#analysis-page>section.card:first-child h2{color:#bcecff!important}
+#analysis-page>section.card:nth-child(2) h2{color:#fff07d!important}
+#summary h2,#fourCheckSection h2{color:#fff!important}
+#multiSection h2{color:#f5eaff!important}
+#analysis-page>section.card:nth-child(2) .stat{border-color:#9dcf3e!important}
+#multiSection .multi-digit{background:linear-gradient(135deg,#b58af4,#642da1,#160c2c)!important;border:1px solid #dec8ff}
+#fourCheckSection .four-result h3{background:linear-gradient(95deg,#1b080d,#b41b39)!important}
+#analysis-page .card h3,#analysis-page .card label{color:#fff!important}
+#analysis-page .card .muted{color:#d9e0ed!important}
+</style><style id="soft-panel-theme">
+/* Soft pastel panels, retaining dark page background and original functionality */
+#analysis-page>section.card:first-child{background:linear-gradient(135deg,#e7f5ff,#d8ecff 65%,#f5fbff)!important;border-color:#3c9bd9!important;--accent:#145b9b;--accent-border:#65a9d6;--accent-soft:#d2eaff}
+#analysis-page>section.card:nth-child(2){background:linear-gradient(135deg,#e7fae9,#f6f9d5 75%,#faffee)!important;border-color:#4fa66a!important;--accent:#187443;--accent-border:#7dc58c;--accent-soft:#e2f7d9}
+#summary{background:linear-gradient(135deg,#fff0f1,#ffe0e4 65%,#fff8f8)!important;border-color:#e76d7b!important;--accent:#a51d35;--accent-border:#ec929d;--accent-soft:#ffe0e4}
+#multiSection{background:linear-gradient(135deg,#f3eaff,#e9ddff 65%,#faf7ff)!important;border-color:#a47adb!important;--accent:#7036aa;--accent-border:#b79be2;--accent-soft:#eee2ff}
+#fourCheckSection{background:linear-gradient(135deg,#fff0f0,#ffdde3 65%,#fff8f8)!important;border-color:#e76c80!important;--accent:#a91e38;--accent-border:#e9a0ad;--accent-soft:#ffe2e8}
+#analysis-page>section.card:first-child,#analysis-page>section.card:nth-child(2),#summary,#multiSection,#fourCheckSection{color:#202536!important;box-shadow:0 8px 26px #0003!important}
+#analysis-page>section.card:first-child h2{color:#155d9b!important}
+#analysis-page>section.card:nth-child(2) h2{color:#187443!important}
+#summary h2,#fourCheckSection h2{color:#aa2039!important}
+#multiSection h2{color:#7036aa!important}
+#analysis-page .card h3,#analysis-page .card label{color:#283047!important}
+#analysis-page .card .muted,#analysis-page .card small,#analysis-page .card p.muted{color:#525b6e!important}
+#analysis-page .card .stat,#analysis-page .card .four-stat{color:#fff!important}
+#analysis-page .card .stat strong{color:#fff!important}
+#analysis-page .card .toggle-condition,#analysis-page .card .toggle-condition label{color:#fff!important}
+#analysis-page .card .toggle-condition:has(input:not(:checked)){background:#e7e7ed!important;color:#303747!important}
+#analysis-page .card .toggle-condition:has(input:not(:checked)) label{color:#303747!important}
+#analysis-page .card .four-result h3{color:#fff!important}
+#analysis-page .card .four-result .responsive-number{color:#fff0f3!important}
+#analysis-page .card .history-picker{background:#e0f5ff!important;border-color:#8cc8e7!important}
+#analysis-page .card .history-picker small{color:#395a70!important}
+#analysis-page .card .tablewrap td{color:#263046!important}
+#analysis-page .card .tablewrap tr:nth-child(even){background:#ffffff85!important}
+</style><style id="red-black-reset-theme">
+:root{color-scheme:dark!important;--ink:#fff1f2!important;--muted:#c7aab1!important;--border:#632b39!important;--accent:#ff5267!important;--accent-soft:#421321!important;--accent-border:#9d3045!important}
+html,body{background:#09090d!important;color:#fff1f2!important}
+body{background:radial-gradient(ellipse at 10% 0%,#37121d 0%,transparent 38%),radial-gradient(ellipse at 100% 35%,#241019 0%,transparent 40%),#09090d!important}
+header{background:linear-gradient(115deg,#0b0b10 0%,#4d0b1c 54%,#a71935 100%)!important;border-bottom:3px solid #f55b72!important;box-shadow:0 8px 28px #0008!important}
+header h1{color:#fff!important;text-shadow:0 2px 12px #ff416655!important}header small{color:#ffe1e5!important}
+.card,#analysis-page>section.card:first-child,#analysis-page>section.card:nth-child(2),#summary,#multiSection,#fourCheckSection,#analysis-page>section.card:last-child,#ranking-page .card,#history-page .card{--accent:#ff6a7c!important;--accent-soft:#3b1420!important;--accent-border:#96334a!important;background:linear-gradient(145deg,#221018 0%,#141016 65%,#1a1018 100%)!important;border:1px solid #783044!important;color:#fff1f2!important;box-shadow:0 10px 30px #0007,0 1px 0 #ff849822 inset!important;border-radius:19px!important}
+#summary,#fourCheckSection{background:linear-gradient(135deg,#39101e,#1a1017 72%)!important;border-color:#b63853!important}
+#multiSection{background:linear-gradient(135deg,#29121e,#161017 75%)!important}
+.card h2,#analysis-page>section.card:first-child h2,#analysis-page>section.card:nth-child(2) h2,#summary h2,#multiSection h2,#fourCheckSection h2{color:#ff8594!important;border-left:5px solid #f04460!important;padding-left:12px!important}
+.card h3,#analysis-page .card h3,#analysis-page .card label,.card label{color:#fff1f2!important}
+.card .muted,.card small,.card p.muted,#analysis-page .card .muted,#analysis-page .card small,#analysis-page .card p.muted{color:#d0aeb8!important}
+input,select,textarea,.history-picker input,.history-picker select{background:#fff7f8!important;color:#29151b!important;border:2px solid #b96b7b!important;border-radius:11px!important}
+input:focus,select:focus,textarea:focus{outline:3px solid #ff718a!important;outline-offset:1px!important}
+button,.navbtn,button.secondary{transition:transform .16s ease,filter .16s ease,box-shadow .16s ease}
+button:hover{filter:brightness(1.12);transform:translateY(-1px)}
+button:not(.secondary):not(.sync-prominent):not(.analyze-main-button):not(.navbtn){background:linear-gradient(125deg,#ee3956,#9b1633,#3b1120)!important;color:#fff!important;border:1px solid #ff7d91!important}
+.navbtn,button.secondary{background:linear-gradient(125deg,#321c28,#201820)!important;color:#ffe4e8!important;border:1px solid #864355!important}
+.navbtn.active{background:linear-gradient(125deg,#ff4b66,#a81735,#5e1126)!important;color:#fff!important;border-color:#ff9aab!important;box-shadow:0 4px 14px #ed335333!important}
+.analyze-main-button{background:linear-gradient(120deg,#ff6677 0%,#e51f43 38%,#8b0c29 78%,#2b0b16 100%)!important;border-color:#ffb6bf!important;color:#fff!important;box-shadow:0 7px 0 #580e23,0 15px 28px #0009!important}
+.sync-prominent{background:linear-gradient(130deg,#53e87a,#18b94b,#086a30)!important;color:white!important;border:2px solid #b8ffd0!important}
+.stat,.four-stat,#analysis-page .card .stat,#analysis-page .card .four-stat{background:linear-gradient(135deg,#6d1730,#2b1320)!important;border:1px solid #af4560!important;color:#fff!important}
+.stat strong,#analysis-page .card .stat strong{color:#ffcad2!important}
+th,.multi-table th{background:#6b1731!important;color:#fff!important;border-bottom:2px solid #e95872!important}
+td,#analysis-page .card .tablewrap td{color:#f9e8ec!important;border-color:#613343!important}
+tr:nth-child(even),.multi-table tbody tr:nth-child(even),#analysis-page .card .tablewrap tr:nth-child(even){background:#ffffff08!important}tr:hover{background:#ff60751a!important}
+.digit,.multi-digit{background:linear-gradient(140deg,#ff6276,#c41a3d,#541025)!important;color:white!important;border:1px solid #ff9aa9!important}
+.featured-number strong{background:linear-gradient(135deg,#ff6175,#b80f34 55%,#2d0b17)!important;border:4px solid #ff9ead!important;color:#fff!important;box-shadow:0 10px 30px #0007!important}.featured-number span{color:#ffb5c0!important}
+#votes>div>div{background:#6c3544!important}#votes>div>div>div{background:linear-gradient(90deg,#ff8698,#d9274a,#7a1530)!important}
+.four-result{background:#190f16!important;border-color:#91394e!important}.four-result h3{background:linear-gradient(110deg,#64132d,#b52a49)!important;color:white!important}
+.responsive-number-list,.four-result pre{background:#1e131b!important;color:#ffe9ee!important}.responsive-number,#analysis-page .card .four-result .responsive-number{color:#ffe9ee!important}.responsive-number:not(:last-child)::after{color:#c9788b!important}.four-result .four-count{background:#411a2b!important;color:#ffcad4!important}
+.history-picker,#analysis-page .card .history-picker{background:#2a1723!important;border:2px solid #9d4c62!important}.history-picker small,#analysis-page .card .history-picker small{color:#ffcad3!important}
+.resultlink,#history-page .resultlink{background:#301b29!important;color:#ffe5ec!important;border-color:#814356!important}.resultlink:hover,#history-page .resultlink:hover{background:#56243a!important}
+#history-page .linkgroup h3{background:#491b30!important;color:#ffd6df!important;border-left:5px solid #ed5571!important}
+.toggle-condition{background:linear-gradient(120deg,#56152c,#8d2543)!important;color:#fff!important}.toggle-condition:has(input:not(:checked)){background:#333039!important;color:#e3d6dd!important}.toggle-condition:has(input:not(:checked)) label{color:#e3d6dd!important}
+.notice{background:#3b2530!important;color:#ffe1b0!important}.tag{background:#4b1d32!important;color:#ffd4de!important}
+@media(max-width:700px){.card{padding:16px!important}header{padding:22px 15px!important}}
+</style>
+</html>
+<style id="multi-responsive-no-scroll">
+/* Section 4: fit all columns inside the card without horizontal or vertical scrolling */
+#multiSection .tablewrap{overflow:visible!important;max-height:none!important;width:100%;}
+#multiSection .multi-table{width:100%!important;min-width:0!important;table-layout:fixed!important;}
+#multiSection .multi-table th,#multiSection .multi-table td{white-space:normal!important;overflow-wrap:anywhere;padding:9px 6px!important;vertical-align:middle;}
+#multiSection .multi-table th:nth-child(1){width:19%}
+#multiSection .multi-table th:nth-child(2){width:23%}
+#multiSection .multi-table th:nth-child(3){width:37%}
+#multiSection .multi-table th:nth-child(4){width:21%}
+#multiSection .multi-table select{width:100%!important;min-width:0!important;padding:8px 3px!important;font-size:clamp(11px,1.7vw,14px)!important;}
+#multiSection .multi-table td[id^="multi-out-"]{line-height:1.7;}
+#multiSection .multi-digit{min-width:0!important;width:clamp(18px,2.45vw,29px)!important;height:clamp(27px,3.5vw,37px)!important;font-size:clamp(14px,2vw,21px)!important;padding:2px!important;margin:2px 1px!important;box-shadow:none!important;}
+@media(max-width:600px){#multiSection{padding:12px!important}#multiSection .multi-table th,#multiSection .multi-table td{padding:7px 3px!important;font-size:11px!important}#multiSection .multi-table th:nth-child(1){width:19%}#multiSection .multi-table th:nth-child(2){width:21%}#multiSection .multi-table th:nth-child(3){width:40%}#multiSection .multi-table th:nth-child(4){width:20%}#multiSection .multi-digit{width:19px!important;height:27px!important;font-size:14px!important;margin:1px!important;border-radius:5px!important}#multiSection .multi-table select{font-size:11px!important;padding:5px 1px!important}}
+
+/* Lucky draw panels in section 3 */
+#luckySets{margin-top:22px;padding:18px;border:1px solid #a94157;border-radius:17px;background:linear-gradient(135deg,#180e15,#431321 60%,#1c1017);color:#fff}
+#luckyPositionPicker{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}#luckyPositionPicker .lucky-position-option{display:inline-flex;align-items:center;gap:5px;border:1px solid #b84a61;border-radius:12px;padding:8px 12px;background:#32131e;color:#fff;font-weight:600;cursor:pointer}#luckyPositionPicker input{accent-color:#ed4264;width:17px;height:17px}#luckySets h3{color:#ffcad2;margin:0 0 8px}#luckySets .lucky-note{color:#f3b6c2;font-size:13px;line-height:1.7}#luckySets .lucky-source{margin:12px 0;font-weight:bold}#luckySets .lucky-source strong{color:#ffe28c;font-size:23px;letter-spacing:3px}
+.lucky-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px}.lucky-panel{padding:15px;background:linear-gradient(140deg,#2a131c,#51192b);border:1px solid #a64a62;border-radius:14px;min-width:0}.lucky-panel h4{margin:0 0 13px;color:#fff}.lucky-panel h4 span{color:#ffcc80;font-size:13px}.lucky-numbers{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}.lucky-chip{display:inline-block;background:#fff0f2;color:#8b1630;border:1px solid #ff9eaf;border-radius:7px;padding:6px 8px;font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}.lucky-copy{background:linear-gradient(120deg,#e5375c,#a90e30)!important}
+</style><style id="history-input-fit">
+/* Section 1: the entry field fits the card and grows to show all entered rows. */
+#analysis-page > section.card:first-child{min-width:0;max-width:100%;overflow-wrap:anywhere}
+#analysis-page #history{display:block;width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;resize:none!important;overflow:hidden!important;overflow-wrap:anywhere!important;word-break:break-word!important;white-space:pre-wrap!important;min-height:180px;line-height:1.55}
+#analysis-page > section.card:first-child .controls{min-width:0;max-width:100%}
+#analysis-page > section.card:first-child .history-picker{min-width:0;max-width:100%}
+#analysis-page > section.card:first-child .history-picker input,#analysis-page > section.card:first-child .history-picker select{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+@media(max-width:600px){#analysis-page > section.card:first-child{padding:13px!important}#analysis-page #history{font-size:15px!important;padding:10px!important}}
+</style>
+</html>
+<style id="vote-text-black">#summary #votes, #summary #votes > div, #summary #votes b, #summary #votes span {color:#000000!important;}</style>
+</html>
+<style id="vote-sequence-style">
+#summary .vote-sequence{margin-top:14px;padding:12px;border:1px solid #d5a0a0;border-radius:12px;background:#fff5f5;max-width:100%;box-sizing:border-box}
+#summary .vote-sequence h4{margin:0 0 9px;color:#171717;font-size:14px}
+#summary .vote-sequence-digits{display:flex;flex-wrap:wrap;gap:6px;max-width:100%}
+#summary .vote-sequence-digit{display:inline-flex;align-items:center;justify-content:center;flex:1 1 30px;min-width:24px;max-width:48px;height:40px;border-radius:8px;background:#fff;color:#000;font-size:20px;font-weight:800;border:1px solid #cba3a3;box-sizing:border-box}
+#summary .vote-sequence-digit:first-child{background:#ffe1e1;border:2px solid #bb1027}
+</style><style id="manual-groups-css">
+#manualSection .manual-panel{background:linear-gradient(135deg,#2c1621,#170f18);border:1px solid #844155;border-radius:15px;padding:17px;margin:15px 0;color:#fff}
+#manualSection .manual-panel h3{color:#ffbeca!important;margin:0 0 15px}
+#manualSection .four-controls{margin-bottom:12px}
+#manualSection .four-controls input{width:100%;box-sizing:border-box}
+#manualSection .manual-filters{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}
+#manualSection .responsive-number-list{display:flex;flex-wrap:wrap;gap:6px;white-space:normal;min-height:36px;padding:12px;border-radius:10px}
+#manualSection .responsive-number{display:inline-block;white-space:nowrap}
+#manualSection .controls{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+#manualSection .manual-panel .muted{margin-top:12px}
+</style><style id="blue-navigation-theme">
+/* Blue navigation buttons across all four pages */
+.appnav .navbtn, .appnav button.navbtn {
+  background:linear-gradient(135deg,#38bdf8,#0284c7)!important;
+  color:#ffffff!important;
+  border:1px solid #7dd3fc!important;
+  box-shadow:0 3px 9px rgba(2,132,199,.22)!important;
+}
+.appnav .navbtn:hover, .appnav button.navbtn:hover {
+  background:linear-gradient(135deg,#0ea5e9,#0369a1)!important;
+  filter:brightness(1.07);
+}
+.appnav .navbtn.active, .appnav button.navbtn.active {
+  background:linear-gradient(135deg,#2563eb,#1d4ed8)!important;
+  border-color:#93c5fd!important;
+  box-shadow:0 4px 14px rgba(37,99,235,.38)!important;
+}
+</style>
+</html>
+<style id="multi-section-full-fit-2026">
+#multiSection{width:100%;max-width:100%;min-width:0;overflow:hidden;box-sizing:border-box}
+#multiSection .tablewrap{width:100%;max-width:100%;overflow:visible!important;max-height:none!important}
+#multiSection .multi-table{width:100%!important;max-width:100%;min-width:0!important;table-layout:fixed;border-collapse:collapse}
+#multiSection .multi-table th,#multiSection .multi-table td{box-sizing:border-box;white-space:normal!important;overflow-wrap:anywhere;word-break:normal;padding:8px 4px!important;font-size:clamp(10px,1.25vw,14px);line-height:1.4;vertical-align:middle}
+#multiSection .multi-table th:nth-child(1){width:19%}#multiSection .multi-table th:nth-child(2){width:23%}#multiSection .multi-table th:nth-child(3){width:37%}#multiSection .multi-table th:nth-child(4){width:21%}
+#multiSection .multi-table select{width:100%!important;max-width:100%;min-width:0!important;padding:6px 2px!important;font-size:clamp(10px,1.15vw,13px)!important}
+#multiSection .multi-table .multi-digit{display:inline-flex;min-width:0!important;width:clamp(18px,2.5vw,28px)!important;height:clamp(26px,3vw,34px)!important;padding:1px!important;margin:2px 1px!important;font-size:clamp(13px,1.65vw,19px)!important;box-sizing:border-box}
+#multiSection .vote-four-row{background:linear-gradient(90deg,#38202d,#4a2638)!important;color:#fff!important;border-top:2px solid #f27d9a}
+#multiSection .vote-four-row td{color:#fff!important;font-weight:700}
+#multiSection .vote-four-row strong{color:#ffe69b}
+@media(max-width:600px){#multiSection{padding:10px!important}#multiSection .multi-table th,#multiSection .multi-table td{font-size:10px!important;padding:6px 2px!important}#multiSection .multi-table .multi-digit{width:17px!important;height:25px!important;font-size:13px!important;margin:1px!important}#multiSection .multi-table select{font-size:10px!important;padding:4px 0!important}}
+</style><style id="results-page-style">#savedResultSection{background:linear-gradient(145deg,#28121d,#160f17)!important;border:2px solid #b64b66!important}#savedResultSection h2{color:#ffd6e0!important}#resultPageText{background:#fff9fa!important;color:#21121a!important;border:2px solid #d28a9c!important;font:16px/1.6 system-ui,sans-serif}#resultsNav{white-space:normal}</style><style id="ai-mode-style">#aiMode{margin-top:20px;border:1px solid #b9506a;border-radius:15px;padding:16px;background:linear-gradient(135deg,#fff7f8,#f8e8ec);color:#171717}#aiMode h3{margin:0 0 8px;color:#8e1233}#aiOutput{margin-top:12px}#aiOutput .ai-result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px}#aiOutput .ai-result{border:1px solid #e7bdc6;border-radius:10px;background:white;padding:11px;color:#171717}#aiOutput .ai-digits{font-size:26px;font-weight:900;letter-spacing:6px;color:#9b1234;margin:8px 0}#aiOutput .ai-note{font-size:12px;color:#555}#aiMode button{background:linear-gradient(120deg,#1457c5,#2b94eb);color:white}#aiMode button.secondary{background:#353b49;color:white}#aiLuckySets{margin-top:18px}#aiLuckySets[hidden]{display:none!important}#aiLuckySets .lucky-numbers{overflow-wrap:anywhere;line-height:1.9;word-break:break-word}#aiLuckySets .ai-source{font-size:13px;line-height:1.7;margin:8px 0;white-space:normal}</style><style id="ai-lucky-note-white">#aiLuckySets .lucky-note{color:#ffffff!important;opacity:1!important}</style>
+</html>
+<style id="ai-lucky-text-color-final">
+/* Heading and explanatory sentence on the light AI container */
+#aiLuckySets > h3, #aiLuckySets > .lucky-note { color:#111111!important; opacity:1!important; }
+/* Three result cards: titles, source digit labels, and grouped numbers */
+#aiLuckySets .lucky-panel, #aiLuckySets .lucky-panel h4,
+#aiLuckySets .lucky-panel h4 span, #aiLuckySets .lucky-panel .ai-source,
+#aiLuckySets .lucky-panel .lucky-numbers { color:#ffffff!important; opacity:1!important; }
+</style><style id="multi-history-style">.multi-history-button{font-size:12px!important;padding:6px 8px!important;margin-top:5px!important;background:#1478c8!important;color:#fff!important;border-radius:7px!important;white-space:normal}.multi-history-panel{margin-top:16px;padding:15px;background:#fff;border:2px solid #b71c30;border-radius:14px;color:#24151b}.multi-history-panel h3{color:#9b1025}.multi-history-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:6px;margin:12px 0}.multi-history-formula{font-size:12px!important;text-align:left!important;padding:9px!important;background:#edf5ff!important;color:#15375b!important;border:1px solid #a6c7e8!important;white-space:normal}.multi-history-scroll{overflow-x:auto;max-height:460px;overflow-y:auto}.multi-history-scroll table{width:100%;min-width:520px}.multi-history-scroll td,.multi-history-scroll th{padding:7px;font-size:12px}.multi-hit{background:#d9f7e4!important}.multi-miss{background:#fff0f0!important}.multi-history-detail{margin-top:14px}@media(max-width:600px){.multi-history-panel{padding:9px}.multi-history-button{font-size:10px!important;padding:5px 3px!important}}</style><style id="multi-history-black-readable">
+/* High contrast for the expanded formula-history detail table. */
+#multiHistoryPanel .multi-history-detail,
+#multiHistoryPanel .multi-history-detail h4,
+#multiHistoryPanel .multi-history-detail table,
+#multiHistoryPanel .multi-history-detail th,
+#multiHistoryPanel .multi-history-detail td,
+#multiHistoryPanel .multi-history-detail tr,
+#multiHistoryPanel .multi-history-detail .multi-hit,
+#multiHistoryPanel .multi-history-detail .multi-miss { color:#000 !important; -webkit-text-fill-color:#000 !important; opacity:1 !important; text-shadow:none !important; }
+#multiHistoryPanel .multi-history-detail h4 {font-weight:800 !important;}
+#multiHistoryPanel .multi-history-scroll th {background:#e7e9ee !important;font-weight:800 !important;}
+#multiHistoryPanel .multi-history-scroll td {font-weight:650 !important;}
+</style><style id="multi-history-green-correct">
+/* Highlight correct historical predictions in clear green while preserving black text elsewhere. */
+#multiHistoryPanel .multi-history-detail tr.multi-hit td { background:#d5f5df !important; color:#075b27 !important; -webkit-text-fill-color:#075b27 !important; font-weight:800 !important; }
+#multiHistoryPanel .multi-history-detail tr.multi-hit td:last-child { background:#b7edc9 !important; color:#006b2d !important; -webkit-text-fill-color:#006b2d !important; font-weight:900 !important; }
+#multiHistoryPanel .multi-history-detail tr.multi-miss td { color:#000 !important; -webkit-text-fill-color:#000 !important; }
+</style><style id="multi-history-neon-correct">
+/* Neon lime with a subtle yellow tint for the CORRECT status cell only. */
+#multiHistoryPanel .multi-history-detail tr.multi-hit td:last-child {
+  background:linear-gradient(135deg,#c8ff19 0%,#eaff43 52%,#baff00 100%) !important;
+  color:#174200 !important;
+  -webkit-text-fill-color:#174200 !important;
+  font-weight:950 !important;
+  text-shadow:none !important;
+  border-color:#80c900 !important;
+  box-shadow:inset 0 0 0 1px rgba(95,165,0,.32) !important;
+}
+</style><style id="multi-history-green-compact-buttons">
+#multiHistoryPanel .multi-history-formula {background:linear-gradient(125deg,#a3f94c,#40d85b 55%,#17ad53)!important;color:#082b13!important;-webkit-text-fill-color:#082b13!important;border:2px solid #0a8134!important;border-radius:12px!important;font-size:15px!important;font-weight:900!important;line-height:1.5!important;padding:11px 12px!important;box-shadow:0 2px 5px #062a1740!important;text-shadow:none!important;cursor:pointer!important;}
+#multiHistoryPanel .multi-history-formula:hover,#multiHistoryPanel .multi-history-formula:focus-visible{background:linear-gradient(125deg,#dcff75,#80f67b,#35d65d)!important;outline:2px solid #075f2b!important;outline-offset:1px!important;}
+#multiHistoryPanel .multi-history-formula:active{transform:translateY(1px)}
+</style><style id="multi-history-auto-fit-buttons">
+/* Buttons follow text width instead of stretching to three equal columns. */
+#multiHistoryPanel .multi-history-list {display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;justify-content:flex-start!important;gap:8px!important;}
+#multiHistoryPanel .multi-history-formula {display:inline-flex!important;flex:0 0 auto!important;width:max-content!important;max-width:100%!important;min-width:0!important;align-items:center!important;justify-content:center!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important;padding:8px 12px!important;}
+@media(max-width:600px){#multiHistoryPanel .multi-history-formula{font-size:13px!important;padding:7px 10px!important;}}
+</style><style id="uniform-section4-digits">
+/* ตัวเลขเด่นในส่วนที่ 4 ทุกตัว (รวม 7 และ 3) มีขนาดเท่ากัน */
+#multiSection .multi-digit, #multiSection .vote-four-digits .multi-digit {
+  font-size:20px!important; font-weight:900!important; line-height:1!important;
+  width:36px!important; min-width:36px!important; height:39px!important;
+  padding:3px!important; box-sizing:border-box!important;
+  font-variant-numeric:tabular-nums!important;
+}
+</style><style id="equal-summary-featured-digits">
+/* Make the two featured values (7 and 3 in the example) visually identical. */
+#summary .digits .digit,
+#summary .featured-number strong {
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:56px!important;min-width:56px!important;max-width:56px!important;
+ height:56px!important;min-height:56px!important;max-height:56px!important;
+ padding:0!important;margin:0!important;box-sizing:border-box!important;
+ font-size:30px!important;font-weight:900!important;line-height:1!important;
+ border:2px solid #ff9ead!important;border-radius:12px!important;
+ color:#fff!important;background:linear-gradient(145deg,#ff4b66,#b9002a 65%,#460a21)!important;
+ text-shadow:none!important;box-shadow:0 3px 8px #0004!important;
+ font-variant-numeric:tabular-nums!important;
+}
+#summary .featured-number{justify-content:flex-start!important;gap:14px!important;padding:15px!important;min-height:88px!important;}
+#summary .featured-number span{font-size:18px!important;}
+</style><style id="multi-history-fit-full-page">
+/* Show every historical draw without an inner scrollbar. */
+#multiHistoryPanel .multi-history-scroll{max-height:none!important;height:auto!important;overflow:visible!important;width:100%!important;}
+#multiHistoryPanel .multi-history-detail{width:100%!important;max-width:100%!important;min-width:0!important;}
+#multiHistoryPanel .multi-history-scroll table{width:100%!important;min-width:0!important;table-layout:fixed!important;border-collapse:collapse!important;}
+#multiHistoryPanel .multi-history-scroll th,#multiHistoryPanel .multi-history-scroll td{white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;padding:7px 5px!important;font-size:clamp(10px,1.2vw,14px)!important;line-height:1.35!important;}
+#multiHistoryPanel .multi-history-scroll th:nth-child(1){width:15%}
+#multiHistoryPanel .multi-history-scroll th:nth-child(2){width:20%}
+#multiHistoryPanel .multi-history-scroll th:nth-child(3){width:23%}
+#multiHistoryPanel .multi-history-scroll th:nth-child(4){width:21%}
+#multiHistoryPanel .multi-history-scroll th:nth-child(5){width:21%}
+@media(max-width:540px){#multiHistoryPanel .multi-history-scroll th,#multiHistoryPanel .multi-history-scroll td{padding:5px 2px!important;font-size:10px!important;}#multiHistoryPanel{padding:8px!important;}}
+</style><style id="top-formula-neon-green">
+/* Larger, high-contrast neon green digits for formula rank #1. */
+#summary .digits .digit {
+ width:78px!important;min-width:78px!important;max-width:78px!important;
+ height:78px!important;min-height:78px!important;max-height:78px!important;
+ font-size:48px!important;font-weight:900!important;line-height:1!important;
+ border:3px solid #edff64!important;border-radius:15px!important;
+ background:linear-gradient(145deg,#e7ff36 0%,#a9ff00 42%,#36e928 100%)!important;
+ color:#103500!important;text-shadow:none!important;
+ box-shadow:0 0 14px #b9ff30a8, inset 0 2px 5px #fff9!important;
+}
+#summary .digits{gap:10px!important;align-items:center!important;}
+@media(max-width:420px){#summary .digits .digit{width:66px!important;min-width:66px!important;max-width:66px!important;height:66px!important;min-height:66px!important;max-height:66px!important;font-size:42px!important;}}
+</style>
+</html>
+<style id="top-formula-neon-full-digit">
+/* Make the numeral nearly fill its neon-green tile. */
+#summary .digits .digit {
+  font-size:70px!important;
+  line-height:1!important;
+  letter-spacing:-2px!important;
+  padding:0!important;
+  font-weight:900!important;
+  font-family:Arial,Tahoma,sans-serif!important;
+}
+@media(max-width:420px){#summary .digits .digit{font-size:59px!important;letter-spacing:-1px!important;}}
+</style>
+</html>
+<style id="tied-top-extra-large-numerals">
+/* Large, nearly full-tile numerals for every tied top-ranked formula. */
+#summary .digits .tied-digit-item .digit{
+  width:96px!important;min-width:96px!important;max-width:96px!important;
+  height:96px!important;min-height:96px!important;max-height:96px!important;
+  padding:0!important;font-size:86px!important;font-weight:900!important;
+  line-height:1!important;letter-spacing:-3px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  font-family:Arial,Tahoma,sans-serif!important;
+}
+#summary .digits .tied-digit-item .tied-digit-rate{font-size:12px!important;line-height:1.2!important;}
+@media(max-width:420px){
+ #summary .digits .tied-digit-item .digit{
+  width:76px!important;min-width:76px!important;max-width:76px!important;
+  height:76px!important;min-height:76px!important;max-height:76px!important;
+  font-size:68px!important;letter-spacing:-2px!important;
+ }
+}
+</style>
+</html>
+<style id="secondary-blue-digit-styles">
+#summary .secondary-digits-block{margin-top:18px;padding-top:12px;border-top:1px solid #ffffff45}
+#summary .secondary-digits-block[hidden]{display:none!important}
+#summary .secondary-digits-block h4{margin:0 0 12px;color:#e6f5ff!important;font-size:17px}
+#summary .secondary-digits{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+#summary .secondary-digit-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+#summary .secondary-digit-rate{font-size:12px;font-weight:800;color:#d8f2ff;background:#14578b;padding:3px 7px;border-radius:7px}
+#summary .secondary-digit{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:15px;background:linear-gradient(145deg,#a9eeff,#35b6ff 48%,#0064c8);border:3px solid #c5f1ff;color:#08254e;font:900 72px/.95 Arial,Tahoma,sans-serif;letter-spacing:-2px;box-shadow:0 4px 12px #008fff55}
+@media(max-width:420px){#summary .secondary-digit{width:62px;height:62px;font-size:59px}}
+</style><style id="ranking-fit-screen">
+/* Ranking table: one page scroll only, responsive six-column layout. */
+#ranking-page,#ranking-page #rankSection{min-width:0;max-width:100%;}
+#ranking-page #rankSection .tablewrap{width:100%;max-width:100%;max-height:none!important;overflow:visible!important;}
+#ranking-page #rankSection table{width:100%;min-width:0!important;table-layout:fixed;border-collapse:collapse;}
+#ranking-page #rankSection th,#ranking-page #rankSection td{white-space:normal!important;overflow-wrap:anywhere;word-break:normal;padding:9px 6px;font-size:clamp(11px,1.15vw,15px);vertical-align:middle;}
+#ranking-page #rankSection th:nth-child(1){width:9%}
+#ranking-page #rankSection th:nth-child(2){width:36%}
+#ranking-page #rankSection th:nth-child(3){width:10%}
+#ranking-page #rankSection th:nth-child(4){width:9%}
+#ranking-page #rankSection th:nth-child(5){width:15%}
+#ranking-page #rankSection th:nth-child(6){width:21%}
+#ranking-page #rankSection td:nth-child(2){font-weight:750;line-height:1.4;}
+@media(max-width:600px){
+ #ranking-page #rankSection{padding:10px!important;}
+ #ranking-page #rankSection th,#ranking-page #rankSection td{font-size:11px;padding:7px 3px;}
+ #ranking-page #rankSection th:nth-child(1){width:9%}
+ #ranking-page #rankSection th:nth-child(2){width:34%}
+ #ranking-page #rankSection th:nth-child(3){width:10%}
+ #ranking-page #rankSection th:nth-child(4){width:9%}
+ #ranking-page #rankSection th:nth-child(5){width:16%}
+ #ranking-page #rankSection th:nth-child(6){width:22%}
+}
+</style><style id="results-full-viewport-v2">
+/* The result viewer uses the remaining browser viewport, not an internal fixed-height panel. */
+body:has(#results-page:not([hidden])){overflow:hidden!important}
+body:has(#results-page:not([hidden])) #results-page{display:flex!important;flex-direction:column;min-height:0;height:calc(100dvh - var(--result-page-top, 130px));overflow:hidden!important}
+body:has(#results-page:not([hidden])) #savedResultSection{display:flex!important;flex-direction:column!important;flex:1 1 auto;min-height:0;min-width:0;margin:0!important;padding:8px 12px!important;overflow:hidden!important}
+#results-page #resultPageTitle{font-size:clamp(15px,2vw,21px)!important;line-height:1.2!important;margin:0 0 4px!important}
+#results-page #savedResultSection>p.muted:first-of-type{display:none!important}
+#results-page #savedResultSection>.controls{margin:4px 0!important;gap:6px!important}
+#results-page #savedResultSection>.controls button,#results-page #savedResultSection>.controls a{padding:6px 10px!important;font-size:13px!important}
+#results-page #resultPageStatus{font-size:11px!important;line-height:1.25!important;margin:3px 0!important;max-height:2.5em;overflow:hidden}
+#results-page #resultEmbeddedSite{width:100%!important;height:auto!important;min-height:0!important;flex:1 1 auto!important;border-radius:6px!important;margin:0!important;display:block}
+#results-page #resultEmbeddedSite[style*="display: none"]{display:none!important}
+@media(max-width:600px){body:has(#results-page:not([hidden])) #savedResultSection{padding:5px!important}#results-page #resultPageTitle{font-size:15px!important}}
+</style><style id="user-selectable-themes">
+/* Theme palettes override only presentation, preserving analysis logic and result colors. */
+body[data-theme="red"]{--theme-bg:#170b11;--theme-card:#27131e;--theme-text:#fff0f3;--theme-sub:#e3b7c2;--theme-edge:#803548;--theme-header1:#3a1022;--theme-header2:#a51a3c;--theme-button:#bd2446;--theme-button2:#68162e;--theme-input:#321923;--theme-input-text:#fff1f3}
+body[data-theme="blue"]{--theme-bg:#091c34;--theme-card:#112a4b;--theme-text:#edf7ff;--theme-sub:#b8d8f5;--theme-edge:#3c6fa6;--theme-header1:#0b3a77;--theme-header2:#1688c8;--theme-button:#1676c6;--theme-button2:#124477;--theme-input:#163858;--theme-input-text:#f1faff}
+body[data-theme="green"]{--theme-bg:#0c251a;--theme-card:#163729;--theme-text:#edfff4;--theme-sub:#bce7cc;--theme-edge:#4b956b;--theme-header1:#0d5632;--theme-header2:#2e9c57;--theme-button:#228b54;--theme-button2:#155e3b;--theme-input:#1d4733;--theme-input-text:#f0fff4}
+body[data-theme="purple"]{--theme-bg:#1b102d;--theme-card:#2b1c44;--theme-text:#f9f0ff;--theme-sub:#dac5f0;--theme-edge:#8c60b8;--theme-header1:#44216c;--theme-header2:#9950bd;--theme-button:#8241b0;--theme-button2:#4c277a;--theme-input:#392651;--theme-input-text:#fff2ff}
+body[data-theme="gold"]{--theme-bg:#292012;--theme-card:#3a2d1b;--theme-text:#fff6e4;--theme-sub:#f1d6a0;--theme-edge:#aa8240;--theme-header1:#5c3a11;--theme-header2:#b78423;--theme-button:#ad7624;--theme-button2:#75501d;--theme-input:#4b381e;--theme-input-text:#fff6e5}
+body[data-theme="light"]{--theme-bg:#eef3fb;--theme-card:#ffffff;--theme-text:#17243b;--theme-sub:#53657c;--theme-edge:#d2dceb;--theme-header1:#315cbb;--theme-header2:#6a83d9;--theme-button:#346bc6;--theme-button2:#21488f;--theme-input:#fff;--theme-input-text:#17243b}
+body[data-theme]{background:var(--theme-bg)!important;color:var(--theme-text)!important;color-scheme:dark}
+body[data-theme="light"]{color-scheme:light}
+body[data-theme] header{background:linear-gradient(120deg,var(--theme-header1),var(--theme-header2))!important}
+body[data-theme] .card:not(#aiMode),body[data-theme] .stat,body[data-theme] .appnav{background:var(--theme-card)!important;color:var(--theme-text)!important;border-color:var(--theme-edge)!important}
+body[data-theme] .card h2,body[data-theme] .card h3,body[data-theme] .stat strong{color:var(--theme-text)!important}
+body[data-theme] .muted,body[data-theme] .card small{color:var(--theme-sub)!important}
+body[data-theme] input:not([type="checkbox"]),body[data-theme] select,body[data-theme] textarea{background:var(--theme-input)!important;color:var(--theme-input-text)!important;border-color:var(--theme-edge)!important}
+body[data-theme] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter){background:linear-gradient(120deg,var(--theme-button),var(--theme-button2))!important;color:#fff!important;border-color:var(--theme-edge)!important}
+body[data-theme] table:not(.multi-history-scroll table) th{background:var(--theme-card)!important;color:var(--theme-text)!important}
+body[data-theme] table:not(.multi-history-scroll table) td{color:var(--theme-text)!important;border-color:var(--theme-edge)!important}
+body[data-theme] .theme-switcher{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:10px 0;padding:10px 13px;border-radius:12px;background:var(--theme-card);border:1px solid var(--theme-edge);color:var(--theme-text)}
+body[data-theme] .theme-switcher label{display:inline;font-weight:700}
+body[data-theme] #themeSelect{min-width:170px;padding:8px 12px;font-weight:700}
+/* Keep distinctive neon-green results, blue secondary digits and hit/miss cells. */
+</style><style id="ai-follow-selected-theme">
+/* AI mode inherits the active theme without changing its calculations. */
+body[data-theme] #aiMode{background:linear-gradient(135deg,var(--theme-card),var(--theme-bg))!important;border:2px solid var(--theme-edge)!important;color:var(--theme-text)!important}
+body[data-theme] #aiMode>h3,body[data-theme] #aiMode>p,body[data-theme] #aiMode #aiStatus,body[data-theme] #aiLuckySets>h3,body[data-theme] #aiLuckySets>.lucky-note{color:var(--theme-text)!important;opacity:1!important}
+body[data-theme] #aiOutput .ai-result{background:var(--theme-input)!important;color:var(--theme-input-text)!important;border-color:var(--theme-edge)!important}
+body[data-theme] #aiOutput .ai-result *,body[data-theme] #aiOutput .ai-note,body[data-theme] #aiOutput .ai-digits{color:var(--theme-input-text)!important}
+body[data-theme] #aiLuckySets .lucky-panel{background:linear-gradient(135deg,var(--theme-header1),var(--theme-header2))!important;border-color:var(--theme-edge)!important}
+body[data-theme] #aiLuckySets .lucky-panel h4,body[data-theme] #aiLuckySets .lucky-panel .ai-source,body[data-theme] #aiLuckySets .lucky-panel .lucky-numbers{color:#fff!important}
+</style><style id="results-taller-normal-webpage">
+/* Display a tall embedded results webpage; scrolling belongs to the main page. */
+body:has(#results-page:not([hidden])){overflow-y:auto!important;overflow-x:hidden!important}
+body:has(#results-page:not([hidden])) #results-page{height:auto!important;min-height:100dvh!important;overflow:visible!important;display:block!important}
+body:has(#results-page:not([hidden])) #savedResultSection{height:auto!important;min-height:100dvh!important;overflow:visible!important;display:block!important;padding:12px!important}
+#results-page #resultEmbeddedSite{display:block;width:100%!important;height:max(1100px,145dvh)!important;min-height:1100px!important;max-height:none!important;flex:none!important;border-radius:10px!important}
+#results-page #resultEmbeddedSite[style*="display: none"]{display:none!important}
+@media(max-width:600px){#results-page #resultEmbeddedSite{height:max(950px,160dvh)!important;min-height:950px!important}}
+</style><style id="cute-neon-themes">
+/* Pastel-neon palettes: preserve legible text and special result indicators. */
+body[data-theme="pinkpop"]{--theme-bg:#fff0f8;--theme-card:#fffaff;--theme-text:#6a1c59;--theme-sub:#97517e;--theme-edge:#ff81c4;--theme-header1:#ff66b7;--theme-header2:#ad6bff;--theme-button:#ff50aa;--theme-button2:#c044e8;--theme-input:#fff6fd;--theme-input-text:#5b1a4d;--theme-glow:#ff59b3}
+body[data-theme="candy"]{--theme-bg:#eafcff;--theme-card:#ffffff;--theme-text:#145b75;--theme-sub:#467d8d;--theme-edge:#63d6ed;--theme-header1:#27c9e8;--theme-header2:#ff8bcb;--theme-button:#11b9d8;--theme-button2:#e978c7;--theme-input:#f1feff;--theme-input-text:#145b75;--theme-glow:#40e6fb}
+body[data-theme="lavender"]{--theme-bg:#f5efff;--theme-card:#fffaff;--theme-text:#502b83;--theme-sub:#8061a3;--theme-edge:#c59bff;--theme-header1:#9a76ff;--theme-header2:#ff91df;--theme-button:#9260ed;--theme-button2:#d45dbd;--theme-input:#fcf7ff;--theme-input-text:#502b83;--theme-glow:#bd83ff}
+body[data-theme="mintpop"]{--theme-bg:#eafff4;--theme-card:#fbfffd;--theme-text:#145d4d;--theme-sub:#4c8b77;--theme-edge:#67e9b6;--theme-header1:#22d5a0;--theme-header2:#6bdde9;--theme-button:#10b98b;--theme-button2:#24a8c6;--theme-input:#f2fff9;--theme-input-text:#145d4d;--theme-glow:#35f0ae}
+body[data-theme="sunshine"]{--theme-bg:#fff8e6;--theme-card:#fffdf6;--theme-text:#784619;--theme-sub:#956c3e;--theme-edge:#ffc66c;--theme-header1:#ffba43;--theme-header2:#ff7c9b;--theme-button:#f4a329;--theme-button2:#f46e91;--theme-input:#fffdf4;--theme-input-text:#784619;--theme-glow:#ffd34c}
+body[data-theme]{--theme-glow:var(--theme-edge)}
+body[data-theme="pinkpop"],body[data-theme="candy"],body[data-theme="lavender"],body[data-theme="mintpop"],body[data-theme="sunshine"]{color-scheme:light;background:radial-gradient(circle at 12% 4%,color-mix(in srgb,var(--theme-glow) 24%,transparent),transparent 32%),radial-gradient(circle at 92% 20%,color-mix(in srgb,var(--theme-header2) 22%,transparent),transparent 35%),var(--theme-bg)!important}
+body[data-theme] header{box-shadow:0 4px 22px color-mix(in srgb,var(--theme-edge) 45%,transparent)!important}
+body[data-theme] .card:not(#aiMode),body[data-theme] .stat,body[data-theme] .theme-switcher{box-shadow:0 3px 18px color-mix(in srgb,var(--theme-edge) 28%,transparent)!important}
+body[data-theme] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter){box-shadow:0 2px 11px color-mix(in srgb,var(--theme-edge) 42%,transparent)!important}
+body[data-theme] #aiMode{box-shadow:0 0 24px color-mix(in srgb,var(--theme-edge) 38%,transparent)!important}
+body[data-theme] #themeSelect:focus-visible{outline:3px solid var(--theme-edge);outline-offset:2px}
+body[data-theme="pinkpop"] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter),body[data-theme="candy"] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter),body[data-theme="lavender"] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter),body[data-theme="mintpop"] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter),body[data-theme="sunshine"] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter){color:#fff!important}
+</style></head><body><header><main style="padding:0"><h1>✨ สูตรวิเคราะห์ขั้นเทพ</h1><div>วิเคราะห์ 9,999 สูตร • สถิติย้อนหลัง • เลขเด่น 1–9 ตัว</div><small>เว็บแอปใช้งานออฟไลน์ บันทึกข้อมูลในเบราว์เซอร์ของเครื่อง</small></main></header><main>
+<div class="theme-switcher" role="group" aria-label="เลือกธีมสีโปรแกรม"><label for="themeSelect">🎨 เลือกธีมโปรแกรม</label><select id="themeSelect"><option value="red">🔴 แดง–ดำ (เดิม)</option><option value="blue">🔵 น้ำเงินเข้ม</option><option value="green">🟢 เขียวมรกต</option><option value="purple">🟣 ม่วงแฟนตาซี</option><option value="gold">🟡 ทองหรู</option><option value="light">⚪ ขาวสบายตา</option><option value="pinkpop">💗 ชมพูป๊อปเรืองแสง</option><option value="candy">🍬 ฟ้าลูกกวาด</option><option value="lavender">🦄 ม่วงลาเวนเดอร์</option><option value="mintpop">🍀 มิ้นต์สดใส</option><option value="sunshine">🌈 เหลืองพาสเทลสดใส</option></select></div><nav class="appnav"><button type="button" class="navbtn active" data-page="analysis-page">📊 วิเคราะห์สูตร</button><button type="button" class="navbtn" data-page="ranking-page">🏆 จัดอันดับสูตรทั้ง 9,999 สูตร</button><button type="button" class="navbtn" data-page="manual-page">🧩 จัดกลุ่มเลข</button><button type="button" class="navbtn" data-page="history-page">🔗 ผลย้อนหลัง</button><button type="button" class="navbtn" data-page="results-page" id="resultsNav">📋 ผล</button></nav><div id="results-page" class="app-page" hidden><section class="card" id="savedResultSection"><h2 id="resultPageTitle">📋 ผล — ยังไม่ได้เลือกชื่อหวย</h2><p class="muted">แสดงเว็บไซต์ผลย้อนหลังที่เลือกจากหน้าวิเคราะห์สูตรภายในหน้านี้โดยตรง เพื่อให้เข้าถึงเว็บต้นทางได้แม้เว็บไซต์ไม่อนุญาตให้ฝัง โปรแกรมจะเปิดเว็บต้นทางในแท็บใหม่เมื่อเลือกชื่อหวย (เบราว์เซอร์ไม่สามารถตรวจสอบการปฏิเสธ iframe ของทุกเว็บไซต์ได้อย่างแม่นยำ)</p><div class="controls" style="margin:14px 0;display:flex;gap:10px;flex-wrap:wrap"><button type="button" id="resultReload">🔄 โหลดหน้าเว็บใหม่</button><a id="resultOpenSource" href="#" target="_blank" rel="noopener noreferrer" style="display:none;padding:10px 15px;background:#0284c7;color:#fff;text-decoration:none;border-radius:10px">🔗 เปิดเว็บต้นทาง</a></div><p id="resultPageStatus" class="muted" role="status">เลือกชื่อหวยจากส่วนที่ 1 เพื่อแสดงเว็บไซต์และเปิดเว็บต้นทาง</p><iframe id="resultEmbeddedSite" title="เว็บไซต์ผลย้อนหลังที่เลือก" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:min(75vh,900px);min-height:540px;display:none;border:1px solid #b96b7b;border-radius:12px;background:#fff" loading="lazy"></iframe></section></div><div id="history-page" class="app-page" hidden><section class="card" id="result-links"><h2>🔗 ลิงก์ดูผลย้อนหลังจาก Excel</h2><p class="muted">รายชื่อและลิงก์นำมาจากชีท “ผลย้อนหลัง” ในไฟล์ New.xlsx คลิกชื่อเพื่อเปิดเว็บต้นทางในแท็บใหม่</p><div class="linktools"><input id="linksearch" type="search" placeholder="ค้นหาชื่อผลย้อนหลัง เช่น นิเคอิ ลาว ฮานอย" aria-label="ค้นหาชื่อผลย้อนหลัง"><button type="button" class="secondary" id="clearlinksearch">ล้างคำค้นหา</button></div><div id="linkcount" class="linkcount"></div><div id="linkgrid" class="linkgrid"></div></section></div><div id="manual-page" class="app-page" hidden>
+<section class="card" id="manualSection"><h2>🧩 จัดกลุ่มเลข (กรอกเอง)</h2><p class="muted">กรอกเลขเด่นแต่ละหลักด้วยตนเอง ระบบนี้ทำงานแยกจากสูตรวิเคราะห์ 9,999 สูตรและส่วนที่ 5 โดยสิ้นเชิง • กรอกตัวเลข 0–9 ติดกันหรือคั่นด้วยช่องว่างก็ได้</p>
+<div class="manual-panel"><h3>1. จัดกลุ่มเลข 3 ตัวบน (000–999)</h3><div class="four-controls"><label>หลักร้อย<input id="manualH" inputmode="numeric" maxlength="40" placeholder="เช่น 1234"></label><label>หลักสิบ<input id="manualT" inputmode="numeric" maxlength="40" placeholder="เช่น 567"></label><label>หลักหน่วย<input id="manualU" inputmode="numeric" maxlength="40" placeholder="เช่น 890"></label><label>สิบหน่วย<input id="manualP" inputmode="numeric" maxlength="40" placeholder="เช่น 12345"></label></div><label class="toggle-condition"><input id="manualUseP" type="checkbox" checked> ใช้เงื่อนไขสิบหน่วย (ต้องมีอย่างน้อย 1 ตัวอยู่ในชุดสิบหน่วย)</label><div class="group-filters manual-filters" id="manualThreeFilters"></div><div class="controls"><button type="button" id="manualThreeRun">✦ จัดกลุ่มเลข</button><button type="button" class="secondary" id="manualThreeCopy">คัดลอกผล</button></div><p class="muted" id="manualThreeCount">ยังไม่ได้จัดกลุ่ม</p><div class="responsive-number-list" id="manualThreeResults"></div></div>
+<h2 style="margin-top:24px">2. จัดกลุ่มเลข 2 ตัว (บน / ล่าง)</h2><div class="group-filters manual-filters" id="manualTwoFilters"></div><div id="manualTwoPanels"></div>
+</section></div><div id="ranking-page" class="app-page" hidden><section class="card" id="rankSection" hidden><h2>จัดอันดับสูตรทั้ง 9,999 สูตร</h2><div class="controls"><label>ค้นหาสูตร<input id="filter" placeholder="เช่น ร้อย + สิบ" oninput="renderTable(true)"></label><button class="secondary" onclick="exportRank()">ดาวน์โหลดผลสถิติ CSV</button></div><p class="muted">สูตรที่ไม่มีงวดให้ตรวจสอบจะแสดงว่าไม่มีข้อมูล (—)</p><div class="controls" style="align-items:center;gap:12px"><button type="button" class="secondary" id="rankPrev" onclick="rankPage--;renderTable()">◀ ก่อนหน้า</button><span id="rankPagerInfo" style="color:#111;font-weight:700">แสดงครั้งละ 100 สูตร</span><button type="button" class="secondary" id="rankNext" onclick="rankPage++;renderTable()">ถัดไป ▶</button></div><div class="tablewrap"><table><thead><tr><th>อันดับ</th><th>สูตร</th><th>ทดสอบ</th><th>ถูก</th><th>อัตราถูก</th><th>เลขเรียงงวดถัดไป</th></tr></thead><tbody id="tbody"></tbody></table></div></section></div><div id="analysis-page" class="app-page"><section class="card"><h2>1. กรอกผลย้อนหลัง</h2><p class="muted">เรียงจากงวดเก่าไปงวดใหม่ บรรทัดละ 1 ผล รูปแบบ 3 ตัวบน-2 ตัวล่าง เช่น 239-53</p><div class="history-picker"><label for="historySourceSearch"><strong>ค้นหาและเลือกผลย้อนหลัง</strong></label><input id="historySourceSearch" type="search" placeholder="ค้นหา เช่น ลาว ฮานอย นิเคอิ VIP" autocomplete="off"><select id="historySourceSelect" aria-label="เลือกรายชื่อผลย้อนหลัง"><option value="">— เลือกรายชื่อเพื่อเปิดเว็บไซต์อัตโนมัติ —</option></select><small>เมื่อเลือกรายชื่อ โปรแกรมจะเปิดเว็บไซต์ผลย้อนหลังในแท็บใหม่ โดยไม่แก้ไขข้อมูลที่กรอกไว้</small></div><div class="controls" style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap"><a href="https://exphuay.com/result" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#15803d,#22c55e);color:#fff;text-decoration:none;font-weight:700">ดูผลล่าสุดเว็บ EXP</a><a href="https://newformula.info/Reporthoon/Report.php" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#b91c1c,#ef4444);color:#fff;text-decoration:none;font-weight:700">ดูผลล่าสุดเว็บ Newformula</a></div><textarea id="history" spellcheck="false" placeholder="239-53&#10;313-61&#10;906-23&#10;068-73&#10;403-26"></textarea><div class="controls" style="margin-top:12px"><button onclick="clearHistory()" class="secondary">ล้างข้อมูล</button></div></section>
+<section class="card"><h2>2. ตั้งค่าการวิเคราะห์</h2><div class="controls"><label>วิเคราะห์หลัก<select id="target"><option value="hundred">ร้อย</option><option value="ten">สิบ</option><option value="unit">หน่วย</option><option value="lowerTen">สิบล่าง</option><option value="lowerUnit">หน่วยล่าง</option><option value="top3">ร้อยสิบหน่วย</option><option value="top2">สิบหน่วย</option><option value="bottom2">สิบหน่วยล่าง</option><option value="topBottom" selected>บนล่าง</option></select></label><label>จำนวนเลขเด่น<select id="count"></select></label><input id="topN" type="hidden" value="99"><label>เรียงอันดับ<select id="sort"><option value="rate">อัตราถูก (%)</option><option value="hits">จำนวนครั้งถูก</option></select></label></div><p class="muted">สูตรคำนวณจากผลของงวดก่อนหน้า เพื่อเทียบกับผลของงวดถัดไป (ไม่ใช้ข้อมูลงวดที่ต้องทาย)</p><button id="run" class="analyze-main-button" onclick="analyze()">🔎 วิเคราะห์สูตร</button><div id="status"></div></section>
+<section class="card" id="summary" hidden><h2>3. สรุปผลการวิเคราะห์</h2><div class="stats" id="stats"></div><div class="two"><div><h3>เลขเด่นจากสูตรอันดับ 1 (รวมสูตรที่มีอัตราถูกสูงสุดเท่ากัน)</h3><div class="digits" id="digits"></div><div id="secondaryDigitsBlock" class="secondary-digits-block" hidden><h4>เลขรอง (รวมเด่นและรองไม่เกิน 7 ตัว)</h4><div class="secondary-digits" id="secondaryDigits"></div></div></div><div hidden aria-hidden="true"><div id="votes"></div><div id="voteSequence"></div></div></div><div id="aiMode" class="ai-mode"><h3>🤖 โหมด AI วิเคราะห์แนวโน้มเลขเด่น</h3><p class="muted">วิเคราะห์สถิติผลย้อนหลังของหวยที่เลือก แยกหลักร้อย สิบ หน่วย สิบล่าง และหน่วยล่าง โดยให้น้ำหนักงวดล่าสุดและตรวจรูปแบบการเปลี่ยนเลข (เป็นการประเมินเชิงสถิติ ไม่ใช่ AI ออนไลน์หรือการทำนายผลที่แน่นอน)</p><div class="controls"><button type="button" id="aiLoadBtn">🤖 โหลด AI วิเคราะห์เลขเด่น</button><button type="button" id="aiCopyBtn" class="secondary">📋 คัดลอกผล AI</button><span id="aiStatus" class="muted"></span></div><div id="aiOutput" aria-live="polite"></div><div id="aiLuckySets" class="lucky-sets" hidden><h3>🤖 จัดกลุ่มเลขเด่น AI แยกตามหลัก</h3><p class="lucky-note">จับคู่เลขเด่น 3 ตัวของแต่ละหลักตามลำดับร้อย–สิบ–หน่วย และสิบล่าง–หน่วยล่าง โดยคงเลขซ้ำได้</p><div class="lucky-grid"><div class="lucky-panel"><h4>AI 3 ตัวบน <span id="aiLucky3Count"></span></h4><div class="ai-source" id="aiLucky3Source"></div><div class="lucky-numbers" id="aiLucky3"></div><button type="button" class="lucky-copy" data-copy-ai="aiLucky3">📋 คัดลอก 3 ตัวบน</button></div><div class="lucky-panel"><h4>AI 2 ตัวบน <span id="aiLucky2TopCount"></span></h4><div class="ai-source" id="aiLucky2TopSource"></div><div class="lucky-numbers" id="aiLucky2Top"></div><button type="button" class="lucky-copy" data-copy-ai="aiLucky2Top">📋 คัดลอก 2 ตัวบน</button></div><div class="lucky-panel"><h4>AI 2 ตัวล่าง <span id="aiLucky2BottomCount"></span></h4><div class="ai-source" id="aiLucky2BottomSource"></div><div class="lucky-numbers" id="aiLucky2Bottom"></div><button type="button" class="lucky-copy" data-copy-ai="aiLucky2Bottom">📋 คัดลอก 2 ตัวล่าง</button></div></div></div></div></section>
+<section class="card" id="multiSection"><h2>4. วิเคราะห์เลขเด่นแยกตามหลัก</h2><p class="muted">เลือกจำนวนเลขที่ใช้ทดสอบสูตร 1–9 ตัวแยกแต่ละหลัก แล้วกำหนดจำนวนเลขเด่นที่ต้องการแสดง 1–9 ตัว โปรแกรมจะรวบรวมเลขจากสูตรที่มีผลย้อนหลังดีที่สุดตามลำดับ</p><div class="tablewrap"><table class="multi-table"><thead><tr><th>เลือกจำนวนผล</th><th>หลัก</th><th>เด่น</th><th>สถิติสูตรอันดับ 1 / สูตรย้อนหลัง</th><th>วิเคราะห์สูตรละ</th></tr></thead><tbody id="multiBody"></tbody><tfoot><tr class="vote-four-row"><td>4 ตัว</td><td><strong>วัดใจบนล่าง</strong></td><td id="multiVoteFour" class="vote-four-digits" aria-live="polite">—</td><td>คะแนนโหวตสูงสุด 4 ตัว</td><td>—</td></tr></tfoot></table></div><div id="multiHistoryPanel" class="multi-history-panel" hidden aria-live="polite"></div><div class="controls" style="margin-top:14px"><button type="button" id="multiRun">🔎 วิเคราะห์เลขแยกหลัก</button><button type="button" id="multiCopy" class="secondary">📋 คัดลอกตารางเลขเด่น</button><span id="multiStatus" class="muted"></span></div></section>
+<section class="card" id="fourCheckSection"><h2>5. สรุปผลการวิเคราะห์จาก 4 ข้อมูล (000–999)</h2><p class="muted">ตรวจสอบเลข 3 ตัวครบ 1,000 ชุด โดยใช้เลขเด่น ร้อย (ร), สิบ (ส), หน่วย (น) และ สิบหน่วย (สน) จากส่วนที่ 4 หรือกรอกชุดเลขเพื่อทดสอบเอง</p><div class="four-controls"><label>หลักร้อย (ร)<input id="fourH" inputmode="numeric" maxlength="10" value="0123456"></label><label>หลักสิบ (ส)<input id="fourT" inputmode="numeric" maxlength="10" value="789012345"></label><label>หลักหน่วย (น)<input id="fourU" inputmode="numeric" maxlength="10" value="890123456"></label><label>สิบหน่วย (สน)<input id="fourP" inputmode="numeric" maxlength="10" value="45678"></label></div><label class="toggle-condition"><input type="checkbox" id="fourUseP" checked> ใช้เงื่อนไขสิบหน่วย (สน) วิเคราะห์เลข 3 ตัวบน</label><div class="controls" style="margin-top:14px"><button type="button" class="sync-prominent" id="fourReload">✦ จัดกลุ่มเลข</button><button type="button" class="secondary" id="fourCopy">คัดลอก</button></div><p class="muted" id="fourStatus">ตัวอย่างเลขตามที่กำหนดไว้ พร้อมคำนวณได้ทันที</p><div class="group-filters" id="threeFilters" aria-label="ตัวกรองเลข 3 ตัว"></div><div class="four-summary" id="fourStats"></div><div id="fourResults"></div><div id="twoDigitSection" style="margin-top:24px;border-top:3px solid #cf1837;padding-top:18px"><h2>วิเคราะห์เลข 2 ตัว (บน / ล่าง)</h2><p class="muted">ตรวจสอบหลักสิบ หลักหน่วย และเงื่อนไขสิบหน่วย โดยต้องผ่านทั้ง 3 ข้อมูล (อย่างน้อยหนึ่งหลักอยู่ในชุดสิบหน่วย)</p><div class="group-filters" id="twoFilters" aria-label="ตัวกรองเลข 2 ตัว"></div><div id="twoPanels"></div></div></section>
+</main><script>
+
+function luckyPermutations(digits,length){
+ const out=[];
+ function visit(prefix,remaining){if(prefix.length===length){out.push(prefix.join(''));return;}remaining.forEach((d,i)=>visit([...prefix,d],remaining.filter((_,j)=>i!==j)));}
+ visit([],digits);return out.sort((a,b)=>Number(a)-Number(b));
+}
+// เลขเด่น 4 ตัวแยกชุดบนและล่างจากผลวิเคราะห์รายหลักในส่วนที่ 4
+function initLuckyPicker(){
+ const picker=document.getElementById('luckyPositionPicker');
+ if(picker)picker.remove();
+}
+function selectLuckyDigits(plan){
+ const selected=[], used=new Set(), details=[];
+ for(const [id,label,quota] of plan){
+  const choices=getMultiDigits(id).map(String);
+  const picked=[];
+  for(const digit of choices){
+   if(!used.has(digit)){picked.push(digit);selected.push(digit);used.add(digit);}
+   if(picked.length===quota)break;
+  }
+  details.push(label+' '+(picked.length?picked.join(', '):'—'));
+ }
+ return {digits:selected,details};
+}
+let luckyVoteOrder=[];
+function renderLuckySets(){
+ const digits=luckyVoteOrder.slice(0,4).map(String);
+ const multiVote=document.getElementById('multiVoteFour');
+ if(multiVote){multiVote.replaceChildren();if(digits.length){digits.forEach(d=>{const el=document.createElement('span');el.className='multi-digit';el.textContent=d;multiVote.append(el)});}else multiVote.textContent='—';}
+}
+
+initLuckyPicker();
+document.querySelectorAll('[data-copy-lucky]').forEach(btn=>btn.addEventListener('click',()=>{
+ const value=document.getElementById(btn.dataset.copyLucky).dataset.values||'';
+ if(!value)return;
+ if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(value).then(()=>{btn.textContent='คัดลอกแล้ว';setTimeout(()=>btn.textContent='คัดลอก'+(btn.dataset.copyLucky==='lucky3'?' 3 ตัว':btn.dataset.copyLucky==='lucky2Top'?' 2 ตัวบน':' 2 ตัวล่าง'),1200)}).catch(()=>prompt('คัดลอกเลข',value));else prompt('คัดลอกเลข',value);
+}));
+
+const names=['ร้อย','สิบ','หน่วย','สิบล่าง','หน่วยล่าง'];const fields=['hundred','ten','unit','lowerTen','lowerUnit'];const targets={hundred:[0],ten:[1],unit:[2],lowerTen:[3],lowerUnit:[4],top3:[0,1,2],top2:[1,2],bottom2:[3,4],topBottom:[1,2,3,4]};const key='lucky999_history_v1';let ranked=[];let latest=[];let lastCount=7;
+function buildFormulas(){const out=[],LIMIT=9999;function combinations(start,depth,arr){if(out.length>=LIMIT)return;if(depth===0){out.push([...arr]);return;}for(let i=start;i<5&&out.length<LIMIT;i++){arr.push(i);combinations(i,depth-1,arr);arr.pop();}}for(let d=1;out.length<LIMIT;d++)combinations(0,d,[]);return out;}const formulas=buildFormulas();
+function parse(){let lines=document.getElementById('history').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let bad=[];let rows=[];lines.forEach((line,i)=>{let m=line.match(/^(\d{3})\s*[-–/ ]\s*(\d{2})$/);if(!m){bad.push(i+1);return;}rows.push((m[1]+m[2]).split('').map(Number));});if(bad.length)throw Error('รูปแบบไม่ถูกต้องที่บรรทัด '+bad.slice(0,12).join(', '));return rows;}
+function seed(row,formula){let s=0;for(const i of formula)s+=row[i];return s%10;}function picks(start,n){return Array.from({length:n},(_,i)=>(start+i)%10);}function hit(pred,row,target){return target.some(i=>pred.includes(row[i]));}function pct(a,b){return b? (100*a/b).toFixed(1)+'%':'—';}
+function updateSummaryFormulaCount(value){
+ const n=Math.max(1,Math.min(9999,Math.trunc(Number(value)||1)));
+ const source=document.getElementById('topN');
+ source.value=n;
+ if(document.getElementById('history').value.trim()) analyze();
+}
+function analyze(){try{const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด เพื่อทดสอบสูตร');const count=+document.getElementById('count').value;const target=targets[document.getElementById('target').value];const selectedTarget=document.getElementById('target');const sort=document.getElementById('sort').value;const total=rows.length-1;latest=rows.at(-1);lastCount=count;ranked=formulas.map((f,i)=>{let hits=0;for(let j=1;j<rows.length;j++){if(hit(picks(seed(rows[j-1],f),count),rows[j],target))hits++;}return {id:i+1,f,hits,total,rate:hits/total,next:picks(seed(latest,f),count)};});ranked.sort((a,b)=>sort==='hits'?(b.hits-a.hits||b.rate-a.rate||a.f.length-b.f.length||a.id-b.id):(b.rate-a.rate||b.hits-a.hits||a.f.length-b.f.length||a.id-b.id));const topN=Math.min(9999,Math.max(1,Math.trunc(Number(document.getElementById('topN').value)||99)));document.getElementById('topN').value=topN;const votes=Array(10).fill(0);ranked.slice(0,topN).forEach(r=>r.next.forEach(d=>votes[d]++));const order=Array.from({length:10},(_,i)=>i).sort((a,b)=>votes[b]-votes[a]||a-b);luckyVoteOrder=order.slice();const best=ranked[0].next;const tiedTop=ranked.filter(r=>r.hits===ranked[0].hits);const tiedDigits=[...new Set(tiedTop.flatMap(r=>r.next))];const primaryDigits=tiedDigits.slice(0,7);const secondaryNeeded=Math.max(0,7-primaryDigits.length);const secondaryDigits=[];const secondaryRates=new Map();for(const r of ranked){if(r.hits===ranked[0].hits)continue;for(const d of r.next){if(!primaryDigits.includes(d)&&!secondaryDigits.includes(d)){secondaryDigits.push(d);secondaryRates.set(d,pct(r.hits,total));if(secondaryDigits.length>=secondaryNeeded)break;}}if(secondaryDigits.length>=secondaryNeeded)break;}const tiedRate=pct(ranked[0].hits,total);document.getElementById('stats').innerHTML=`<div class="stat">งวดย้อนหลัง<strong>${rows.length}</strong></div><div class="stat">คู่ทดสอบ<strong>${total}</strong></div><div class="stat">สูตรอันดับ 1 ถูก<strong>${ranked[0].hits}/${total}</strong></div><div class="stat">อัตราถูกอันดับ 1<strong>${pct(ranked[0].hits,total)}</strong></div>`;document.getElementById('digits').innerHTML=primaryDigits.map(d=>`<div class="tied-digit-item"><small class="tied-digit-rate">${tiedRate}</small><span class="digit">${d}</span></div>`).join('');document.getElementById('secondaryDigits').innerHTML=secondaryDigits.map(d=>`<div class="secondary-digit-item"><small class="secondary-digit-rate">${secondaryRates.get(d)}</small><span class="secondary-digit">${d}</span></div>`).join('');document.getElementById('secondaryDigitsBlock').hidden=secondaryDigits.length===0;document.getElementById('votes').innerHTML=order.map(d=>`<div style="display:flex;align-items:center;gap:9px;margin:5px 0"><b style="width:20px">${d}</b><div style="height:13px;background:#dfe8ff;border-radius:6px;flex:1;overflow:hidden"><div style="height:100%;background:#5277df;width:${topN?votes[d]/topN*100:0}%"></div></div><span style="width:45px">${votes[d]}</span></div>`).join('');document.getElementById('voteSequence').innerHTML=order.map((d,i)=>`<span class="vote-sequence-digit" title="อันดับ ${i+1}: ${votes[d]} คะแนน">${d}</span>`).join('');renderLuckySets();document.getElementById('summary').hidden=false;document.getElementById('rankSection').hidden=false;document.getElementById('status').textContent=`วิเคราะห์สำเร็จ ${ranked.length} สูตร`;renderTable();analyzeMulti();localStorage.setItem(key,document.getElementById('history').value);}catch(e){document.getElementById('status').textContent='⚠ '+e.message;}}
+const multiTargets=[['hundred','ร้อย',7],['ten','สิบ',7],['unit','หน่วย',7],['lowerTen','สิบล่าง',3],['lowerUnit','หน่วยล่าง',3],['top3','ร้อยสิบหน่วย',7],['top2','สิบหน่วย',7],['bottom2','สิบล่างหน่วยล่าง',4],['topBottom','สิบหน่วยล่าง',4]];
+function initMulti(){const tbody=document.getElementById('multiBody');multiTargets.forEach(([id,label,initial])=>{let tr=document.createElement('tr');let td1=document.createElement('td');let sel=document.createElement('select');sel.id='multi-'+id;sel.setAttribute('aria-label','จำนวนเลขเด่น '+label);for(let n=1;n<=9;n++){let opt=document.createElement('option');opt.value=n;opt.textContent=n+' ตัว';sel.append(opt)}sel.value=localStorage.getItem('lucky999_multi_'+id)||initial;sel.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_'+id,sel.value);if(latest.length)analyzeMulti()});td1.append(sel);let tdFormula=document.createElement('td');let formulaSelect=document.createElement('select');formulaSelect.id='multi-formula-'+id;formulaSelect.setAttribute('aria-label','วิเคราะห์สูตรละกี่ตัว '+label);for(let k=1;k<=9;k++){const option=document.createElement('option');option.value=k;option.textContent=k+' ตัว';formulaSelect.append(option)}const savedFormula=localStorage.getItem('lucky999_multi_formula_'+id);formulaSelect.value= savedFormula&&Number(savedFormula)>=1&&Number(savedFormula)<=9?savedFormula:(localStorage.getItem('lucky999_multi_analysis_count')||'1');formulaSelect.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_formula_'+id,formulaSelect.value);if(latest.length)analyzeMulti()});tdFormula.append(formulaSelect);let td2=document.createElement('td');td2.textContent=label;let td3=document.createElement('td');td3.id='multi-out-'+id;td3.textContent='—';let td4=document.createElement('td');td4.id='multi-stat-'+id;td4.textContent='—';const view=document.createElement('button');view.type='button';view.className='multi-history-button';view.textContent='📊 ดูสูตรย้อนหลัง';view.addEventListener('click',()=>showMultiHistory(id));td4.append(document.createElement('br'),view);tr.append(td1,td2,td3,td4,tdFormula);tbody.append(tr)});document.getElementById('multiRun').addEventListener('click',analyzeMulti)}
+function compactFormulaName(f){
+ const symbols=['ร','ส','น','สล','นล'];
+ const counts=new Map();
+ for(const part of f)counts.set(part,(counts.get(part)||0)+1);
+ return [...counts].map(([part,count])=>count>1?'('+symbols[part]+'x'+count+')':symbols[part]).join('+');
+}
+const multiHistoryCache={};let multiHistoryOpen=null;
+function showMultiHistory(id,refresh=false){
+ const panel=document.getElementById('multiHistoryPanel');
+ if(!refresh&&multiHistoryOpen===id&&!panel.hidden){panel.hidden=true;multiHistoryOpen=null;return}
+ const data=multiHistoryCache[id];if(!data){panel.hidden=false;panel.textContent='กรุณากดวิเคราะห์เลขแยกหลักก่อน';return}
+ multiHistoryOpen=id;panel.hidden=false;panel.replaceChildren();
+ const heading=document.createElement('h3');heading.textContent='📊 สูตรย้อนหลัง — '+data.label;panel.append(heading);
+ const note=document.createElement('p');note.textContent='วิเคราะห์สูตรละ '+data.perFormula+' ตัว | ผลย้อนหลัง '+data.rows.length+' งวด | คลิกสูตรเพื่อดูผลตรวจย้อนหลังทีละงวด';panel.append(note);
+ const close=document.createElement('button');close.type='button';close.className='secondary';close.textContent='ปิดรายละเอียด';close.onclick=()=>{panel.hidden=true;multiHistoryOpen=null};panel.append(close);
+ const list=document.createElement('div');list.className='multi-history-list';panel.append(list);
+ const detail=document.createElement('div');detail.className='multi-history-detail';panel.append(detail);
+ const makeCell=(tr,value,tag='td')=>{const cell=document.createElement(tag);cell.textContent=value;tr.append(cell);return cell};
+ data.candidates.slice(0,20).forEach((candidate,index)=>{const btn=document.createElement('button');btn.type='button';btn.className='multi-history-formula';btn.textContent='#'+(index+1)+' · '+compactFormulaName(candidate.f)+' · ถูก '+candidate.hits+'/'+(data.rows.length-1);btn.title='สูตร '+(candidate.i+1)+' — คลิกดูผลย้อนหลัง';btn.onclick=()=>{
+ detail.replaceChildren();const title=document.createElement('h4');title.textContent='ผลย้อนหลังสูตร '+(candidate.i+1)+' — '+compactFormulaName(candidate.f);detail.append(title);
+ const wrap=document.createElement('div');wrap.className='multi-history-scroll';const table=document.createElement('table');const head=document.createElement('tr');['งวดที่ตรวจ','งวดก่อนหน้า','เลขเด่นที่คำนวณ','ผลที่ออก','สถานะ'].forEach(v=>makeCell(head,v,'th'));table.append(head);
+ for(let j=1;j<data.rows.length;j++){const prev=data.rows[j-1],current=data.rows[j],pred=picks(seed(prev,candidate.f),data.perFormula),ok=hit(pred,current,data.target),tr=document.createElement('tr');[j,prev.slice(0,3).join('')+'-'+prev.slice(3).join(''),pred.join(','),current.slice(0,3).join('')+'-'+current.slice(3).join(''),ok?'ถูก':'ไม่ถูก'].forEach(v=>makeCell(tr,v));tr.className=ok?'multi-hit':'multi-miss';table.append(tr)}
+ const next=document.createElement('tr');['ถัดไป',data.rows.at(-1).slice(0,3).join('')+'-'+data.rows.at(-1).slice(3).join(''),candidate.next.join(','),'รอผล','—'].forEach(v=>makeCell(next,v));table.append(next);wrap.append(table);detail.append(wrap);};list.append(btn);if(index===0)btn.click()});
+ panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function analyzeMulti(){try{
+ const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด');
+ const last=rows[rows.length-1],total=rows.length-1;
+ for(const [id,label] of multiTargets){
+  const perFormula=Number(document.getElementById('multi-formula-'+id).value)||1;
+  const n=Number(document.getElementById('multi-'+id).value),target=targets[id];
+  const candidates=formulas.map((f,i)=>{
+   let hits=0;
+   for(let j=1;j<rows.length;j++)if(hit(picks(seed(rows[j-1],f),perFormula),rows[j],target))hits++;
+   return {f,i,hits,next:picks(seed(last,f),perFormula)};
+  });
+  candidates.sort((a,b)=>b.hits-a.hits||a.f.length-b.f.length||a.i-b.i);
+  multiHistoryCache[id]={label,perFormula,rows,target,candidates};
+  const unique=[],sources=[];
+  for(const candidate of candidates){
+   for(const d of candidate.next){if(!unique.includes(d)){unique.push(d);sources.push(candidate);if(unique.length===n)break;}}
+   if(unique.length===n)break;
+  }
+  const output=document.getElementById('multi-out-'+id);output.replaceChildren();
+  for(const d of unique){const span=document.createElement('span');span.className='multi-digit';span.textContent=d;output.append(span)}
+  const best=candidates[0];
+  const stat=document.getElementById('multi-stat-'+id);stat.firstChild.textContent=best.hits+'/'+total+' ('+pct(best.hits,total)+')';
+ }
+ if(multiHistoryOpen!==null)showMultiHistory(multiHistoryOpen,true);
+ document.getElementById('multiStatus').textContent='วิเคราะห์ตามจำนวนตัวที่เลือกแยกแต่ละหลัก และรวบรวมเลขเด่นตามอันดับสูตรแล้ว';
+ renderLuckySets();document.dispatchEvent(new Event('lucky:multi-updated'));if(activeGroup!==null)renderGroups();
+}catch(e){document.getElementById('multiStatus').textContent='⚠ '+e.message}}
+
+initMulti();
+const groupDefinitions=[
+ ['ร้อย + สิบ + หน่วย',['hundred','ten','unit']],
+ ['สิบ + หน่วย',['ten','unit']],
+ ['สิบล่าง + หน่วยล่าง',['lowerTen','lowerUnit']],
+ ['ร้อย + สิบ + หน่วย + สิบหน่วย',['hundred','ten','unit','top2']],
+ ['สิบ + หน่วย + สิบหน่วย',['ten','unit','top2']],
+ ['สิบล่าง + หน่วยล่าง + สิบล่างหน่วยล่าง',['lowerTen','lowerUnit','bottom2']]
+];
+function getMultiDigits(id){return [...document.querySelectorAll('#multi-out-'+id+' .multi-digit')].map(x=>x.textContent.trim()).filter(x=>/^\d$/.test(x))}
+let activeGroup=null,activeFilter='all',generatedGroups=[];
+const groupFilters=[['all','แสดงทั้งหมด'],['unique','ตัดเลขซ้ำ'],['double','ตัดเบิ้ล'],['run','ตัดเลขหาม'],['doubleRun','ตัดเบิ้ลหาม'],['triple','ตัดเลขตอง'],['onlyTriple','เฉพาะตอง']];
+function isTriple(v){return v[0]===v[1]&&v[1]===v[2]}
+function isDouble(v){return new Set(v).size===2}
+function isRun(v){const a=[...v].map(Number);return (a[1]===(a[0]+1)%10&&a[2]===(a[1]+1)%10)||(a[1]===(a[0]+9)%10&&a[2]===(a[1]+9)%10)}
+function filterNumbers(arr){let values=activeFilter==='unique'?[...new Set(arr)]:arr.slice();if(activeFilter==='double')values=values.filter(v=>!isDouble(v));if(activeFilter==='run')values=values.filter(v=>!isRun(v));if(activeFilter==='doubleRun')values=values.filter(v=>!isDouble(v)&&!isRun(v));if(activeFilter==='triple')values=values.filter(v=>!isTriple(v));if(activeFilter==='onlyTriple')values=values.filter(isTriple);return values}
+function uniqueJoin(...lists){return [...new Set(lists.flat())]}
+function makeTriples(idx,pieces){const [a,b,c,d]=pieces;
+ // กลุ่มที่มี 2 หลักสร้างเลข 2 ตัว; กลุ่ม 3 หลักสร้างเลข 3 ตัว
+ if(idx===1||idx===2){let result=[];for(const x of a)for(const y of b)result.push(x+y);return result}
+ let tens=b,units=c;
+ if(idx===3){tens=uniqueJoin(b,d);units=uniqueJoin(c,d)}
+ if(idx===4||idx===5){tens=uniqueJoin(a,c);units=uniqueJoin(b,c);return tens.flatMap(x=>units.map(y=>x+y))}
+ let result=[];for(const x of a)for(const y of tens)for(const z of units)result.push(x+y+z);return result;
+}
+function renderGroups(){const area=document.getElementById('groupResult');area.replaceChildren();document.querySelectorAll('.group-pick').forEach((b,i)=>b.classList.toggle('active',i===activeGroup));document.querySelectorAll('.group-filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===activeFilter));if(activeGroup===null){area.textContent='กดปุ่มเลือกกลุ่มเลข';return}if(!latest.length){area.textContent='กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด แล้วกดวิเคราะห์ในหน้าวิเคราะห์สูตรก่อน';return}const [label,ids]=groupDefinitions[activeGroup];const pieces=ids.map(getMultiDigits);if(pieces.some(x=>!x.length)){area.textContent='กรุณากดวิเคราะห์เลขแยกหลักในส่วนที่ 4 ก่อน';return}
+ const raw=makeTriples(activeGroup,pieces);generatedGroups=filterNumbers(raw);const box=document.createElement('div');box.className='group-output';const h=document.createElement('h3');h.textContent=label;box.append(h);const desc=document.createElement('p');desc.className='muted';desc.textContent=ids.map((id,i)=>multiTargets.find(x=>x[0]===id)[1]+' '+pieces[i].join('')).join('   |   ');box.append(desc);const count=document.createElement('p');count.innerHTML='ทั้งหมดก่อนกรอง <b>'+raw.length+'</b> ชุด • หลังกรอง <b>'+generatedGroups.length+'</b> ชุด • ไม่ซ้ำ <b>'+new Set(generatedGroups).size+'</b> ชุด';box.append(count);const output=document.createElement('div');output.className='number-grid';generatedGroups.forEach(v=>{const n=document.createElement('span');n.className='number-chip';n.textContent=v;output.append(n)});if(!generatedGroups.length)output.textContent='ไม่มีชุดเลขตรงกับเงื่อนไข';box.append(output);area.append(box)}
+function initGroups(){const box=document.getElementById('groupOptions');groupDefinitions.forEach(([label],i)=>{const b=document.createElement('button');b.type='button';b.className='group-pick';b.textContent=label;b.onclick=()=>{activeGroup=i;renderGroups()};box.append(b)});const filters=document.getElementById('groupFilters');groupFilters.forEach(([key,label])=>{const b=document.createElement('button');b.type='button';b.className='group-filter';b.dataset.filter=key;b.textContent=label;b.onclick=()=>{activeFilter=key;renderGroups()};filters.append(b)});document.getElementById('groupCopy').onclick=()=>{if(!generatedGroups.length)return alert('ยังไม่มีชุดเลข');navigator.clipboard?.writeText(generatedGroups.join(',')).then(()=>alert('คัดลอกแล้ว')).catch(()=>prompt('คัดลอกชุดเลข',generatedGroups.join(',')))};document.getElementById('groupExport').onclick=()=>{if(!generatedGroups.length)return alert('ยังไม่มีชุดเลข');csv([['ลำดับ','เลข'],...generatedGroups.map((v,i)=>[i+1,v])],'lucky999_groups.csv')}}
+
+let rankPage=0;const RANK_PAGE_SIZE=100;function renderTable(reset=false){if(reset)rankPage=0;let q=document.getElementById('filter').value.trim();const tbody=document.getElementById('tbody');tbody.innerHTML='';let list=ranked.filter(r=>!q||(r.f.map(i=>names[i]).join(' + ').includes(q)||compactFormulaName(r.f).includes(q)));const pages=Math.max(1,Math.ceil(list.length/RANK_PAGE_SIZE));rankPage=Math.max(0,Math.min(rankPage,pages-1));let frag=document.createDocumentFragment();list.slice(rankPage*RANK_PAGE_SIZE,(rankPage+1)*RANK_PAGE_SIZE).forEach((r,i)=>{let tr=document.createElement('tr');[rankPage*RANK_PAGE_SIZE+i+1,compactFormulaName(r.f),r.total,r.hits,pct(r.hits,r.total),r.next.join(' ')].forEach(v=>{let td=document.createElement('td');td.textContent=v;tr.appendChild(td)});frag.appendChild(tr)});tbody.appendChild(frag);const info=document.getElementById('rankPagerInfo');if(info)info.textContent='แสดง '+(list.length?rankPage*RANK_PAGE_SIZE+1:0)+'–'+Math.min(list.length,(rankPage+1)*RANK_PAGE_SIZE)+' จาก '+list.length.toLocaleString('th-TH')+' สูตร · หน้า '+(rankPage+1)+'/'+pages;const prev=document.getElementById('rankPrev'),next=document.getElementById('rankNext');if(prev)prev.disabled=rankPage===0;if(next)next.disabled=rankPage>=pages-1;}
+function csv(rows,filename){const str='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');let a=document.createElement('a');let url=URL.createObjectURL(new Blob([str],{type:'text/csv;charset=utf-8'}));a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function exportRank(){if(!ranked.length)return;csv([['อันดับ','รหัสสูตร','สูตร','จำนวนทดสอบ','ถูก','เปอร์เซ็นต์','เลขเด่นถัดไป'],...ranked.map((r,i)=>[i+1,r.id,r.f.map(k=>names[k]).join(' + '),r.total,r.hits,pct(r.hits,r.total),r.next.join('')])],'Lucky999_Statistics.csv')}
+function downloadCSV(){try{const rows=parse();csv([['3ตัวบน','2ตัวล่าง'],...rows.map(r=>[r.slice(0,3).join(''),r.slice(3).join('')])],'Lucky999_History.csv')}catch(e){alert(e.message)}}
+function loadExample(){document.getElementById('history').value='239-53\n313-61\n906-23\n068-73\n403-26';localStorage.setItem(key,document.getElementById('history').value)}function clearHistory(){if(confirm('ล้างผลย้อนหลังทั้งหมดหรือไม่?')){document.getElementById('history').value='';localStorage.removeItem(key);localStorage.removeItem('lucky999_selected_history_source');const sel=document.getElementById('historySourceSelect');const search=document.getElementById('historySourceSearch');if(search)search.value='';if(typeof window.luckyHistoryPickerRefresh==='function')window.luckyHistoryPickerRefresh();if(sel)sel.value='';}}
+for(let i=1;i<=9;i++){let o=document.createElement('option');o.value=i;o.textContent=i+' ตัว';if(i===1)o.selected=true;document.getElementById('count').appendChild(o)}document.getElementById('history').value=localStorage.getItem(key)||'';document.getElementById('history').addEventListener('input',()=>localStorage.setItem(key,document.getElementById('history').value));
+
+// Local, explainable statistical assistant: no external AI API or predictive guarantee.
+(function(){
+const load=document.getElementById('aiLoadBtn'),copy=document.getElementById('aiCopyBtn'),out=document.getElementById('aiOutput'),status=document.getElementById('aiStatus');
+if(!load)return;
+let copyValue='';
+const aiLuckyData={};
+const luckyBox=document.getElementById('aiLuckySets');
+function aiSetLucky(results){
+ const [hundreds,tens,units,bottomTens,bottomUnits]=results.map(r=>r.digits.map(String));
+ const product=(...groups)=>{let acc=[''];for(const group of groups){acc=acc.flatMap(prefix=>group.map(d=>prefix+d));}return acc;};
+ const groups=[
+  ['aiLucky3',product(hundreds,tens,units),'หลักร้อย (ร) : '+hundreds.join('')+' | หลักสิบ (ส) : '+tens.join('')+' | หลักหน่วย (น) : '+units.join('')],
+  ['aiLucky2Top',product(tens,units),'หลักสิบ (ส) : '+tens.join('')+' | หลักหน่วย (น) : '+units.join('')],
+  ['aiLucky2Bottom',product(bottomTens,bottomUnits),'หลักสิบล่าง (สล) : '+bottomTens.join('')+' | หลักหน่วยล่าง (นล) : '+bottomUnits.join('')]
+ ];
+ groups.forEach(([id,nums,description])=>{
+  aiLuckyData[id]=nums;
+  document.getElementById(id+'Source').textContent=description;
+  const target=document.getElementById(id);target.replaceChildren();
+  target.textContent=nums.join(',');
+  document.getElementById(id+'Count').textContent='('+nums.length+' ชุด)';
+ });
+ luckyBox.hidden=false;
+}
+async function aiCopyText(value){try{await navigator.clipboard.writeText(value)}catch(e){const t=document.createElement('textarea');t.value=value;document.body.append(t);t.select();document.execCommand('copy');t.remove()}}
+document.querySelectorAll('[data-copy-ai]').forEach(btn=>btn.addEventListener('click',async()=>{
+ const nums=aiLuckyData[btn.dataset.copyAi];if(!nums?.length){status.textContent='กรุณากดโหลด AI ก่อน';return;}
+ await aiCopyText(nums.join(','));status.textContent='คัดลอกเฉพาะชุดเลขแล้ว';
+}));
+load.addEventListener('click',()=>{
+ try{
+  const rows=parse();if(rows.length<3)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 3 งวด');
+  const labels=['ร้อย','สิบ','หน่วย','สิบล่าง','หน่วยล่าง'];
+  const source=(typeof selectedHistoryName==='function'&&selectedHistoryName())||'ยังไม่ได้เลือกชื่อหวย';
+  const results=labels.map((label,col)=>{
+   const scores=Array(10).fill(0),recent=rows.slice(-Math.min(30,rows.length));
+   recent.forEach((r,i)=>{const age=recent.length-1-i;const weight=1+2*Math.exp(-age/7);scores[Number(r[col])]+=weight;});
+   // Transition frequency following the last digit, with smoothing to avoid overfitting.
+   const last=Number(rows.at(-1)[col]);let matches=0;
+   for(let i=0;i<rows.length-1;i++){if(Number(rows[i][col])===last){scores[Number(rows[i+1][col])]+=1.25;matches++;}}
+   const ranked=Array.from({length:10},(_,d)=>d).sort((a,b)=>scores[b]-scores[a]||a-b);
+   return {label,digits:ranked.slice(0,3),scores,samples:recent.length,matches};
+  });
+  out.replaceChildren();const heading=document.createElement('p');heading.textContent='รายการ: '+source+' | ใช้ข้อมูล '+rows.length+' งวด';out.append(heading);
+  const grid=document.createElement('div');grid.className='ai-result-grid';
+  results.forEach(r=>{const card=document.createElement('div');card.className='ai-result';const h=document.createElement('strong');h.textContent=r.label;const digits=document.createElement('div');digits.className='ai-digits';digits.textContent=r.digits.join(' ');const note=document.createElement('div');note.className='ai-note';note.textContent='3 อันดับคะแนนสถิติสูงสุด · ใช้ '+r.samples+' งวดล่าสุด';card.append(h,digits,note);grid.append(card)});out.append(grid);
+  aiSetLucky(results);
+  const caveat=document.createElement('p');caveat.className='muted';caveat.textContent='หมายเหตุ: ผลหวยเป็นเหตุการณ์สุ่ม รูปแบบในอดีตไม่รับประกันความแม่นยำในงวดถัดไป และไม่มีการเชื่อมต่อโมเดล AI ภายนอก';out.append(caveat);
+  copyValue=['โหมด AI วิเคราะห์แนวโน้ม | '+source,...results.map(r=>r.label+': '+r.digits.join(','))].join('\n');status.textContent='วิเคราะห์สถิติสำเร็จ';
+ }catch(e){status.textContent='⚠ '+e.message;out.replaceChildren();copyValue='';luckyBox.hidden=true;}
+});
+copy.addEventListener('click',async()=>{if(!copyValue){status.textContent='กรุณากดโหลด AI ก่อน';return;}try{await navigator.clipboard.writeText(copyValue);status.textContent='คัดลอกผลแล้ว';}catch(e){const t=document.createElement('textarea');t.value=copyValue;document.body.append(t);t.select();document.execCommand('copy');t.remove();status.textContent='คัดลอกผลแล้ว';}});
+})();
+</script><script>(function(){const links=[{"name": "ดูผลใหม่ เว็บ A", "url": "https://exphuay.com/result"}, {"name": "ดูผลใหม่ เว็บ B", "url": "https://newformula.info/Reporthoon/Report.php"}, {"name": "นิเคอิ เช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=71"}, {"name": "นิเช้าVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=77"}, {"name": "ออมสิน", "url": "https://newformula.info/hoon/r01u.asp?id1=4"}, {"name": "ลาวประตูชัย", "url": "https://newformula.info/hoon/r01u.asp?id1=63"}, {"name": "นอยอาเซียน", "url": "https://newformula.info/hoon/r01u.asp?id1=85"}, {"name": "สาละวันVISA", "url": "https://newformula.info/hoon/r01u.asp?id1=88"}, {"name": "นิเคอิ บ่าย", "url": "https://newformula.info/hoon/r01u.asp?id1=72"}, {"name": "นิบ่ายVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=78"}, {"name": "รัฐไทย", "url": "https://newformula.info/hoon/r01u.asp?id1=10"}, {"name": "สันติภาพ", "url": "https://newformula.info/hoon/r01u.asp?id1=64"}, {"name": "ฮานอยHD", "url": "https://newformula.info/hoon/r01u.asp?id1=48"}, {"name": "หลวงพระบางVISA", "url": "https://newformula.info/hoon/r01u.asp?id1=89"}, {"name": "จีนเช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=73"}, {"name": "จีนเช้าVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=79"}, {"name": "รัฐไทย ครบ", "url": "https://newformula.info/hoon/r01u.asp?id1=104"}, {"name": "ลาวประชาชน", "url": "https://newformula.info/hoon/r01u.asp?id1=65"}, {"name": "นอยสตาร์", "url": "https://newformula.info/hoon/r01u.asp?id1=49"}, {"name": "เวียงจันทร์VISA", "url": "https://newformula.info/hoon/r01u.asp?id1=90"}, {"name": "จีนบ่าย", "url": "https://newformula.info/hoon/r01u.asp?id1=74"}, {"name": "จีนบ่ายVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=80"}, {"name": "มาเลย์", "url": "https://newformula.info/hoon/r01u.asp?id1=9"}, {"name": "ลาวเช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=70"}, {"name": "นอยTV", "url": "https://newformula.info/hoon/r01u.asp?id1=50"}, {"name": "ลาวVISA", "url": "https://newformula.info/hoon/r01u.asp?id1=91"}, {"name": "ฮั่งเส็งเช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=75"}, {"name": "ฮั่งVIP เช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=81"}, {"name": "หุ้นไทยรวม", "url": "https://newformula.info/hoon/r01u.asp?id1=5"}, {"name": "ลาวEX", "url": "https://newformula.info/hoon/r01u.asp?id1=33"}, {"name": "นอยกาชาด", "url": "https://newformula.info/hoon/r01u.asp?id1=51"}, {"name": "นิ VISA เช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=92"}, {"name": "ฮั่งเส็งบ่าย", "url": "https://newformula.info/hoon/r01u.asp?id1=76"}, {"name": "ฮั่งVIP บ่าย", "url": "https://newformula.info/hoon/r01u.asp?id1=82"}, {"name": "ธ ก ส", "url": "https://newformula.info/hoon/r01u.asp?id1=24"}, {"name": "ลาวTV", "url": "https://newformula.info/hoon/r01u.asp?id1=37"}, {"name": "นอยเฉพาะกิจ", "url": "https://newformula.info/hoon/r01u.asp?id1=67"}, {"name": "นิ VISA บ่าย", "url": "https://newformula.info/hoon/r01u.asp?id1=93"}, {"name": "ไต้หวัน", "url": "https://newformula.info/hoon/r01u.asp?id1=19"}, {"name": "ไต้หวันVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=38"}, {"name": "ลาวพิเศษ", "url": "https://newformula.info/hoon/r01u.asp?id1=86"}, {"name": "นอยสามัคคี", "url": "https://newformula.info/hoon/r01u.asp?id1=52"}, {"name": "จีนVISa เช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=94"}, {"name": "เกาหลี", "url": "https://newformula.info/hoon/r01u.asp?id1=20"}, {"name": "เกาหลีVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=39"}, {"name": "ลาว HD", "url": "https://newformula.info/hoon/r01u.asp?id1=41"}, {"name": "นอยพิเศษ", "url": "https://newformula.info/hoon/r01u.asp?id1=6"}, {"name": "จีน visa บ่าย", "url": "https://newformula.info/hoon/r01u.asp?id1=95"}, {"name": "อินเดีย", "url": "https://newformula.info/hoon/r01u.asp?id1=22"}, {"name": "สิงคโปรVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=40"}, {"name": "ลาวสตาร์", "url": "https://newformula.info/hoon/r01u.asp?id1=26"}, {"name": "นอยปก", "url": "https://newformula.info/hoon/r01u.asp?id1=7"}, {"name": "เส็งVisa เช้า", "url": "https://newformula.info/hoon/r01u.asp?id1=96"}, {"name": "สิงคโปร์", "url": "https://newformula.info/hoon/r01u.asp?id1=23"}, {"name": "รัสเซียVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=45"}, {"name": "ลาวสามัคคี", "url": "https://newformula.info/hoon/r01u.asp?id1=42"}, {"name": "นอยV", "url": "https://newformula.info/hoon/r01u.asp?id1=8"}, {"name": "เส็ง Visa บ่าย", "url": "https://newformula.info/hoon/r01u.asp?id1=97"}, {"name": "อียิปต์", "url": "https://newformula.info/hoon/r01u.asp?id1=21"}, {"name": "อังกฤษVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=46"}, {"name": "ลาวพัฒนา", "url": "https://newformula.info/hoon/r01u.asp?id1=11"}, {"name": "นอยพัฒนา", "url": "https://newformula.info/hoon/r01u.asp?id1=53"}, {"name": "ฮ่องกงVISa", "url": "https://newformula.info/hoon/r01u.asp?id1=98"}, {"name": "อังกฤษ", "url": "https://newformula.info/hoon/r01u.asp?id1=14"}, {"name": "เยอรมันViP", "url": "https://newformula.info/hoon/r01u.asp?id1=47"}, {"name": "ลาวVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=43"}, {"name": "นอย 4d", "url": "https://newformula.info/hoon/r01u.asp?id1=31"}, {"name": "นอย Visa", "url": "https://newformula.info/hoon/r01u.asp?id1=99"}, {"name": "เยอรมัน", "url": "https://newformula.info/hoon/r01u.asp?id1=15"}, {"name": "ดาวVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=27"}, {"name": "ลาวอาเซียน", "url": "https://newformula.info/hoon/r01u.asp?id1=62"}, {"name": "นอยExtra", "url": "https://newformula.info/hoon/r01u.asp?id1=54"}, {"name": "อังกฤษ Visa", "url": "https://newformula.info/hoon/r01u.asp?id1=100"}, {"name": "รัสเซีย", "url": "https://newformula.info/hoon/r01u.asp?id1=16"}, {"name": "ลาวสามัคคีVIP", "url": "https://newformula.info/hoon/r01u.asp?id1=60"}, {"name": "เยอรมันVisa", "url": "https://newformula.info/hoon/r01u.asp?id1=101"}, {"name": "ดาวโจนส์", "url": "https://newformula.info/hoon/r01u.asp?id1=12"}, {"name": "ลาวสตาร์VIP", "url": "https://newformula.info/hoon/r01u.asp?id1=25"}, {"name": "รัสเซียVISA", "url": "https://newformula.info/hoon/r01u.asp?id1=66"}, {"name": "ลาวกาชาด", "url": "https://newformula.info/hoon/r01u.asp?id1=32"}, {"name": "ดาวVISA", "url": "https://newformula.info/hoon/r01u.asp?id1=68"}];const grid=document.getElementById('linkgrid'),input=document.getElementById('linksearch'),count=document.getElementById('linkcount');const columnIds={
+'หุ้นปกติ':[71,72,73,74,75,76,19,20,22,23,21,14,15,16,12],
+'หุ้น VIP':[77,78,79,80,81,82,38,39,40,45,46,47,27],
+'อื่นๆ':[4,10,104,9,5,24],
+'ลาว':[63,64,65,70,33,37,86,41,26,42,11,43,62,60,25,32],
+'ฮานอย':[85,48,49,50,51,67,52,6,7,8,53,31,54],
+'หุ้น VISA':[88,89,90,91,92,93,94,95,96,97,98,99,100,101,66,68]
+};
+function category(x){const id=Number(new URL(x.url).searchParams.get('id1'));for(const [group,ids] of Object.entries(columnIds)){if(ids.includes(id))return group;}return 'อื่นๆ'}
+function render(){let q=input.value.trim().toLocaleLowerCase('th');let rows=links.filter(x=>x.name.toLocaleLowerCase('th').includes(q));grid.replaceChildren();for(const group of ['หุ้นปกติ','หุ้น VIP','อื่นๆ','ลาว','ฮานอย','หุ้น VISA']){const items=rows.filter(x=>category(x)===group);if(!items.length)continue;const section=document.createElement('section');section.className='linkgroup';const h=document.createElement('h3');h.textContent=group+' ('+items.length+')';section.append(h);const wrap=document.createElement('div');wrap.className='linkgrid';for(const x of items){const a=document.createElement('a');a.className='resultlink';a.href=x.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='↗ '+x.name;wrap.append(a)}section.append(wrap);grid.append(section)}count.textContent='แสดง '+rows.length+' จาก '+links.length+' ลิงก์ แยกตามกลุ่ม';}const pickerSearch=document.getElementById('historySourceSearch');const pickerSelect=document.getElementById('historySourceSelect');
+const selectedHistoryKey='lucky999_selected_history_source';
+function selectedHistoryName(){const url=localStorage.getItem(selectedHistoryKey)||'';return links.find(x=>x.url===url)?.name||''}
+function updatePicker(){const q=pickerSearch.value.trim().toLocaleLowerCase('th');const saved=localStorage.getItem(selectedHistoryKey)||'';pickerSelect.replaceChildren();const blank=document.createElement('option');blank.value='';blank.textContent='— เลือกรายชื่อเพื่อเปิดเว็บไซต์อัตโนมัติ —';pickerSelect.append(blank);for(const group of ['หุ้นปกติ','หุ้น VIP','อื่นๆ','ลาว','ฮานอย','หุ้น VISA']){const entries=links.filter(x=>category(x)===group&&x.name.toLocaleLowerCase('th').includes(q));if(!entries.length)continue;const optgroup=document.createElement('optgroup');optgroup.label=group;for(const entry of entries){const opt=document.createElement('option');opt.value=entry.url;opt.textContent=entry.name;optgroup.append(opt)}pickerSelect.append(optgroup)}
+// เก็บตัวเลือกเดิมไว้แม้ผู้ใช้ค้นหาคำอื่น
+if(saved&&!Array.from(pickerSelect.options).some(o=>o.value===saved)){const entry=links.find(x=>x.url===saved);if(entry){const opt=document.createElement('option');opt.value=entry.url;opt.textContent=entry.name+' (ที่เลือกไว้)';pickerSelect.append(opt)}}
+pickerSelect.value=saved&&Array.from(pickerSelect.options).some(o=>o.value===saved)?saved:'';
+}
+window.luckyHistoryPickerRefresh=updatePicker;
+pickerSearch.addEventListener('input',updatePicker);
+pickerSelect.addEventListener('change',()=>{if(!pickerSelect.value)return;const url=pickerSelect.value;localStorage.setItem(selectedHistoryKey,url);const opened=window.open(url,'_blank','noopener,noreferrer');if(!opened){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='คลิกที่นี่เพื่อเปิดผลย้อนหลัง';a.style.display='block';pickerSelect.after(a)}});updatePicker();
+input.addEventListener('input',render);document.getElementById('clearlinksearch').addEventListener('click',()=>{input.value='';render();input.focus()});render()})();</script><script>(function(){const buttons=document.querySelectorAll('.navbtn');buttons.forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.app-page').forEach(p=>p.hidden=p.id!==b.dataset.page);buttons.forEach(n=>n.classList.toggle('active',n===b));window.scrollTo(0,0)}));})();</script><script>(function(){
+const ids=['fourH','fourT','fourU','fourP'];let results=[];let synced=false;let threeMode='all';const threeOptions=[['all','รวมเบิ้ลหาม'],['cutDouble','ตัดเบิ้ล'],['cutHam','ตัดหาม'],['exclude','ไม่รวมเบิ้ลหาม'],['onlyBoth','เบิ้ลหามเท่านั้น'],['double','เบิ้ลเท่านั้น'],['ham','หามเท่านั้น']];function isThreeDouble(s){return new Set(s).size<3}function isThreeHam(s){return s[0]===s[2]}function filteredThree(){return (results[0]||[]).filter(s=>{const d=isThreeDouble(s),h=isThreeHam(s);return threeMode==='all'||(threeMode==='cutDouble'&&!d)||(threeMode==='cutHam'&&!h)||(threeMode==='exclude'&&!d&&!h)||(threeMode==='onlyBoth'&&(d||h))||(threeMode==='double'&&d)||(threeMode==='ham'&&h)})}
+function clean(v){return [...new Set((v||'').replace(/[^0-9]/g,'').split(''))].join('')}
+function calculate(){const sets=ids.map(id=>new Set(clean(document.getElementById(id).value)));results=[[],[],[],[],[]];for(let n=0;n<1000;n++){const s=String(n).padStart(3,'0');const misses=Number(!sets[0].has(s[0]))+Number(!sets[1].has(s[1]))+Number(!sets[2].has(s[2]))+Number(document.getElementById('fourUseP').checked&&!sets[3].has(s[1])&&!sets[3].has(s[2]));results[misses].push(s)}let cumulative=0;document.getElementById('fourStats').innerHTML='<div class="four-stat">ผ่านทั้ง 4 ข้อมูล<strong>'+filteredThree().length+'</strong>ชุด (ตามตัวกรอง)</div>';const area=document.getElementById('fourResults');area.replaceChildren();[filteredThree()].forEach((arr,i)=>{if(!arr.length)return;cumulative+=arr.length;const el=document.createElement('section');el.className='four-result';const title=document.createElement('h3');title.textContent=i===0?'สรุปผลการวิเคราะห์ จาก 4 ข้อมูล':'ผิด '+i+' ข้อมูล';const pre=document.createElement('div');pre.className='responsive-number-list';arr.forEach((num,j)=>{const chip=document.createElement('span');chip.className='responsive-number';chip.textContent=num;pre.append(chip)});const footer=document.createElement('div');footer.className='four-count';footer.textContent='('+arr.length+' ชุด/รวมทั้งหมด '+cumulative+' ชุด)';el.append(title,pre,footer);area.append(el)});document.getElementById('fourStatus').textContent='คำนวณครบ '+results.reduce((n,a)=>n+a.length,0)+' ชุด • เงื่อนไขสิบหน่วย: '+(document.getElementById('fourUseP').checked?'เปิด':'ปิด');}
+function sync(){const keys=['hundred','ten','unit','top2'];const values=keys.map(k=>{const el=document.getElementById('multi-out-'+k);return el?[...el.querySelectorAll('.multi-digit')].map(x=>x.textContent).join(''):''});if(values.some(v=>!v)){document.getElementById('fourStatus').textContent='ยังไม่มีเลขจากส่วนที่ 4 ใช้ข้อมูลในช่องปัจจุบัน';return false}ids.forEach((id,i)=>document.getElementById(id).value=values[i]);synced=true;calculate();return true}
+document.getElementById('fourUseP').addEventListener('change',calculate);document.getElementById('fourReload').onclick=()=>{if(!sync())calculate()};ids.forEach(id=>document.getElementById(id).addEventListener('input',()=>{synced=false}));document.getElementById('fourCopy').onclick=()=>{const value=filteredThree().join(',');if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(value).then(()=>alert('คัดลอกแล้ว')).catch(()=>prompt('คัดลอกผล',value));else prompt('คัดลอกผล',value)};document.getElementById('fourCsv') && (document.getElementById('fourCsv').onclick=()=>{const rows=['เลข'];filteredThree().forEach(v=>rows.push('="'+v+'"'));const blob=new Blob(['\ufeff'+rows.join('\r\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Lucky999_four_conditions.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
+const filterArea=document.getElementById('threeFilters');threeOptions.forEach(([key,label])=>{const b=document.createElement('button');b.type='button';b.className='group-filter';b.textContent=label;b.dataset.mode=key;b.onclick=()=>{threeMode=key;filterArea.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));calculate()};filterArea.append(b)});filterArea.firstElementChild.classList.add('active');document.addEventListener('lucky:multi-updated',sync);calculate();
+})();</script><script>
+(()=>{
+const configs=[{id:'top',title:'1. วิเคราะห์เลข 2 ตัวบน',labels:['หลักสิบ (ส)','หลักหน่วย (น)','สิบหน่วย (สน)'],keys:['ten','unit','top2']},{id:'bottom',title:'2. วิเคราะห์เลข 2 ตัวล่าง',labels:['หลักสิบล่าง (ส)','หลักหน่วยล่าง (น)','สิบล่างหน่วยล่าง (สนล)'],keys:['lowerTen','lowerUnit','bottom2']}];
+const options=[['all','รวมเบิ้ลหาม'],['cutDouble','ตัดเบิ้ล'],['cutHam','ตัดหาม'],['exclude','ไม่รวมเบิ้ลหาม'],['onlyBoth','เบิ้ลหามเท่านั้น'],['double','เบิ้ลเท่านั้น'],['ham','หามเท่านั้น']];
+let mode='all';
+const digitSet=s=>new Set(String(s).replace(/[^0-9]/g,''));
+function isDouble(s){return s[0]===s[1]}
+// สำหรับเลขสองตัว "หาม" หมายถึงคู่เลขที่ห่างกัน 5 แต้ม เช่น 05,16,27,38,49 (รวมเลขกลับ)
+function isHam(s){return (Math.abs(Number(s[0])-Number(s[1]))===5)}
+function calc(c){let a=digitSet(document.getElementById(c.id+'T').value),b=digitSet(document.getElementById(c.id+'U').value),p=digitSet(document.getElementById(c.id+'P').value),useP=document.getElementById(c.id+'UseP').checked;let arr=[];for(let n=0;n<100;n++){let s=String(n).padStart(2,'0');if(a.has(s[0])&&b.has(s[1])&&(!useP||p.has(s[0])||p.has(s[1])))arr.push(s)}return arr.filter(s=>{let d=isDouble(s),h=isHam(s);return mode==='all'||(mode==='cutDouble'&&!d)||(mode==='cutHam'&&!h)||(mode==='exclude'&&!d&&!h)||(mode==='onlyBoth'&&(d||h))||(mode==='double'&&d)||(mode==='ham'&&h)})}
+function render(){document.querySelectorAll('#twoFilters button').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));configs.forEach(c=>{let a=calc(c),pre=document.getElementById(c.id+'Results');pre.replaceChildren();if(a.length){pre.className='responsive-number-list';a.forEach(v=>{const item=document.createElement('span');item.className='responsive-number';item.textContent=v;pre.appendChild(item)})}else{pre.className='responsive-number-list';pre.textContent='ไม่มีชุดเลขตามเงื่อนไข'};document.getElementById(c.id+'Count').textContent='(รวมทั้งหมด '+a.length+' ชุด)';})}
+function sync(c){let vals=c.keys.map(k=>{let e=document.getElementById('multi-out-'+k);return e?[...e.querySelectorAll('.multi-digit')].map(x=>x.textContent).join(''):''});if(vals.some(x=>!x)){return false}['T','U','P'].forEach((x,i)=>document.getElementById(c.id+x).value=vals[i]);render();return true}
+let filter=document.getElementById('twoFilters');options.forEach(([id,label])=>{let b=document.createElement('button');b.type='button';b.className='group-filter';b.dataset.mode=id;b.textContent=label;b.onclick=()=>{mode=id;render()};filter.append(b)});
+configs.forEach(c=>{let panel=document.createElement('section');panel.className='four-result';panel.innerHTML='<h3>'+c.title+'</h3><div style="padding:15px"><div class="four-controls">'+['T','U','P'].map((x,i)=>'<label>'+c.labels[i]+'<input id="'+c.id+x+'" inputmode="numeric" maxlength="10" value="'+['789012345','890123456','45678'][i]+'"></label>').join('')+'</div><label class="toggle-condition"><input type="checkbox" id="'+c.id+'UseP" checked> ใช้เงื่อนไข '+c.labels[2]+' ในการคำนวณ</label><div class="controls" style="margin:12px 0"><button type="button" id="'+c.id+'Reload">✦ จัดกลุ่มเลข</button><button type="button" class="secondary" id="'+c.id+'Copy">คัดลอกผล</button></div></div><pre id="'+c.id+'Results"></pre><div class="four-count" id="'+c.id+'Count"></div>';document.getElementById('twoPanels').append(panel);document.getElementById(c.id+'UseP').addEventListener('change',render);document.getElementById(c.id+'Reload').onclick=()=>{if(!sync(c))render()};['T','U','P'].forEach(x=>document.getElementById(c.id+x).addEventListener('input',render));document.getElementById(c.id+'Copy').onclick=()=>{let t=[...document.querySelectorAll('#'+c.id+'Results .responsive-number')].map(x=>x.textContent).join(',');navigator.clipboard?.writeText(t).then(()=>alert('คัดลอกแล้ว')).catch(()=>prompt('คัดลอก',t))??prompt('คัดลอก',t)};});document.addEventListener('lucky:multi-updated',()=>{configs.forEach(c=>sync(c))});render();
+})();
+</script><script id="history-auto-height">
+(function(){
+ function fit(){const el=document.getElementById('history');if(!el)return;el.style.height='auto';el.style.height=Math.max(180,el.scrollHeight+3)+'px';}
+ function init(){const el=document.getElementById('history');if(!el)return;el.setAttribute('wrap','soft');el.addEventListener('input',fit);window.addEventListener('resize',fit);new MutationObserver(fit).observe(el,{attributes:true,attributeFilter:['value']});fit();setTimeout(fit,100);}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+ const oldSet=Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value');
+ if(oldSet&&oldSet.set&&oldSet.get){Object.defineProperty(document,'__historyFit', {value:fit,configurable:true});}
+ window.addEventListener('load',fit);
+})();
+</script>
+<script id="manual-groups-script">
+(()=>{
+'use strict';
+const filters=[['all','แสดงทั้งหมด'],['cutDouble','ตัดเบิ้ล'],['cutHam','ตัดหาม'],['exclude','ไม่รวมเบิ้ลหาม'],['onlyBoth','เบิ้ลหามเท่านั้น'],['double','เบิ้ลเท่านั้น'],['ham','หามเท่านั้น']];
+const configs=[{key:'manualTop',title:'2 ตัวบน',labels:['หลักสิบ','หลักหน่วย','สิบหน่วย']},{key:'manualBottom',title:'2 ตัวล่าง',labels:['หลักสิบล่าง','หลักหน่วยล่าง','สิบหน่วยล่าง']}];
+const state={threeMode:'all',twoMode:'all',three:[],manualTop:[],manualBottom:[]};
+const $=id=>document.getElementById(id);
+const digits=id=>new Set(($ (id).value||'').replace(/[^0-9]/g,''));
+const doubled=s=>new Set(s).size<s.length;
+const ham=s=>s.length===3?(s[0]===s[2]):Math.abs(Number(s[0])-Number(s[1]))===5;
+const passes=(s,mode)=>{const d=doubled(s),h=ham(s);return mode==='all'||mode==='cutDouble'&&!d||mode==='cutHam'&&!h||mode==='exclude'&&!d&&!h||mode==='onlyBoth'&&(d||h)||mode==='double'&&d||mode==='ham'&&h};
+function chips(id,arr){const el=$(id);el.replaceChildren();if(!arr.length){el.textContent='ไม่มีชุดเลขตามเงื่อนไข';return}for(const s of arr){const x=document.createElement('span');x.className='responsive-number';x.textContent=s;el.append(x)}}
+function save(){try{const v={};for(const id of ['manualH','manualT','manualU','manualP',...configs.flatMap(c=>['T','U','P'].map(x=>c.key+x))])v[id]=$(id).value;for(const id of ['manualUseP',...configs.map(c=>c.key+'UseP')])v[id]=$(id).checked;localStorage.setItem('lucky999_manual_groups_v1',JSON.stringify(v))}catch(e){}}
+function restore(){try{const v=JSON.parse(localStorage.getItem('lucky999_manual_groups_v1')||'{}');for(const [id,value] of Object.entries(v)){const el=$(id);if(!el)continue;if(el.type==='checkbox')el.checked=!!value;else el.value=String(value)}}catch(e){}}
+function calcThree(){const [h,t,u,p]=['manualH','manualT','manualU','manualP'].map(digits),use=$('manualUseP').checked;const out=[];for(let i=0;i<1000;i++){const s=String(i).padStart(3,'0');if(h.has(s[0])&&t.has(s[1])&&u.has(s[2])&&(!use||p.has(s[1])||p.has(s[2]))&&passes(s,state.threeMode))out.push(s)}state.three=out;chips('manualThreeResults',out);$('manualThreeCount').textContent='รวมทั้งหมด '+out.length+' ชุด';save()}
+function calcTwo(c){const [t,u,p]=['T','U','P'].map(x=>digits(c.key+x)),use=$(c.key+'UseP').checked;const out=[];for(let i=0;i<100;i++){const s=String(i).padStart(2,'0');if(t.has(s[0])&&u.has(s[1])&&(!use||p.has(s[0])||p.has(s[1]))&&passes(s,state.twoMode))out.push(s)}state[c.key]=out;chips(c.key+'Results',out);$(c.key+'Count').textContent='รวมทั้งหมด '+out.length+' ชุด';save()}
+function makeFilters(id,modeKey,onChange){const el=$(id);for(const [key,label] of filters){const b=document.createElement('button');b.type='button';b.className='group-filter';b.textContent=label;b.dataset.mode=key;b.onclick=()=>{state[modeKey]=key;el.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));onChange()};el.append(b)}el.firstElementChild.classList.add('active')}
+function copy(arr){if(!arr.length){alert('ยังไม่มีชุดเลข กรุณากรอกเลขและกดจัดกลุ่มเลข');return}const str=arr.join(',');if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(str).then(()=>alert('คัดลอกแล้ว')).catch(()=>prompt('คัดลอกผล',str));else prompt('คัดลอกผล',str)}
+for(const c of configs){const panel=document.createElement('section');panel.className='manual-panel';panel.innerHTML='<h3>จัดกลุ่มเลข '+c.title+'</h3><div class="four-controls">'+['T','U','P'].map((x,i)=>'<label>'+c.labels[i]+'<input id="'+c.key+x+'" inputmode="numeric" maxlength="40" placeholder="กรอกเลขเด่น"></label>').join('')+'</div><label class="toggle-condition"><input type="checkbox" id="'+c.key+'UseP" checked> ใช้เงื่อนไข'+c.labels[2]+'</label><div class="controls"><button type="button" id="'+c.key+'Run">✦ จัดกลุ่มเลข</button><button type="button" class="secondary" id="'+c.key+'Copy">คัดลอกผล</button></div><p class="muted" id="'+c.key+'Count">ยังไม่ได้จัดกลุ่ม</p><div class="responsive-number-list" id="'+c.key+'Results"></div>';$('manualTwoPanels').append(panel);$(c.key+'Run').onclick=()=>calcTwo(c);$(c.key+'Copy').onclick=()=>copy(state[c.key]);for(const x of ['T','U','P'])$(c.key+x).addEventListener('input',save);$(c.key+'UseP').addEventListener('change',()=>calcTwo(c))}
+restore();makeFilters('manualThreeFilters','threeMode',calcThree);makeFilters('manualTwoFilters','twoMode',()=>configs.forEach(calcTwo));$('manualThreeRun').onclick=calcThree;$('manualThreeCopy').onclick=()=>copy(state.three);for(const x of ['manualH','manualT','manualU','manualP'])$(x).addEventListener('input',save);$('manualUseP').addEventListener('change',calcThree);calcThree();configs.forEach(calcTwo);
+})();
+</script><script>
+(function(){
+const button=document.getElementById('multiCopy');if(!button)return;
+button.addEventListener('click',async()=>{
+ const selected=localStorage.getItem('lucky999_selected_history_source')||'';
+ const picker=document.getElementById('historySourceSelect');
+ const selectedOption=picker&&Array.from(picker.options).find(o=>o.value===selected);
+ const lottery=selectedOption?selectedOption.textContent.replace(/ \(ที่เลือกไว้\)$/,''):'ยังไม่ได้เลือกชื่อหวย';
+ const labels=[['hundred','ร้อย'],['ten','สิบ'],['unit','หน่วย'],['lowerTen','สิบล่าง'],['lowerUnit','หน่วยล่าง'],['top3','ร้อยสิบหน่วย'],['top2','สิบหน่วย'],['bottom2','สิบหน่วยล่าง'],['topBottom','บนล่าง']];
+ const rows=[['รายการ',lottery],['หลัก','เด่น']];
+ for(const [id,label] of labels){const cell=document.getElementById('multi-out-'+id);const value=cell?[...cell.querySelectorAll('.multi-digit')].map(x=>x.textContent.trim()).join(''):'';rows.push([label,value||'—'])}
+ const vote=document.getElementById('multiVoteFour');rows.push(['วัดใจบนล่าง',vote?[...vote.querySelectorAll('.multi-digit')].map(x=>x.textContent.trim()).join('')||'—':'—']);
+ const tsv=rows.map(r=>r.join('\t')).join('\n');
+ try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(tsv);alert('คัดลอกตารางแล้ว สามารถวางใน Excel ได้ทันที')}else throw Error('clipboard unavailable')}
+ catch(e){const ta=document.createElement('textarea');ta.value=tsv;ta.style.position='fixed';ta.style.left='-9999px';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(ok)alert('คัดลอกตารางแล้ว สามารถวางใน Excel ได้ทันที');else prompt('คัดลอกตารางเลขเด่น',tsv)}
+});
+})();
+</script><script id="results-page-script">(function(){
+const selectedKey='lucky999_selected_history_source';
+const title=document.getElementById('resultPageTitle');
+const frame=document.getElementById('resultEmbeddedSite');
+const status=document.getElementById('resultPageStatus');
+const open=document.getElementById('resultOpenSource');
+const picker=document.getElementById('historySourceSelect');
+let current='';
+function getName(url){const option=Array.from(picker.options).find(o=>o.value===url);if(option)return option.textContent.replace(/ \(ที่เลือกไว้\)$/,'');const link=Array.from(document.querySelectorAll('#linkgrid .resultlink')).find(a=>a.href===url);return link?link.textContent.replace(/^↗\s*/,''):'ชื่อหวยที่เลือก'}
+function fitResultViewport(){if(document.getElementById('results-page').hidden)return;const top=document.getElementById('results-page').getBoundingClientRect().top;document.documentElement.style.setProperty('--result-page-top',Math.max(0,Math.ceil(top))+'px')}
+function show(){document.querySelectorAll('.app-page').forEach(p=>p.hidden=p.id!=='results-page');document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page==='results-page'));window.scrollTo(0,0);requestAnimationFrame(fitResultViewport)}
+window.addEventListener('resize',fitResultViewport);document.getElementById('resultsNav').addEventListener('click',()=>requestAnimationFrame(fitResultViewport));
+function refresh(url,force){current=url||'';title.textContent='📋 ผล'+(current?' — '+getName(current):' — ยังไม่ได้เลือกชื่อหวย');open.style.display=current?'inline-block':'none';frame.style.display=current?'block':'none';if(!current){frame.removeAttribute('src');status.textContent='เลือกชื่อหวยจากส่วนที่ 1 เพื่อแสดงเว็บไซต์และเปิดเว็บต้นทาง';return}open.href=current;if(force||frame.getAttribute('src')!==current){frame.src=current}status.textContent='กำลังแสดงเว็บไซต์ต้นทางด้านล่าง หากหน้าเว็บว่างหรือขึ้นข้อความปฏิเสธการเชื่อมต่อ แสดงว่าเว็บไซต์นั้นไม่อนุญาตให้ฝังหน้าเว็บ กรุณากด “เปิดเว็บต้นทาง”'}
+function select(url){
+ if(!url)return;
+ // Browsers do not reliably expose X-Frame-Options / CSP frame-ancestors failures
+ // to parent pages. Open the original site directly during the user gesture,
+ // so popup blockers do not prevent access when embedding is forbidden.
+ const external=window.open(url,'_blank','noopener,noreferrer');
+ localStorage.setItem(selectedKey,url);refresh(url);show();
+ status.textContent=external===null?'เว็บไซต์ต้นทางอาจถูกบล็อกการเปิดแท็บใหม่ กรุณากด “เปิดเว็บต้นทาง” ด้านบน':'เปิดเว็บไซต์ต้นทางในแท็บใหม่แล้ว และแสดงตัวอย่างในหน้านี้เมื่อเว็บไซต์อนุญาต';
+}
+// Intercept the original dropdown handler so selecting a source embeds it instead of opening a new tab.
+picker.addEventListener('change',e=>{if(!picker.value)return;e.stopImmediatePropagation();select(picker.value)},true);
+document.getElementById('linkgrid').addEventListener('click',e=>{const a=e.target.closest('a.resultlink');if(!a)return;e.preventDefault();e.stopImmediatePropagation();select(a.href)},true);
+document.getElementById('resultReload').addEventListener('click',()=>{if(!current)return;frame.src='about:blank';setTimeout(()=>{frame.src=current},30)});
+const originalClear=window.clearHistory;if(typeof originalClear==='function')window.clearHistory=function(){originalClear();refresh(localStorage.getItem(selectedKey)||'')};
+refresh(localStorage.getItem(selectedKey)||'');
+})();</script><script id="theme-selection-script">(function(){const picker=document.getElementById('themeSelect');if(!picker)return;const valid=['red','blue','green','purple','gold','light','pinkpop','candy','lavender','mintpop','sunshine'];let saved='red';try{saved=localStorage.getItem('sut9999_theme')||'red'}catch(e){}if(!valid.includes(saved))saved='red';document.body.dataset.theme=saved;picker.value=saved;picker.addEventListener('change',function(){document.body.dataset.theme=this.value;try{localStorage.setItem('sut9999_theme',this.value)}catch(e){}})})();</script></body></html>
+
+<style id="lock-fit-layout">#lockCard{max-width:100%;min-width:0}#lockCard .lock-scroll{overflow-x:visible!important;max-height:none!important}#lockCard .lock-table{width:100%!important;min-width:0!important;table-layout:fixed!important}#lockCard .lock-table th,#lockCard .lock-table td{overflow-wrap:anywhere;white-space:normal!important;padding:7px 4px!important;font-size:clamp(11px,1.6vw,16px)!important}#lockCard .controls label{min-width:0;flex:1 1 180px}#lockCard select{max-width:100%;width:100%}@media(max-width:520px){#lockCard .lock-table th,#lockCard .lock-table td{font-size:11px!important;padding:5px 2px!important}}</style>
+</html>
+<style>
+/* Section 4: move per-position formula count to last column */
+#multiSection .multi-table th:nth-child(1){width:15%!important}
+#multiSection .multi-table th:nth-child(2){width:16%!important}
+#multiSection .multi-table th:nth-child(3){width:27%!important}
+#multiSection .multi-table th:nth-child(4){width:27%!important}
+#multiSection .multi-table th:nth-child(5){width:15%!important}
+#multiSection .multi-table td:nth-child(5) select{width:100%!important;min-width:0!important}
+@media(max-width:600px){#multiSection .multi-table th:nth-child(1){width:15%!important}#multiSection .multi-table th:nth-child(2){width:14%!important}#multiSection .multi-table th:nth-child(3){width:27%!important}#multiSection .multi-table th:nth-child(4){width:29%!important}#multiSection .multi-table th:nth-child(5){width:15%!important}}
+</style>
+</html>
