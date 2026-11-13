@@ -527,7 +527,54 @@ body[data-theme="pinkpop"] button:not(.navbtn):not(.multi-history-formula):not(.
 @keyframes twinkle{to{opacity:.35;transform:scale(.7)}}
 @media(max-width:480px){#loinGate .loin-panel{padding:20px 20px 16px}#loinGate .login-art{height:120px}#loinGate .login-welcome{margin:8px 0 13px}}
 @media(prefers-reduced-motion:reduce){#loinGate *,#loinGate:before,#loinGate:after{animation:none!important;transition:none!important}}
-</style></head><body><div id="loinGate" role="dialog" aria-modal="true" aria-label="Log in"><div class="loin-panel"><svg class="login-art" viewBox="0 0 300 165" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ภาพตกแต่งประกายดาวและตัวเลขเรืองแสง">
+</style><style>
+#trendSection{border:2px solid #f66d9b;background:linear-gradient(130deg,#2c1025,#45152b,#17111d);color:#fff;box-shadow:0 0 22px #f44a6b45}
+#trendSection h2{color:#ffe5a6!important}#trendSection .muted{color:#ffe5e9!important}
+.trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr));gap:12px;margin:16px 0}
+.trend-tile{border:1px solid #ffb9c9;border-radius:15px;background:linear-gradient(140deg,#321725,#5c1830);padding:15px;min-width:0;box-shadow:0 0 14px #fb5b7950}
+.trend-name{font-weight:800;color:#fff0e5;font-size:16px}.trend-pick{font-size:38px;font-weight:900;color:#eaff50;text-shadow:0 0 12px #c4ff2e,0 0 20px #ff8b27;margin:8px 0}
+.trend-detail{font-size:13px;color:#fff5f5;line-height:1.7}.trend-note{font-size:12px;line-height:1.8;color:#ffebd7}
+</style><style id="logout-top-style">#logoutTopButton{position:absolute;top:14px;right:18px;z-index:20;border:1px solid #ffffff99;border-radius:12px;padding:10px 18px;background:linear-gradient(120deg,#dc2626,#991b1b);color:white;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 4px 12px #0005}body>header{position:relative;padding-right:118px!important}@media(max-width:520px){#logoutTopButton{top:8px;right:8px;padding:8px 11px;font-size:13px}body>header{padding-right:95px!important}}html:not(.loin-unlocked) #logoutTopButton{display:none!important}</style><style id="admin-users-style">#adminUsersNav[hidden]{display:none!important}#adminUsersPanel{max-width:950px;margin:auto}#adminUsersPanel .admin-user-form{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:20px 0}#adminUsersPanel .admin-user-form label{flex:1 1 200px;display:grid;gap:7px;font-weight:700}#adminUsersPanel input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #9fa5ac;border-radius:10px;background:#fff;color:#151515;font-size:16px}#adminUsersPanel .admin-user-table{width:100%;background:#f1f6f1;color:#111}#adminUsersPanel .admin-user-table th,#adminUsersPanel .admin-user-table td{padding:12px;color:#111}#adminUsersMessage{font-weight:700}#adminUsersPanel button{cursor:pointer}</style><style id="admin-general-users-black-text">
+/* Keep the general-user management section legible in all 11 themes. */
+#adminUsersPanel h3, #adminUsersPanel .admin-user-table, #adminUsersPanel .admin-user-table th, #adminUsersPanel .admin-user-table td, #adminUsersPanel .admin-user-table tbody, #adminUsersPanel .admin-user-table tbody * {color:#000 !important;text-shadow:none !important;}
+#adminUsersPanel .admin-user-table th{background:#d9e5df !important;}
+#adminUsersPanel .admin-user-table td{background:#f1f6f2 !important;}
+#adminUsersPanel .admin-user-table button{color:#000 !important;}
+</style>
+<style id="all-themes-readable-contrast">
+/* Contrast refinement for all eleven selectable themes; no calculation logic changed. */
+body[data-theme]{--theme-on-button:#fff;--theme-on-header:#fff;--theme-link:#a6ddff;--theme-soft-surface:var(--theme-input);--theme-on-soft:var(--theme-input-text)}
+body[data-theme="light"]{--theme-link:#174da4}
+body[data-theme="pinkpop"]{--theme-on-button:#2d1033;--theme-on-header:#30102f;--theme-link:#7b206c}
+body[data-theme="candy"]{--theme-on-button:#073e55;--theme-on-header:#073e55;--theme-link:#07536b}
+body[data-theme="lavender"]{--theme-on-button:#2d1454;--theme-on-header:#271044;--theme-link:#54218a}
+body[data-theme="mintpop"]{--theme-on-button:#063e35;--theme-on-header:#063e35;--theme-link:#075b4b}
+body[data-theme="sunshine"]{--theme-on-button:#452412;--theme-on-header:#482412;--theme-link:#774015}
+body[data-theme] header h1,body[data-theme] header small{color:var(--theme-on-header)!important;text-shadow:0 1px 3px #0003}
+body[data-theme] .card:not(#summary):not(#multiSection):not(#fourCheckSection):not(#trendSection):not(#aiMode) h2,
+body[data-theme] .card:not(#summary):not(#multiSection):not(#fourCheckSection):not(#trendSection):not(#aiMode) h3,
+body[data-theme] .card:not(#summary):not(#multiSection):not(#fourCheckSection):not(#trendSection):not(#aiMode) label,
+body[data-theme] .card:not(#summary):not(#multiSection):not(#fourCheckSection):not(#trendSection):not(#aiMode) p{color:var(--theme-text)!important}
+body[data-theme] .theme-switcher,body[data-theme] .theme-switcher label{color:var(--theme-text)!important}
+body[data-theme] .appnav .navbtn{background:var(--theme-input)!important;color:var(--theme-input-text)!important;border:1px solid var(--theme-edge)!important;text-shadow:none!important}
+body[data-theme] .appnav .navbtn.active{background:linear-gradient(120deg,var(--theme-button),var(--theme-button2))!important;color:var(--theme-on-button)!important;border:2px solid var(--theme-edge)!important}
+body[data-theme] button:not(.navbtn):not(.multi-history-formula):not(.multi-history-button):not(.sync-prominent):not(.group-pick):not(.group-filter):not(#logoutTopButton):not(.analyze-main-button){color:var(--theme-on-button)!important;text-shadow:none!important}
+body[data-theme] input:not([type="checkbox"]),body[data-theme] select,body[data-theme] textarea{color:var(--theme-input-text)!important;caret-color:var(--theme-input-text)!important}
+body[data-theme] input::placeholder,body[data-theme] textarea::placeholder{color:var(--theme-sub)!important;opacity:1}
+body[data-theme] .card:not(#multiSection):not(#trendSection):not(#summary):not(#fourCheckSection) .muted{color:var(--theme-sub)!important}
+body[data-theme] .stat:not(#summary .stat){color:var(--theme-text)!important}
+body[data-theme] .tablewrap:not(#adminUsersPanel .tablewrap) table:not(.multi-table):not(.trend-history-table) th{background:var(--theme-input)!important;color:var(--theme-input-text)!important}
+body[data-theme] .tablewrap:not(#adminUsersPanel .tablewrap) table:not(.multi-table):not(.trend-history-table) td{color:var(--theme-text)!important}
+body[data-theme] .resultlink{background:var(--theme-input)!important;color:var(--theme-input-text)!important;border-color:var(--theme-edge)!important}
+body[data-theme] .linkcount{color:var(--theme-sub)!important}
+/* Keep high-contrast custom treatments: neon correct statuses, black admin table, blue win rows, red-black image, login gate. */
+body[data-theme] #adminUsersPanel .admin-user-table th,body[data-theme] #adminUsersPanel .admin-user-table td{color:#000!important}
+body[data-theme] #adminUsersPanel .admin-user-table button{color:#000!important}
+body[data-theme] #logoutTopButton{color:#fff!important}
+body[data-theme] #loinGate .loin-panel{color:#241538!important}
+@media (prefers-contrast:more){body[data-theme] .card{border-width:2px!important}body[data-theme] input:focus-visible,body[data-theme] select:focus-visible,body[data-theme] button:focus-visible{outline:3px solid var(--theme-edge)!important;outline-offset:2px}}
+</style>
+<style id="admin-analytics-style">#adminUsersPanel .admin-analytics{margin:20px 0;padding:16px;border:1px solid #8fae9e;border-radius:14px;background:#e6f0e9;color:#111}#adminUsersPanel .admin-analytics h3,#adminUsersPanel .admin-analytics p{color:#111!important;text-shadow:none!important}#adminUsersPanel .admin-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:14px 0}#adminUsersPanel .admin-metrics>div{background:#fff;border:1px solid #b3c9b8;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:5px}#adminUsersPanel .admin-metrics strong{color:#174b35!important;font-size:30px}#adminUsersPanel .admin-metrics span{color:#111!important;font-size:13px}#adminUsersPanel .admin-stat-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}#adminUsersPanel .admin-stats-table{width:100%;border-collapse:collapse;background:#f7fbf8;color:#111}#adminUsersPanel .admin-stats-table th,#adminUsersPanel .admin-stats-table td{padding:9px;border:1px solid #c3d5c7;color:#111!important;background:#f7fbf8!important;text-shadow:none!important}#adminUsersPanel .admin-stats-table th{background:#d5e6d9!important}#adminUsersPanel .admin-analytics .muted{color:#344b3e!important}</style></head><body><div id="loinGate" role="dialog" aria-modal="true" aria-label="Log in"><div class="loin-panel"><svg class="login-art" viewBox="0 0 300 165" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ภาพตกแต่งประกายดาวและตัวเลขเรืองแสง">
 <defs><linearGradient id="loginGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff6bd7"/><stop offset=".5" stop-color="#9a67ff"/><stop offset="1" stop-color="#26f0d8"/></linearGradient><filter id="loginSoft"><feGaussianBlur stdDeviation="5"/></filter></defs>
 <ellipse cx="150" cy="143" rx="95" ry="11" fill="#9b6cff" opacity=".25" filter="url(#loginSoft)"/>
 <circle cx="150" cy="77" r="64" fill="#e6d7ff" opacity=".65"/>
@@ -540,15 +587,21 @@ body[data-theme="pinkpop"] button:not(.navbtn):not(.multi-history-formula):not(.
 <g class="sparkle" fill="#37f5e5"><path d="M240 45l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/></g>
 <g class="sparkle" fill="#ff68cb"><path d="M234 107l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/></g>
 <circle cx="89" cy="110" r="5" fill="#ff82d7"/><circle cx="215" cy="25" r="4" fill="#a377ff"/><circle cx="51" cy="112" r="3" fill="#30dfe6"/>
-</svg><h2>🔐 Log in</h2><div class="login-welcome"><div>ยินดีต้อนรับสู่</div><strong>สูตรวิเคราะห์ขั้นเทพ</strong><div>เข้าระบบก่อนการใช้งานครับ</div></div><form id="loinForm" autocomplete="off"><label for="loinUser">ชื่อผู้ใช้ (User)</label><input id="loinUser" name="login_user" required autocomplete="username" spellcheck="false" placeholder="กรอกชื่อผู้ใช้"><label for="loinPass">รหัสผ่าน (Password)</label><div class="loin-passrow"><input id="loinPass" name="login_pass" type="password" required autocomplete="current-password" placeholder="กรอกรหัสผ่าน"><button class="loin-eye" id="loinEye" type="button" aria-label="แสดงรหัสผ่าน">ดู</button></div><button type="submit">เข้าสู่ระบบ</button><div class="loin-error" id="loinError" role="alert" aria-live="polite"></div></form></div></div><header><main style="padding:0"><h1>✨ สูตรวิเคราะห์ขั้นเทพ</h1><div>วิเคราะห์ 9,999 สูตร • สถิติย้อนหลัง • เลขเด่น 1–9 ตัว</div><small>เว็บแอปใช้งานออฟไลน์ บันทึกข้อมูลในเบราว์เซอร์ของเครื่อง</small></main></header><main>
-<div class="theme-switcher" role="group" aria-label="เลือกธีมสีโปรแกรม"><label for="themeSelect">🎨 เลือกธีมโปรแกรม</label><select id="themeSelect"><option value="red">🔴 แดง–ดำ (เดิม)</option><option value="blue">🔵 น้ำเงินเข้ม</option><option value="green">🟢 เขียวมรกต</option><option value="purple">🟣 ม่วงแฟนตาซี</option><option value="gold">🟡 ทองหรู</option><option value="light">⚪ ขาวสบายตา</option><option value="pinkpop">💗 ชมพูป๊อปเรืองแสง</option><option value="candy">🍬 ฟ้าลูกกวาด</option><option value="lavender">🦄 ม่วงลาเวนเดอร์</option><option value="mintpop">🍀 มิ้นต์สดใส</option><option value="sunshine">🌈 เหลืองพาสเทลสดใส</option></select></div><nav class="appnav"><button type="button" class="navbtn active" data-page="analysis-page">📊 วิเคราะห์สูตร</button><button type="button" class="navbtn" data-page="ranking-page">🏆 จัดอันดับสูตรทั้ง 9,999 สูตร</button><button type="button" class="navbtn" data-page="manual-page">🧩 จัดกลุ่มเลข</button><button type="button" class="navbtn" data-page="history-page">🔗 ผลย้อนหลัง</button><button type="button" class="navbtn" data-page="results-page" id="resultsNav">📋 ผล</button></nav><div id="results-page" class="app-page" hidden><section class="card" id="savedResultSection"><h2 id="resultPageTitle">📋 ผล — ยังไม่ได้เลือกชื่อหวย</h2><p class="muted">แสดงเว็บไซต์ผลย้อนหลังที่เลือกจากหน้าวิเคราะห์สูตรภายในหน้านี้โดยตรง เพื่อให้เข้าถึงเว็บต้นทางได้แม้เว็บไซต์ไม่อนุญาตให้ฝัง โปรแกรมจะเปิดเว็บต้นทางในแท็บใหม่เมื่อเลือกชื่อหวย (เบราว์เซอร์ไม่สามารถตรวจสอบการปฏิเสธ iframe ของทุกเว็บไซต์ได้อย่างแม่นยำ)</p><div class="controls" style="margin:14px 0;display:flex;gap:10px;flex-wrap:wrap"><button type="button" id="resultReload">🔄 โหลดหน้าเว็บใหม่</button><a id="resultOpenSource" href="#" target="_blank" rel="noopener noreferrer" style="display:none;padding:10px 15px;background:#0284c7;color:#fff;text-decoration:none;border-radius:10px">🔗 เปิดเว็บต้นทาง</a></div><p id="resultPageStatus" class="muted" role="status">เลือกชื่อหวยจากส่วนที่ 1 เพื่อแสดงเว็บไซต์และเปิดเว็บต้นทาง</p><iframe id="resultEmbeddedSite" title="เว็บไซต์ผลย้อนหลังที่เลือก" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:min(75vh,900px);min-height:540px;display:none;border:1px solid #b96b7b;border-radius:12px;background:#fff" loading="lazy"></iframe></section></div><div id="history-page" class="app-page" hidden><section class="card" id="result-links"><h2>🔗 ลิงก์ดูผลย้อนหลังจาก Excel</h2><p class="muted">รายชื่อและลิงก์นำมาจากชีท “ผลย้อนหลัง” ในไฟล์ New.xlsx คลิกชื่อเพื่อเปิดเว็บต้นทางในแท็บใหม่</p><div class="linktools"><input id="linksearch" type="search" placeholder="ค้นหาชื่อผลย้อนหลัง เช่น นิเคอิ ลาว ฮานอย" aria-label="ค้นหาชื่อผลย้อนหลัง"><button type="button" class="secondary" id="clearlinksearch">ล้างคำค้นหา</button></div><div id="linkcount" class="linkcount"></div><div id="linkgrid" class="linkgrid"></div></section></div><div id="manual-page" class="app-page" hidden>
+</svg><h2>🔐 Log in</h2><div class="login-welcome"><div>ยินดีต้อนรับสู่</div><strong>สูตรวิเคราะห์ขั้นเทพ</strong><div>เข้าระบบก่อนการใช้งานครับ</div></div><form id="loinForm" autocomplete="off"><label for="loinUser">ชื่อผู้ใช้ (User)</label><input id="loinUser" name="login_user" required autocomplete="username" spellcheck="false" placeholder="กรอกชื่อผู้ใช้"><label for="loinPass">รหัสผ่าน (Password)</label><div class="loin-passrow"><input id="loinPass" name="login_pass" type="password" required autocomplete="current-password" placeholder="กรอกรหัสผ่าน"><button class="loin-eye" id="loinEye" type="button" aria-label="แสดงรหัสผ่าน">ดู</button></div><button type="submit">เข้าสู่ระบบ</button><div class="loin-error" id="loinError" role="alert" aria-live="polite"></div></form></div></div><header><button type="button" id="logoutTopButton" aria-label="ออกจากระบบ">🚪 Logout</button><main style="padding:0"><h1>✨ สูตรวิเคราะห์ขั้นเทพ</h1><div>วิเคราะห์ 9,999 สูตร • สถิติย้อนหลัง • เลขเด่น 1–9 ตัว</div><small>เว็บแอปใช้งานออฟไลน์ บันทึกข้อมูลในเบราว์เซอร์ของเครื่อง</small></main></header><main>
+<div class="theme-switcher" role="group" aria-label="เลือกธีมสีโปรแกรม"><label for="themeSelect">🎨 เลือกธีมโปรแกรม</label><select id="themeSelect"><option value="red">🔴 แดง–ดำ (เดิม)</option><option value="blue">🔵 น้ำเงินเข้ม</option><option value="green">🟢 เขียวมรกต</option><option value="purple">🟣 ม่วงแฟนตาซี</option><option value="gold">🟡 ทองหรู</option><option value="light">⚪ ขาวสบายตา</option><option value="pinkpop">💗 ชมพูป๊อปเรืองแสง</option><option value="candy">🍬 ฟ้าลูกกวาด</option><option value="lavender">🦄 ม่วงลาเวนเดอร์</option><option value="mintpop">🍀 มิ้นต์สดใส</option><option value="sunshine">🌈 เหลืองพาสเทลสดใส</option></select></div><nav class="appnav"><button type="button" class="navbtn active" data-page="analysis-page">📊 วิเคราะห์สูตร</button><button type="button" class="navbtn" data-page="ranking-page">🏆 จัดอันดับสูตรทั้ง 9,999 สูตร</button><button type="button" class="navbtn" data-page="trend-stats-page">📈 สถิติสูงต่ำคู่คี่</button><button type="button" class="navbtn" data-page="manual-page">🧩 จัดกลุ่มเลข</button><button type="button" class="navbtn" data-page="history-page">🔗 ผลย้อนหลัง</button><button type="button" class="navbtn" data-page="results-page" id="resultsNav">📋 ผล</button><button type="button" class="navbtn" data-page="admin-users-page" id="adminUsersNav" hidden>🔐 จัดการรหัสผ่าน</button></nav><div id="admin-users-page" class="app-page" hidden><section class="card" id="adminUsersPanel"><h2>🔐 จัดการรหัสผ่าน (แอดมินเท่านั้น)</h2><p class="muted">เพิ่มหรือลบบัญชีผู้ใช้งานทั่วไป บัญชีที่เพิ่มจะเข้าใช้งานส่วนอื่นของโปรแกรมได้ แต่ไม่เห็นหน้านี้</p><form id="adminAddForm" class="admin-user-form" autocomplete="off"><label>ชื่อผู้ใช้ (User)<input id="adminNewUser" required minlength="2" maxlength="40" pattern="[A-Za-z0-9_.-]+" placeholder="เช่น teacher01" autocomplete="off"></label><label>รหัสผ่าน (Password)<input id="adminNewPass" type="password" required minlength="4" maxlength="100" placeholder="อย่างน้อย 4 ตัวอักษร" autocomplete="new-password"></label><button type="submit">➕ เพิ่มผู้ใช้</button></form><p id="adminUsersMessage" role="status"></p><section class="admin-analytics" aria-label="สถิติการเข้าใช้งาน"><h3>📊 ผู้ใช้งานและสถิติการเข้าสู่ระบบ</h3><p class="muted">สถิตินี้เก็บเฉพาะเบราว์เซอร์และพื้นที่จัดเก็บเดียวกัน ไม่ใช่จำนวนผู้ใช้ทั้งหมดจากเครื่องอื่นหรือ Google Sites</p><div class="admin-metrics"><div><strong id="statOnline">0</strong><span>กำลังเข้าสู่ระบบ (แท็บที่ใช้งาน)</span></div><div><strong id="statTotal">0</strong><span>จำนวนครั้งที่เข้าสู่ระบบ</span></div><div><strong id="statToday">0</strong><span>เข้าสู่ระบบวันนี้</span></div><div><strong id="statUnique">0</strong><span>บัญชีที่เคยเข้าใช้งาน</span></div></div><div class="admin-stat-actions"><button type="button" id="statRefresh">🔄 รีเฟรชสถิติ</button><button type="button" id="statExport">📥 ส่งออกสถิติ CSV</button></div><h3>จำนวนการเข้าสู่ระบบย้อนหลัง 7 วัน</h3><div class="tablewrap"><table class="admin-stats-table"><thead><tr><th>วันที่</th><th>จำนวนครั้งที่เข้าสู่ระบบ</th></tr></thead><tbody id="statDays"></tbody></table></div><h3>ประวัติการเข้าสู่ระบบล่าสุด</h3><div class="tablewrap"><table class="admin-stats-table"><thead><tr><th>วันและเวลา</th><th>ชื่อผู้ใช้</th><th>เหตุการณ์</th></tr></thead><tbody id="statRecent"></tbody></table></div></section><h3>บัญชีผู้ใช้งานทั่วไป</h3><div class="tablewrap"><table class="admin-user-table"><thead><tr><th>ลำดับ</th><th>ชื่อผู้ใช้</th><th>จัดการ</th></tr></thead><tbody id="adminUsersList"></tbody></table></div><p class="muted">บัญชีเดิมยังใช้งานได้ตามปกติ • บัญชีแอดมินไม่สามารถลบจากหน้านี้ได้</p></section></div><div id="results-page" class="app-page" hidden><section class="card" id="savedResultSection"><h2 id="resultPageTitle">📋 ผล — ยังไม่ได้เลือกชื่อหวย</h2><p class="muted">แสดงเว็บไซต์ผลย้อนหลังที่เลือกจากหน้าวิเคราะห์สูตรภายในหน้านี้โดยตรง เพื่อให้เข้าถึงเว็บต้นทางได้แม้เว็บไซต์ไม่อนุญาตให้ฝัง โปรแกรมจะเปิดเว็บต้นทางในแท็บใหม่เมื่อเลือกชื่อหวย (เบราว์เซอร์ไม่สามารถตรวจสอบการปฏิเสธ iframe ของทุกเว็บไซต์ได้อย่างแม่นยำ)</p><div class="controls" style="margin:14px 0;display:flex;gap:10px;flex-wrap:wrap"><button type="button" id="resultReload">🔄 โหลดหน้าเว็บใหม่</button><a id="resultOpenSource" href="#" target="_blank" rel="noopener noreferrer" style="display:none;padding:10px 15px;background:#0284c7;color:#fff;text-decoration:none;border-radius:10px">🔗 เปิดเว็บต้นทาง</a></div><p id="resultPageStatus" class="muted" role="status">เลือกชื่อหวยจากส่วนที่ 1 เพื่อแสดงเว็บไซต์และเปิดเว็บต้นทาง</p><iframe id="resultEmbeddedSite" title="เว็บไซต์ผลย้อนหลังที่เลือก" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:min(75vh,900px);min-height:540px;display:none;border:1px solid #b96b7b;border-radius:12px;background:#fff" loading="lazy"></iframe></section></div><div id="history-page" class="app-page" hidden><section class="card" id="result-links"><h2>🔗 ลิงก์ดูผลย้อนหลังจาก Excel</h2><p class="muted">รายชื่อและลิงก์นำมาจากชีท “ผลย้อนหลัง” ในไฟล์ New.xlsx คลิกชื่อเพื่อเปิดเว็บต้นทางในแท็บใหม่</p><div class="linktools"><input id="linksearch" type="search" placeholder="ค้นหาชื่อผลย้อนหลัง เช่น นิเคอิ ลาว ฮานอย" aria-label="ค้นหาชื่อผลย้อนหลัง"><button type="button" class="secondary" id="clearlinksearch">ล้างคำค้นหา</button></div><div id="linkcount" class="linkcount"></div><div id="linkgrid" class="linkgrid"></div></section></div><div id="manual-page" class="app-page" hidden>
 <section class="card" id="manualSection"><h2>🧩 จัดกลุ่มเลข (กรอกเอง)</h2><p class="muted">กรอกเลขเด่นแต่ละหลักด้วยตนเอง ระบบนี้ทำงานแยกจากสูตรวิเคราะห์ 9,999 สูตรและส่วนที่ 5 โดยสิ้นเชิง • กรอกตัวเลข 0–9 ติดกันหรือคั่นด้วยช่องว่างก็ได้</p>
 <div class="manual-panel"><h3>1. จัดกลุ่มเลข 3 ตัวบน (000–999)</h3><div class="four-controls"><label>หลักร้อย<input id="manualH" inputmode="numeric" maxlength="40" placeholder="เช่น 1234"></label><label>หลักสิบ<input id="manualT" inputmode="numeric" maxlength="40" placeholder="เช่น 567"></label><label>หลักหน่วย<input id="manualU" inputmode="numeric" maxlength="40" placeholder="เช่น 890"></label><label>สิบหน่วย<input id="manualP" inputmode="numeric" maxlength="40" placeholder="เช่น 12345"></label></div><label class="toggle-condition"><input id="manualUseP" type="checkbox" checked> ใช้เงื่อนไขสิบหน่วย (ต้องมีอย่างน้อย 1 ตัวอยู่ในชุดสิบหน่วย)</label><div class="group-filters manual-filters" id="manualThreeFilters"></div><div class="controls"><button type="button" id="manualThreeRun">✦ จัดกลุ่มเลข</button><button type="button" class="secondary" id="manualThreeCopy">คัดลอกผล</button></div><p class="muted" id="manualThreeCount">ยังไม่ได้จัดกลุ่ม</p><div class="responsive-number-list" id="manualThreeResults"></div></div>
 <h2 style="margin-top:24px">2. จัดกลุ่มเลข 2 ตัว (บน / ล่าง)</h2><div class="group-filters manual-filters" id="manualTwoFilters"></div><div id="manualTwoPanels"></div>
-</section></div><div id="ranking-page" class="app-page" hidden><section class="card" id="rankSection" hidden><h2>จัดอันดับสูตรทั้ง 9,999 สูตร</h2><div class="controls"><label>ค้นหาสูตร<input id="filter" placeholder="เช่น ร้อย + สิบ" oninput="renderTable(true)"></label><button class="secondary" onclick="exportRank()">ดาวน์โหลดผลสถิติ CSV</button></div><p class="muted">สูตรที่ไม่มีงวดให้ตรวจสอบจะแสดงว่าไม่มีข้อมูล (—)</p><div class="controls" style="align-items:center;gap:12px"><button type="button" class="secondary" id="rankPrev" onclick="rankPage--;renderTable()">◀ ก่อนหน้า</button><span id="rankPagerInfo" style="color:#111;font-weight:700">แสดงครั้งละ 100 สูตร</span><button type="button" class="secondary" id="rankNext" onclick="rankPage++;renderTable()">ถัดไป ▶</button></div><div class="tablewrap"><table><thead><tr><th>อันดับ</th><th>สูตร</th><th>ทดสอบ</th><th>ถูก</th><th>อัตราถูก</th><th>เลขเรียงงวดถัดไป</th></tr></thead><tbody id="tbody"></tbody></table></div></section></div><div id="analysis-page" class="app-page"><section class="card"><h2>1. กรอกผลย้อนหลัง</h2><p class="muted">เรียงจากงวดเก่าไปงวดใหม่ บรรทัดละ 1 ผล รูปแบบ 3 ตัวบน-2 ตัวล่าง เช่น 239-53</p><div class="history-picker"><label for="historySourceSearch"><strong>ค้นหาและเลือกผลย้อนหลัง</strong></label><input id="historySourceSearch" type="search" placeholder="ค้นหา เช่น ลาว ฮานอย นิเคอิ VIP" autocomplete="off"><select id="historySourceSelect" aria-label="เลือกรายชื่อผลย้อนหลัง"><option value="">— เลือกรายชื่อเพื่อเปิดเว็บไซต์อัตโนมัติ —</option></select><small>เมื่อเลือกรายชื่อ โปรแกรมจะเปิดเว็บไซต์ผลย้อนหลังในแท็บใหม่ โดยไม่แก้ไขข้อมูลที่กรอกไว้</small></div><div class="controls" style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap"><a href="https://exphuay.com/result" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#15803d,#22c55e);color:#fff;text-decoration:none;font-weight:700">ดูผลล่าสุดเว็บ EXP</a><a href="https://newformula.info/Reporthoon/Report.php" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#b91c1c,#ef4444);color:#fff;text-decoration:none;font-weight:700">ดูผลล่าสุดเว็บ Newformula</a></div><textarea id="history" spellcheck="false" placeholder="239-53&#10;313-61&#10;906-23&#10;068-73&#10;403-26"></textarea><div class="controls" style="margin-top:12px"><button onclick="clearHistory()" class="secondary">ล้างข้อมูล</button></div></section>
-<section class="card"><h2>2. ตั้งค่าการวิเคราะห์</h2><div class="controls"><label>วิเคราะห์หลัก<select id="target"><option value="hundred">ร้อย</option><option value="ten">สิบ</option><option value="unit">หน่วย</option><option value="lowerTen">สิบล่าง</option><option value="lowerUnit">หน่วยล่าง</option><option value="top3">ร้อยสิบหน่วย</option><option value="top2">สิบหน่วย</option><option value="bottom2">สิบหน่วยล่าง</option><option value="topBottom" selected>บนล่าง</option></select></label><label>จำนวนเลขเด่น<select id="count"></select></label><input id="topN" type="hidden" value="99"><label>เรียงอันดับ<select id="sort"><option value="rate">อัตราถูก (%)</option><option value="hits">จำนวนครั้งถูก</option></select></label></div><p class="muted">สูตรคำนวณจากผลของงวดก่อนหน้า เพื่อเทียบกับผลของงวดถัดไป (ไม่ใช้ข้อมูลงวดที่ต้องทาย)</p><button id="run" class="analyze-main-button" onclick="analyze()">🔎 วิเคราะห์สูตร</button><div id="status"></div></section>
+</section></div><div id="ranking-page" class="app-page" hidden><section class="card" id="rankSection" hidden><h2>จัดอันดับสูตรทั้ง 9,999 สูตร</h2><div class="controls"><label>ค้นหาสูตร<input id="filter" placeholder="เช่น ร้อย + สิบ" oninput="renderTable(true)"></label><button class="secondary" onclick="exportRank()">ดาวน์โหลดผลสถิติ CSV</button></div><p class="muted">สูตรที่ไม่มีงวดให้ตรวจสอบจะแสดงว่าไม่มีข้อมูล (—)</p><div class="controls" style="align-items:center;gap:12px"><button type="button" class="secondary" id="rankPrev" onclick="rankPage--;renderTable()">◀ ก่อนหน้า</button><span id="rankPagerInfo" style="color:#111;font-weight:700">แสดงครั้งละ 100 สูตร</span><button type="button" class="secondary" id="rankNext" onclick="rankPage++;renderTable()">ถัดไป ▶</button></div><div class="tablewrap"><table><thead><tr><th>อันดับ</th><th>สูตร</th><th>ทดสอบ</th><th>ถูก</th><th>อัตราถูก</th><th>เลขเรียงงวดถัดไป</th></tr></thead><tbody id="tbody"></tbody></table></div></section></div><div id="trend-stats-page" class="app-page" hidden><section class="card" id="trendStatsSection"><h2>📈 สถิติสูตรย้อนหลัง — สูง ต่ำ คู่ คี่</h2><p class="muted">ตรวจสูตรย้อนหลังแต่ละประเภทแยกกัน โดยจัดอันดับตามจำนวนครั้งที่ทายประเภทถูก • กดสูตรเพื่อดูผลรายงวด และผลคาดการณ์งวดถัดไป</p><div class="controls"><label for="trendStatType">เลือกประเภท <select id="trendStatType"><option value="hundred">สูง–ต่ำหลักร้อย</option><option value="top">สูง–ต่ำบน</option><option value="bottom">สูง–ต่ำล่าง</option><option value="oddTop">คู่–คี่บน</option><option value="oddBottom">คู่–คี่ล่าง</option></select></label><label for="trendStatCount">วิเคราะห์สูตรละ <select id="trendStatCount"><option value="1">1 ตัว</option><option value="2">2 ตัว</option><option value="3">3 ตัว</option><option value="4">4 ตัว</option><option value="5">5 ตัว</option><option value="6">6 ตัว</option><option value="7">7 ตัว</option><option value="8">8 ตัว</option><option value="9">9 ตัว</option></select></label><button type="button" id="trendStatRun">🔎 วิเคราะห์สถิติย้อนหลัง</button></div><p id="trendStatStatus" class="muted" role="status">กรอกผลย้อนหลังในหน้าวิเคราะห์สูตร แล้วกดวิเคราะห์สถิติย้อนหลัง</p><div id="trendStatButtons" class="multi-history-list"></div><div id="trendStatDetail" class="multi-history-detail"></div><p class="trend-note">เกณฑ์หลักร้อย 000–449 ต่ำ, 500–999 สูง และ 450–499 ไม่จัดกลุ่ม • คะแนนย้อนหลังไม่รับประกันผลถัดไป</p></section></div><div id="analysis-page" class="app-page"><section class="card"><h2>1. กรอกผลย้อนหลัง</h2><p class="muted">เรียงจากงวดเก่าไปงวดใหม่ • วางได้ทั้ง 123-45, 123 45, 12345 หรือคัดลอกจากเว็บที่มีชื่อหวย/วันที่ และแยกเลข 3 ตัวบนกับ 2 ตัวล่างคนละบรรทัด</p><div class="history-picker"><label for="historySourceSearch"><strong>ค้นหาและเลือกผลย้อนหลัง</strong></label><input id="historySourceSearch" type="search" placeholder="ค้นหา เช่น ลาว ฮานอย นิเคอิ VIP" autocomplete="off"><select id="historySourceSelect" aria-label="เลือกรายชื่อผลย้อนหลัง"><option value="">— เลือกรายชื่อเพื่อเปิดเว็บไซต์อัตโนมัติ —</option></select><small>เมื่อเลือกรายชื่อ โปรแกรมจะเปิดเว็บไซต์ผลย้อนหลังในแท็บใหม่ โดยไม่แก้ไขข้อมูลที่กรอกไว้</small></div><div class="controls" style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap"><a href="https://exphuay.com/result" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#15803d,#22c55e);color:#fff;text-decoration:none;font-weight:700">ดูผลล่าสุดเว็บ EXP</a><a href="https://newformula.info/Reporthoon/Report.php" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#b91c1c,#ef4444);color:#fff;text-decoration:none;font-weight:700">ดูผลล่าสุดเว็บ Newformula</a></div><textarea id="history" spellcheck="false" placeholder="123-45&#10;123 45&#10;12345&#10;ลาว HD | 12 พ.ย. 69&#10;062&#10;13"></textarea><div class="controls" style="margin-top:12px"><label for="historyPasteOrder" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">ลำดับข้อมูลที่วาง <select id="historyPasteOrder" aria-label="เลือกลำดับผลย้อนหลัง"><option value="oldFirst">บนลงล่าง (บนสุดเก่า → ล่างสุดใหม่)</option><option value="newFirst">ล่างขึ้นบน (บนสุดใหม่ → ล่างสุดเก่า)</option></select></label><button type="button" onclick="formatHistoryInput()" class="secondary">✨ จัดรูปแบบเป็น 123-45</button><button type="button" onclick="reverseHistoryOrder()" class="secondary">🔃 กลับลำดับบน–ล่าง</button><button onclick="clearHistory()" class="secondary">ล้างข้อมูล</button></div></section>
+<section class="card"><h2>2. ตั้งค่าการวิเคราะห์</h2><div class="controls"><label>วิเคราะห์หลัก<select id="target"><option value="hundred">ร้อย</option><option value="ten">สิบ</option><option value="unit">หน่วย</option><option value="lowerTen">สิบล่าง</option><option value="lowerUnit">หน่วยล่าง</option><option value="top3">ร้อยสิบหน่วย</option><option value="top2">สิบหน่วย</option><option value="bottom2">สิบล่างหน่วยล่าง</option><option value="topBottom" selected>บนล่าง</option></select></label><label>จำนวนเลขเด่น<select id="count"></select></label><input id="topN" type="hidden" value="99"><label>เรียงอันดับ<select id="sort"><option value="rate">อัตราถูก (%)</option><option value="hits">จำนวนครั้งถูก</option></select></label></div><p class="muted">สูตรคำนวณจากผลของงวดก่อนหน้า เพื่อเทียบกับผลของงวดถัดไป (ไม่ใช้ข้อมูลงวดที่ต้องทาย)</p><button id="run" class="analyze-main-button" onclick="analyze()">🔎 วิเคราะห์สูตร</button><div id="status"></div></section>
 <section class="card" id="summary" hidden><h2>3. สรุปผลการวิเคราะห์</h2><div class="stats" id="stats"></div><div class="two"><div><h3>เลขเด่นจากสูตรอันดับ 1 (รวมสูตรที่มีอัตราถูกสูงสุดเท่ากัน)</h3><div class="digits" id="digits"></div><div id="secondaryDigitsBlock" class="secondary-digits-block" hidden><h4>เลขรอง (รวมเด่นและรองไม่เกิน 7 ตัว)</h4><div class="secondary-digits" id="secondaryDigits"></div></div></div><div hidden aria-hidden="true"><div id="votes"></div><div id="voteSequence"></div></div></div><div id="aiMode" class="ai-mode"><h3>🤖 โหมด AI วิเคราะห์แนวโน้มเลขเด่น</h3><p class="muted">วิเคราะห์สถิติผลย้อนหลังของหวยที่เลือก แยกหลักร้อย สิบ หน่วย สิบล่าง และหน่วยล่าง โดยให้น้ำหนักงวดล่าสุดและตรวจรูปแบบการเปลี่ยนเลข (เป็นการประเมินเชิงสถิติ ไม่ใช่ AI ออนไลน์หรือการทำนายผลที่แน่นอน)</p><div class="controls"><button type="button" id="aiLoadBtn">🤖 โหลด AI วิเคราะห์เลขเด่น</button><button type="button" id="aiCopyBtn" class="secondary">📋 คัดลอกผล AI</button><span id="aiStatus" class="muted"></span></div><div id="aiOutput" aria-live="polite"></div><div id="aiLuckySets" class="lucky-sets" hidden><h3>🤖 จัดกลุ่มเลขเด่น AI แยกตามหลัก</h3><p class="lucky-note">จับคู่เลขเด่น 3 ตัวของแต่ละหลักตามลำดับร้อย–สิบ–หน่วย และสิบล่าง–หน่วยล่าง โดยคงเลขซ้ำได้</p><div class="lucky-grid"><div class="lucky-panel"><h4>AI 3 ตัวบน <span id="aiLucky3Count"></span></h4><div class="ai-source" id="aiLucky3Source"></div><div class="lucky-numbers" id="aiLucky3"></div><button type="button" class="lucky-copy" data-copy-ai="aiLucky3">📋 คัดลอก 3 ตัวบน</button></div><div class="lucky-panel"><h4>AI 2 ตัวบน <span id="aiLucky2TopCount"></span></h4><div class="ai-source" id="aiLucky2TopSource"></div><div class="lucky-numbers" id="aiLucky2Top"></div><button type="button" class="lucky-copy" data-copy-ai="aiLucky2Top">📋 คัดลอก 2 ตัวบน</button></div><div class="lucky-panel"><h4>AI 2 ตัวล่าง <span id="aiLucky2BottomCount"></span></h4><div class="ai-source" id="aiLucky2BottomSource"></div><div class="lucky-numbers" id="aiLucky2Bottom"></div><button type="button" class="lucky-copy" data-copy-ai="aiLucky2Bottom">📋 คัดลอก 2 ตัวล่าง</button></div></div></div></div></section>
-<section class="card" id="multiSection"><h2>4. วิเคราะห์เลขเด่นแยกตามหลัก</h2><p class="muted">เลือกจำนวนเลขที่ใช้ทดสอบสูตร 1–9 ตัวแยกแต่ละหลัก แล้วกำหนดจำนวนเลขเด่นที่ต้องการแสดง 1–9 ตัว โปรแกรมจะรวบรวมเลขจากสูตรที่มีผลย้อนหลังดีที่สุดตามลำดับ</p><div class="tablewrap"><table class="multi-table"><thead><tr><th>เลือกจำนวนผล</th><th>หลัก</th><th>เด่น</th><th>สถิติสูตรอันดับ 1 / สูตรย้อนหลัง</th><th>วิเคราะห์สูตรละ</th></tr></thead><tbody id="multiBody"></tbody><tfoot><tr class="vote-four-row"><td>4 ตัว</td><td><strong>วัดใจบนล่าง</strong></td><td id="multiVoteFour" class="vote-four-digits" aria-live="polite">—</td><td>คะแนนโหวตสูงสุด 4 ตัว</td><td>—</td></tr></tfoot></table></div><div id="multiHistoryPanel" class="multi-history-panel" hidden aria-live="polite"></div><div class="controls" style="margin-top:14px"><button type="button" id="multiRun">🔎 วิเคราะห์เลขแยกหลัก</button><button type="button" id="multiCopy" class="secondary">📋 คัดลอกตารางเลขเด่น</button><span id="multiStatus" class="muted"></span></div></section>
+<section class="card" id="multiSection"><h2>4. วิเคราะห์เลขเด่นแยกตามหลัก</h2><p class="muted">เลือกจำนวนเลขที่ใช้ทดสอบสูตร 1–9 ตัวแยกแต่ละหลัก แล้วกำหนดจำนวนเลขเด่นที่ต้องการแสดง 1–9 ตัว โปรแกรมจะรวบรวมเลขจากสูตรที่มีผลย้อนหลังดีที่สุดตามลำดับ</p><div class="tablewrap"><table class="multi-table"><thead><tr><th>เลือกจำนวนผล</th><th>หลัก</th><th>เด่น</th><th>สถิติสูตรอันดับ 1 / สูตรย้อนหลัง</th><th>วิเคราะห์สูตรละ</th></tr></thead><tbody id="multiBody"></tbody></table></div><div id="multiHistoryPanel" class="multi-history-panel" hidden aria-live="polite"></div><div class="controls" style="margin-top:14px"><button type="button" id="multiRun">🔎 วิเคราะห์เลขแยกหลัก</button><button type="button" id="multiCopy" class="secondary">📋 คัดลอกตารางเลขเด่น</button><span id="multiStatus" class="muted"></span></div></section>
+<section class="card" id="trendSection" aria-labelledby="trendHeading">
+<h2 id="trendHeading">📈 ทำนายงวดถัดไป — สูง ต่ำ คู่ คี่</h2>
+<p class="muted">วิเคราะห์จากสูตรที่ทำผลงานย้อนหลังดีที่สุดในแต่ละหลัก โดยใช้เลขคาดการณ์ 1 ตัวต่อสูตร และสรุปเสียงส่วนใหญ่จาก 30 สูตรอันดับแรกของแต่ละหลัก</p>
+<div class="controls"><button type="button" id="trendOpenStats">📊 ดูสูตรย้อนหลัง / สถิติสูงต่ำคู่คี่</button></div><div class="trend-grid" id="trendGrid"><p>กรอกผลย้อนหลังอย่างน้อย 2 งวด แล้วกดวิเคราะห์สูตรเพื่อดูแนวโน้ม</p></div>
+<p class="trend-note">เกณฑ์หลักร้อย: 000–449 = ต่ำ, 500–999 = สูง, 450–499 = ไม่จัดกลุ่ม | บนและล่าง: 00–49 = ต่ำ, 50–99 = สูง | คู่–คี่ดูเลขหลักหน่วยของผลบนและล่าง • ผลย้อนหลังไม่รับประกันงวดถัดไป</p>
+</section>
 <section class="card" id="fourCheckSection"><h2>5. สรุปผลการวิเคราะห์จาก 4 ข้อมูล (000–999)</h2><p class="muted">ตรวจสอบเลข 3 ตัวครบ 1,000 ชุด โดยใช้เลขเด่น ร้อย (ร), สิบ (ส), หน่วย (น) และ สิบหน่วย (สน) จากส่วนที่ 4 หรือกรอกชุดเลขเพื่อทดสอบเอง</p><div class="four-controls"><label>หลักร้อย (ร)<input id="fourH" inputmode="numeric" maxlength="10" value="0123456"></label><label>หลักสิบ (ส)<input id="fourT" inputmode="numeric" maxlength="10" value="789012345"></label><label>หลักหน่วย (น)<input id="fourU" inputmode="numeric" maxlength="10" value="890123456"></label><label>สิบหน่วย (สน)<input id="fourP" inputmode="numeric" maxlength="10" value="45678"></label></div><label class="toggle-condition"><input type="checkbox" id="fourUseP" checked> ใช้เงื่อนไขสิบหน่วย (สน) วิเคราะห์เลข 3 ตัวบน</label><div class="controls" style="margin-top:14px"><button type="button" class="sync-prominent" id="fourReload">✦ จัดกลุ่มเลข</button><button type="button" class="secondary" id="fourCopy">คัดลอก</button></div><p class="muted" id="fourStatus">ตัวอย่างเลขตามที่กำหนดไว้ พร้อมคำนวณได้ทันที</p><div class="group-filters" id="threeFilters" aria-label="ตัวกรองเลข 3 ตัว"></div><div class="four-summary" id="fourStats"></div><div id="fourResults"></div><div id="twoDigitSection" style="margin-top:24px;border-top:3px solid #cf1837;padding-top:18px"><h2>วิเคราะห์เลข 2 ตัว (บน / ล่าง)</h2><p class="muted">ตรวจสอบหลักสิบ หลักหน่วย และเงื่อนไขสิบหน่วย โดยต้องผ่านทั้ง 3 ข้อมูล (อย่างน้อยหนึ่งหลักอยู่ในชุดสิบหน่วย)</p><div class="group-filters" id="twoFilters" aria-label="ตัวกรองเลข 2 ตัว"></div><div id="twoPanels"></div></div></section>
 </main><script>
 
@@ -591,8 +644,65 @@ document.querySelectorAll('[data-copy-lucky]').forEach(btn=>btn.addEventListener
 
 const names=['ร้อย','สิบ','หน่วย','สิบล่าง','หน่วยล่าง'];const fields=['hundred','ten','unit','lowerTen','lowerUnit'];const targets={hundred:[0],ten:[1],unit:[2],lowerTen:[3],lowerUnit:[4],top3:[0,1,2],top2:[1,2],bottom2:[3,4],topBottom:[1,2,3,4]};const key='lucky999_history_v1';let ranked=[];let latest=[];let lastCount=7;
 function buildFormulas(){const out=[],LIMIT=9999;function combinations(start,depth,arr){if(out.length>=LIMIT)return;if(depth===0){out.push([...arr]);return;}for(let i=start;i<5&&out.length<LIMIT;i++){arr.push(i);combinations(i,depth-1,arr);arr.pop();}}for(let d=1;out.length<LIMIT;d++)combinations(0,d,[]);return out;}const formulas=buildFormulas();
-function parse(){let lines=document.getElementById('history').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let bad=[];let rows=[];lines.forEach((line,i)=>{let m=line.match(/^(\d{3})\s*[-–/ ]\s*(\d{2})$/);if(!m){bad.push(i+1);return;}rows.push((m[1]+m[2]).split('').map(Number));});if(bad.length)throw Error('รูปแบบไม่ถูกต้องที่บรรทัด '+bad.slice(0,12).join(', '));return rows;}
-function seed(row,formula){let s=0;for(const i of formula)s+=row[i];return s%10;}function picks(start,n){return Array.from({length:n},(_,i)=>(start+i)%10);}function hit(pred,row,target){return target.some(i=>pred.includes(row[i]));}function pct(a,b){return b? (100*a/b).toFixed(1)+'%':'—';}
+function normalizeHistoryInput(raw){
+ const lines=raw.replace(/\r/g,'').split('\n');
+ const results=[],bad=[];
+ let pending=null;
+ for(let i=0;i<lines.length;i++){
+  const line=lines[i].trim();
+  if(!line)continue;
+  // Accept several complete results on one line, separated by commas or semicolons.
+  const pieces=line.split(/[,，;；]+/).map(x=>x.trim()).filter(Boolean);
+  for(const part of pieces){
+   const full=part.match(/^(\d{3})\s*[-–—/\s]\s*(\d{2})$/) || part.match(/^(\d{5})$/);
+   if(full){
+    if(pending){bad.push(pending.line);pending=null;}
+    results.push(full[2] ? full[1]+'-'+full[2] : full[1].slice(0,3)+'-'+full[1].slice(3));
+    continue;
+   }
+   // A 3-digit top result and a 2-digit bottom result may occupy separate lines.
+   if(/^\d{3}$/.test(part)){
+    if(pending)bad.push(pending.line);
+    pending={top:part,line:i+1};continue;
+   }
+   if(/^\d{2}$/.test(part)){
+    if(pending){results.push(pending.top+'-'+part);pending=null;}
+    else bad.push(i+1);
+    continue;
+   }
+   // Ignore labels/dates (e.g. ลาว HD | 12 พ.ย. 69), but flag stray numerical content.
+   if(/^[\d\s\-–—/]+$/.test(part))bad.push(i+1);
+  }
+ }
+ if(pending)bad.push(pending.line);
+ if(bad.length)throw Error('ตรวจสอบเลขที่บรรทัด '+[...new Set(bad)].slice(0,12).join(', ')+' (ต้องมี 3 ตัวบนและ 2 ตัวล่างครบคู่)');
+ return results;
+}
+function orderedHistoryResults(){
+ const results=normalizeHistoryInput(document.getElementById('history').value);
+ return document.getElementById('historyPasteOrder')?.value==='newFirst'?results.reverse():results;
+}
+function parse(){return orderedHistoryResults().map(result=>result.replace('-','').split('').map(Number));}
+function reverseHistoryOrder(){
+ try{
+  const el=document.getElementById('history');
+  const results=normalizeHistoryInput(el.value).reverse();
+  el.value=results.join('\n');
+  const picker=document.getElementById('historyPasteOrder');picker.value=picker.value==='newFirst'?'oldFirst':'newFirst';
+  el.dispatchEvent(new Event('input',{bubbles:true}));
+  alert('กลับลำดับผลย้อนหลังเรียบร้อย '+results.length+' งวด');
+ }catch(e){alert('⚠ '+e.message);}
+}
+function formatHistoryInput(){
+ try{
+  const normalized=orderedHistoryResults();
+  const el=document.getElementById('history');el.value=normalized.join('\n');
+  document.getElementById('historyPasteOrder').value='oldFirst';
+  el.dispatchEvent(new Event('input',{bubbles:true}));
+  alert('จัดรูปแบบผลย้อนหลังเรียบร้อย '+normalized.length+' งวด');
+ }catch(e){alert('⚠ '+e.message);}
+}
+function seed(row,formula){let s=0;for(const i of formula)s+=row[i];return s%10;}function picks(start,n){return Array.from({length:n},(_,i)=>(start+i)%10);}function hit(pred,row,target){return target.some(i=>pred.includes(row[i]));}function hitMultiStrict(pred,row,target,id){return (id==='topWin'||id==='bottomWin')?target.every(i=>pred.includes(row[i])):hit(pred,row,target)}function pct(a,b){return b? (100*a/b).toFixed(1)+'%':'—';}
 function updateSummaryFormulaCount(value){
  const n=Math.max(1,Math.min(9999,Math.trunc(Number(value)||1)));
  const source=document.getElementById('topN');
@@ -600,7 +710,7 @@ function updateSummaryFormulaCount(value){
  if(document.getElementById('history').value.trim()) analyze();
 }
 function analyze(){try{const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด เพื่อทดสอบสูตร');const count=+document.getElementById('count').value;const target=targets[document.getElementById('target').value];const selectedTarget=document.getElementById('target');const sort=document.getElementById('sort').value;const total=rows.length-1;latest=rows.at(-1);lastCount=count;ranked=formulas.map((f,i)=>{let hits=0;for(let j=1;j<rows.length;j++){if(hit(picks(seed(rows[j-1],f),count),rows[j],target))hits++;}return {id:i+1,f,hits,total,rate:hits/total,next:picks(seed(latest,f),count)};});ranked.sort((a,b)=>sort==='hits'?(b.hits-a.hits||b.rate-a.rate||a.f.length-b.f.length||a.id-b.id):(b.rate-a.rate||b.hits-a.hits||a.f.length-b.f.length||a.id-b.id));const topN=Math.min(9999,Math.max(1,Math.trunc(Number(document.getElementById('topN').value)||99)));document.getElementById('topN').value=topN;const votes=Array(10).fill(0);ranked.slice(0,topN).forEach(r=>r.next.forEach(d=>votes[d]++));const order=Array.from({length:10},(_,i)=>i).sort((a,b)=>votes[b]-votes[a]||a-b);luckyVoteOrder=order.slice();const best=ranked[0].next;const tiedTop=ranked.filter(r=>r.hits===ranked[0].hits);const tiedDigits=[...new Set(tiedTop.flatMap(r=>r.next))];const primaryDigits=tiedDigits.slice(0,7);const secondaryNeeded=Math.max(0,7-primaryDigits.length);const secondaryDigits=[];const secondaryRates=new Map();for(const r of ranked){if(r.hits===ranked[0].hits)continue;for(const d of r.next){if(!primaryDigits.includes(d)&&!secondaryDigits.includes(d)){secondaryDigits.push(d);secondaryRates.set(d,pct(r.hits,total));if(secondaryDigits.length>=secondaryNeeded)break;}}if(secondaryDigits.length>=secondaryNeeded)break;}const tiedRate=pct(ranked[0].hits,total);document.getElementById('stats').innerHTML=`<div class="stat">งวดย้อนหลัง<strong>${rows.length}</strong></div><div class="stat">คู่ทดสอบ<strong>${total}</strong></div><div class="stat">สูตรอันดับ 1 ถูก<strong>${ranked[0].hits}/${total}</strong></div><div class="stat">อัตราถูกอันดับ 1<strong>${pct(ranked[0].hits,total)}</strong></div>`;document.getElementById('digits').innerHTML=primaryDigits.map(d=>`<div class="tied-digit-item"><small class="tied-digit-rate">${tiedRate}</small><span class="digit">${d}</span></div>`).join('');document.getElementById('secondaryDigits').innerHTML=secondaryDigits.map(d=>`<div class="secondary-digit-item"><small class="secondary-digit-rate">${secondaryRates.get(d)}</small><span class="secondary-digit">${d}</span></div>`).join('');document.getElementById('secondaryDigitsBlock').hidden=secondaryDigits.length===0;document.getElementById('votes').innerHTML=order.map(d=>`<div style="display:flex;align-items:center;gap:9px;margin:5px 0"><b style="width:20px">${d}</b><div style="height:13px;background:#dfe8ff;border-radius:6px;flex:1;overflow:hidden"><div style="height:100%;background:#5277df;width:${topN?votes[d]/topN*100:0}%"></div></div><span style="width:45px">${votes[d]}</span></div>`).join('');document.getElementById('voteSequence').innerHTML=order.map((d,i)=>`<span class="vote-sequence-digit" title="อันดับ ${i+1}: ${votes[d]} คะแนน">${d}</span>`).join('');renderLuckySets();document.getElementById('summary').hidden=false;document.getElementById('rankSection').hidden=false;document.getElementById('status').textContent=`วิเคราะห์สำเร็จ ${ranked.length} สูตร`;renderTable();analyzeMulti();localStorage.setItem(key,document.getElementById('history').value);}catch(e){document.getElementById('status').textContent='⚠ '+e.message;}}
-const multiTargets=[['hundred','ร้อย',7],['ten','สิบ',7],['unit','หน่วย',7],['lowerTen','สิบล่าง',3],['lowerUnit','หน่วยล่าง',3],['top3','ร้อยสิบหน่วย',7],['top2','สิบหน่วย',7],['bottom2','สิบล่างหน่วยล่าง',4],['topBottom','สิบหน่วยล่าง',4]];
+const multiTargets=[['hundred','ร้อย',7],['ten','สิบ',7],['unit','หน่วย',7],['lowerTen','สิบล่าง',3],['lowerUnit','หน่วยล่าง',3],['top3','ร้อยสิบหน่วย',7],['top2','สิบหน่วย',7],['topWin','วินบน',7],['bottom2','สิบล่างหน่วยล่าง',4],['bottomWin','วินล่าง',7],['topBottom','บนล่าง',4]];
 function initMulti(){const tbody=document.getElementById('multiBody');multiTargets.forEach(([id,label,initial])=>{let tr=document.createElement('tr');let td1=document.createElement('td');let sel=document.createElement('select');sel.id='multi-'+id;sel.setAttribute('aria-label','จำนวนเลขเด่น '+label);for(let n=1;n<=9;n++){let opt=document.createElement('option');opt.value=n;opt.textContent=n+' ตัว';sel.append(opt)}sel.value=localStorage.getItem('lucky999_multi_'+id)||initial;sel.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_'+id,sel.value);if(latest.length)analyzeMulti()});td1.append(sel);let tdFormula=document.createElement('td');let formulaSelect=document.createElement('select');formulaSelect.id='multi-formula-'+id;formulaSelect.setAttribute('aria-label','วิเคราะห์สูตรละกี่ตัว '+label);for(let k=1;k<=9;k++){const option=document.createElement('option');option.value=k;option.textContent=k+' ตัว';formulaSelect.append(option)}const savedFormula=localStorage.getItem('lucky999_multi_formula_'+id);formulaSelect.value= savedFormula&&Number(savedFormula)>=1&&Number(savedFormula)<=9?savedFormula:(localStorage.getItem('lucky999_multi_analysis_count')||'1');formulaSelect.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_formula_'+id,formulaSelect.value);if(latest.length)analyzeMulti()});tdFormula.append(formulaSelect);let td2=document.createElement('td');td2.textContent=label;let td3=document.createElement('td');td3.id='multi-out-'+id;td3.textContent='—';let td4=document.createElement('td');td4.id='multi-stat-'+id;td4.textContent='—';const view=document.createElement('button');view.type='button';view.className='multi-history-button';view.textContent='📊 ดูสูตรย้อนหลัง';view.addEventListener('click',()=>showMultiHistory(id));td4.append(document.createElement('br'),view);tr.append(td1,td2,td3,td4,tdFormula);tbody.append(tr)});document.getElementById('multiRun').addEventListener('click',analyzeMulti)}
 function compactFormulaName(f){
  const symbols=['ร','ส','น','สล','นล'];
@@ -615,7 +725,7 @@ function showMultiHistory(id,refresh=false){
  const data=multiHistoryCache[id];if(!data){panel.hidden=false;panel.textContent='กรุณากดวิเคราะห์เลขแยกหลักก่อน';return}
  multiHistoryOpen=id;panel.hidden=false;panel.replaceChildren();
  const heading=document.createElement('h3');heading.textContent='📊 สูตรย้อนหลัง — '+data.label;panel.append(heading);
- const note=document.createElement('p');note.textContent='วิเคราะห์สูตรละ '+data.perFormula+' ตัว | ผลย้อนหลัง '+data.rows.length+' งวด | คลิกสูตรเพื่อดูผลตรวจย้อนหลังทีละงวด';panel.append(note);
+ const note=document.createElement('p');note.textContent=(id==='topWin'?'เงื่อนไข: ต้องถูกทั้งหลักสิบและหลักหน่วยในงวดเดียวกัน • ':id==='bottomWin'?'เงื่อนไข: ต้องถูกทั้งหลักสิบล่างและหลักหน่วยล่างในงวดเดียวกัน • ':'')+'วิเคราะห์สูตรละ '+data.perFormula+' ตัว | ผลย้อนหลัง '+data.rows.length+' งวด | คลิกสูตรเพื่อดูผลตรวจย้อนหลังทีละงวด';panel.append(note);
  const close=document.createElement('button');close.type='button';close.className='secondary';close.textContent='ปิดรายละเอียด';close.onclick=()=>{panel.hidden=true;multiHistoryOpen=null};panel.append(close);
  const list=document.createElement('div');list.className='multi-history-list';panel.append(list);
  const detail=document.createElement('div');detail.className='multi-history-detail';panel.append(detail);
@@ -623,7 +733,7 @@ function showMultiHistory(id,refresh=false){
  data.candidates.slice(0,20).forEach((candidate,index)=>{const btn=document.createElement('button');btn.type='button';btn.className='multi-history-formula';btn.textContent='#'+(index+1)+' · '+compactFormulaName(candidate.f)+' · ถูก '+candidate.hits+'/'+(data.rows.length-1);btn.title='สูตร '+(candidate.i+1)+' — คลิกดูผลย้อนหลัง';btn.onclick=()=>{
  detail.replaceChildren();const title=document.createElement('h4');title.textContent='ผลย้อนหลังสูตร '+(candidate.i+1)+' — '+compactFormulaName(candidate.f);detail.append(title);
  const wrap=document.createElement('div');wrap.className='multi-history-scroll';const table=document.createElement('table');const head=document.createElement('tr');['งวดที่ตรวจ','งวดก่อนหน้า','เลขเด่นที่คำนวณ','ผลที่ออก','สถานะ'].forEach(v=>makeCell(head,v,'th'));table.append(head);
- for(let j=1;j<data.rows.length;j++){const prev=data.rows[j-1],current=data.rows[j],pred=picks(seed(prev,candidate.f),data.perFormula),ok=hit(pred,current,data.target),tr=document.createElement('tr');[j,prev.slice(0,3).join('')+'-'+prev.slice(3).join(''),pred.join(','),current.slice(0,3).join('')+'-'+current.slice(3).join(''),ok?'ถูก':'ไม่ถูก'].forEach(v=>makeCell(tr,v));tr.className=ok?'multi-hit':'multi-miss';table.append(tr)}
+ for(let j=1;j<data.rows.length;j++){const prev=data.rows[j-1],current=data.rows[j],pred=picks(seed(prev,candidate.f),data.perFormula),ok=hitMultiStrict(pred,current,data.target,id),tr=document.createElement('tr');[j,prev.slice(0,3).join('')+'-'+prev.slice(3).join(''),pred.join(','),current.slice(0,3).join('')+'-'+current.slice(3).join(''),ok?'ถูก':'ไม่ถูก'].forEach(v=>makeCell(tr,v));tr.className=ok?'multi-hit':'multi-miss';table.append(tr)}
  const next=document.createElement('tr');['ถัดไป',data.rows.at(-1).slice(0,3).join('')+'-'+data.rows.at(-1).slice(3).join(''),candidate.next.join(','),'รอผล','—'].forEach(v=>makeCell(next,v));table.append(next);wrap.append(table);detail.append(wrap);};list.append(btn);if(index===0)btn.click()});
  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -632,10 +742,10 @@ function analyzeMulti(){try{
  const last=rows[rows.length-1],total=rows.length-1;
  for(const [id,label] of multiTargets){
   const perFormula=Number(document.getElementById('multi-formula-'+id).value)||1;
-  const n=Number(document.getElementById('multi-'+id).value),target=targets[id];
+  const n=Number(document.getElementById('multi-'+id).value),target=id==='topWin'?[1,2]:id==='bottomWin'?[3,4]:targets[id];
   const candidates=formulas.map((f,i)=>{
    let hits=0;
-   for(let j=1;j<rows.length;j++)if(hit(picks(seed(rows[j-1],f),perFormula),rows[j],target))hits++;
+   for(let j=1;j<rows.length;j++)if(hitMultiStrict(picks(seed(rows[j-1],f),perFormula),rows[j],target,id))hits++;
    return {f,i,hits,next:picks(seed(last,f),perFormula)};
   });
   candidates.sort((a,b)=>b.hits-a.hits||a.f.length-b.f.length||a.i-b.i);
@@ -820,18 +930,75 @@ restore();makeFilters('manualThreeFilters','threeMode',calcThree);makeFilters('m
 </script><script>
 (function(){
 const button=document.getElementById('multiCopy');if(!button)return;
-button.addEventListener('click',async()=>{
+const labelPairs=[['hundred','ร้อย'],['ten','สิบ'],['unit','หน่วย'],['lowerTen','สิบล่าง'],['lowerUnit','หน่วยล่าง'],['top3','ร้อยสิบหน่วย'],['top2','สิบหน่วย'],['topWin','วินบน'],['bottom2','สิบล่างหน่วยล่าง'],['bottomWin','วินล่าง'],['topBottom','บนล่าง']];
+function collect(){
  const selected=localStorage.getItem('lucky999_selected_history_source')||'';
  const picker=document.getElementById('historySourceSelect');
- const selectedOption=picker&&Array.from(picker.options).find(o=>o.value===selected);
- const lottery=selectedOption?selectedOption.textContent.replace(/ \(ที่เลือกไว้\)$/,''):'ยังไม่ได้เลือกชื่อหวย';
- const labels=[['hundred','ร้อย'],['ten','สิบ'],['unit','หน่วย'],['lowerTen','สิบล่าง'],['lowerUnit','หน่วยล่าง'],['top3','ร้อยสิบหน่วย'],['top2','สิบหน่วย'],['bottom2','สิบหน่วยล่าง'],['topBottom','บนล่าง']];
- const rows=[['รายการ',lottery],['หลัก','เด่น']];
- for(const [id,label] of labels){const cell=document.getElementById('multi-out-'+id);const value=cell?[...cell.querySelectorAll('.multi-digit')].map(x=>x.textContent.trim()).join(''):'';rows.push([label,value||'—'])}
- const vote=document.getElementById('multiVoteFour');rows.push(['วัดใจบนล่าง',vote?[...vote.querySelectorAll('.multi-digit')].map(x=>x.textContent.trim()).join('')||'—':'—']);
- const tsv=rows.map(r=>r.join('\t')).join('\n');
- try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(tsv);alert('คัดลอกตารางแล้ว สามารถวางใน Excel ได้ทันที')}else throw Error('clipboard unavailable')}
- catch(e){const ta=document.createElement('textarea');ta.value=tsv;ta.style.position='fixed';ta.style.left='-9999px';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(ok)alert('คัดลอกตารางแล้ว สามารถวางใน Excel ได้ทันที');else prompt('คัดลอกตารางเลขเด่น',tsv)}
+ const option=picker&&Array.from(picker.options).find(o=>o.value===selected);
+ const lottery=option?option.textContent.replace(/ \(ที่เลือกไว้\)$/,''):'ยังไม่ได้เลือกชื่อหวย';
+ const primary=[...document.querySelectorAll('#digits .tied-digit-item .digit')].map(e=>e.textContent.trim()).filter(Boolean);
+ const secondary=[...document.querySelectorAll('#secondaryDigits .secondary-digit-item .secondary-digit')].map(e=>e.textContent.trim()).filter(Boolean);
+ const rows=[['รายการ',lottery],['เลขเด่น บนล่าง',primary.join(' ')||'—'],['วินบนล่าง',[...primary,...secondary].join(' ')||'—'],['หลัก','เด่น']];
+ for(const [id,label] of labelPairs){const cell=document.getElementById('multi-out-'+id);const value=cell?[...cell.querySelectorAll('.multi-digit')].map(e=>e.textContent.trim()).join(''):'';rows.push([label,value||'—']);}
+ return rows;
+}
+function draw(rows){
+ const width=1100,scale=2,pad=24,rowH=77,featuredH=132,headerH=142,height=headerH+rows.length*rowH+(featuredH-rowH)+54;
+ const canvas=document.createElement('canvas');canvas.width=width*scale;canvas.height=height*scale;
+ const ctx=canvas.getContext('2d');ctx.scale(scale,scale);
+ function round(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
+ function grad(x,y,w,h,colors){const g=ctx.createLinearGradient(x,y,x+w,y+h);colors.forEach(([at,c])=>g.addColorStop(at,c));return g}
+ // พื้นหลังแดง–ดำแนวไฟ ไล่น้ำหนักแดงเข้ม แดงเพลิง ส้มทอง
+ ctx.fillStyle=grad(0,0,width,height,[[0,'#09070b'],[.32,'#380509'],[.68,'#b0140a'],[1,'#160408']]);ctx.fillRect(0,0,width,height);
+ // ประกายไฟและแสงไฟรอบขอบภาพ (กำหนดตำแหน่งคงที่ทุกครั้ง)
+ for(let k=0;k<56;k++){const x=24+(k*173)%1050,y=24+(k*241)%(height-45),r=2+(k%4)*1.4;ctx.save();ctx.globalAlpha=.35+(k%5)*.11;ctx.shadowColor=k%3?'#ff4a12':'#ffda57';ctx.shadowBlur=18;ctx.fillStyle=k%3?'#ff6b20':'#ffe48c';ctx.beginPath();ctx.ellipse(x,y,r*.6,r*1.7,-.3,0,Math.PI*2);ctx.fill();ctx.restore()}
+ for(let k=0;k<8;k++){const x=(k*171+47)%width,y=(k%2?height-35:height*.15);const glow=ctx.createRadialGradient(x,y,0,x,y,155);glow.addColorStop(0,'#ff7a1944');glow.addColorStop(1,'#ff380000');ctx.fillStyle=glow;ctx.fillRect(x-155,y-155,310,310)}
+ ctx.save();ctx.shadowColor='#ff5c00';ctx.shadowBlur=35;ctx.strokeStyle='#ffbb4d';ctx.lineWidth=5;round(12,12,width-24,height-24,28);ctx.stroke();ctx.restore();
+ const banner=grad(pad,24,width-pad*2,100,[[0,'#2b0307'],[.45,'#c4150a'],[.75,'#ff5d11'],[1,'#420509']]);
+ ctx.save();ctx.shadowColor='#ff6b1c';ctx.shadowBlur=28;ctx.fillStyle=banner;round(pad,27,width-pad*2,90,27);ctx.fill();ctx.lineWidth=4;ctx.strokeStyle='#ffd277';ctx.stroke();ctx.restore();
+ ctx.textBaseline='middle';ctx.textAlign='center';ctx.shadowColor='#220000';ctx.shadowBlur=5;ctx.fillStyle='#fff';ctx.font='900 39px "Noto Sans Thai",Tahoma,sans-serif';ctx.fillText('✦ สูตรวิเคราะห์ขั้นเทพ • ตารางเลขเด่น ✦',width/2,73);ctx.shadowBlur=0;
+ const split=382;
+ rows.forEach(([left,right],i)=>{
+  const y=headerH+i*rowH+(i>1?featuredH-rowH:0),h=(i===1?featuredH:rowH)-7;
+  let colors,edge,glow;
+  if(i===0){colors=[[0,'#39060a'],[.48,'#c5210c'],[1,'#6a0808']];edge='#ffb94c';glow='#ff5018'}
+  else if(i===1){colors=[[0,'#511008'],[.48,'#f94a08'],[1,'#9b1008']];edge='#ffdc57';glow='#ff8c12'}
+  else if(i===2){colors=[[0,'#3a0a0b'],[.48,'#b61a0b'],[1,'#ed5815']];edge='#ffac58';glow='#ff4b17'}
+  else if(i===3){colors=[[0,'#26090e'],[.5,'#9d140d'],[1,'#52100b']];edge='#ffb758';glow='#ff541b'}
+  else if(left==='วินบน'||left==='วินล่าง'){colors=[[0,'#c9f4ff'],[.5,'#8cddf5'],[1,'#d7f7ff']];edge='#66d9ff';glow='#62d9ff'}
+  else{colors=[[0,'#0c0b11'],[.48,'#371015'],[1,'#690f0d']];edge='#f25c30';glow='#df270e'}
+  ctx.save();ctx.shadowColor=glow;ctx.shadowBlur=15;ctx.fillStyle=grad(pad,y,width-pad*2,h,colors);round(pad,y,width-pad*2,h,19);ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=edge;ctx.stroke();ctx.restore();
+  ctx.beginPath();ctx.moveTo(pad+split-12,y+8);ctx.lineTo(pad+split-12,y+h-8);ctx.strokeStyle=(left==='วินบน'||left==='วินล่าง')?'#289bc0':'#ff9c48';ctx.lineWidth=2;ctx.stroke();
+  ctx.textAlign='left';ctx.shadowColor='#150000';ctx.shadowBlur=3;
+  ctx.fillStyle=(left==='วินบน'||left==='วินล่าง')?'#103b57':(i===1?'#fff2a3':'#fff');ctx.font='900 '+(i===1||i===2?30:28)+'px "Noto Sans Thai",Tahoma,sans-serif';ctx.fillText(left,pad+23,y+h/2);
+  if(i===1){
+   // เลขเด่นบนล่าง: ตัวเลขใหญ่ที่สุดในภาพ พร้อมแสงไฟสีทองสว่าง
+   ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';
+   const cx=pad+split+(width-pad*2-split)/2;
+   const maxW=width-pad*2-split-34;
+   const size=Math.min(104,Math.max(52,Math.floor(104*Math.min(1,maxW/(Math.max(1,right.length)*68)))));
+   ctx.font='1000 '+size+'px "Noto Sans Thai",Tahoma,sans-serif';
+   ctx.lineJoin='round';ctx.lineWidth=9;ctx.strokeStyle='#4a0700';ctx.shadowColor='#ff4b00';ctx.shadowBlur=32;
+   ctx.strokeText(right,cx,y+h/2,maxW);
+   ctx.fillStyle='#fff75c';ctx.shadowColor='#ffe600';ctx.shadowBlur=32;ctx.fillText(right,cx,y+h/2,maxW);
+   ctx.shadowBlur=11;ctx.fillStyle='#ffffff';ctx.fillText(right,cx,y+h/2,maxW);
+   ctx.restore();
+  }else{
+   ctx.fillStyle=(left==='วินบน'||left==='วินล่าง')?'#103b57':(i===2?'#ffe19a':'#fff');ctx.font='900 '+(i===2?44:35)+'px "Noto Sans Thai",Tahoma,sans-serif';ctx.fillText(right,pad+split+10,y+h/2,width-pad*2-split-30);ctx.shadowBlur=0;
+  }
+ });
+ return canvas;
+}
+async function copyImage(canvas){
+ if(!navigator.clipboard||!window.ClipboardItem||!navigator.clipboard.write||!window.isSecureContext)throw Error('เบราว์เซอร์ไม่รองรับการคัดลอกรูปภาพในหน้านี้');
+ const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('สร้างภาพไม่สำเร็จ')),'image/png'));
+ await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+}
+function saveImage(canvas){const a=document.createElement('a');a.download='ตารางเลขเด่น-แดงดำไฟ-สูตรวิเคราะห์ขั้นเทพ.png';a.href=canvas.toDataURL('image/png');document.body.append(a);a.click();a.remove()}
+button.addEventListener('click',async()=>{
+ const rows=collect();const canvas=draw(rows);
+ try{await copyImage(canvas);alert('คัดลอกภาพตารางเรียบร้อยแล้ว สามารถกดวาง (Ctrl+V) ในแอปที่รองรับรูปภาพได้')}
+ catch(e){saveImage(canvas);alert('เบราว์เซอร์ไม่อนุญาตให้คัดลอกรูปภาพโดยตรง จึงดาวน์โหลดภาพ PNG ให้แทน สามารถนำภาพไปส่งหรือแทรกในเอกสารได้')}
 });
 })();
 </script><script id="results-page-script">(function(){
@@ -862,7 +1029,91 @@ document.getElementById('linkgrid').addEventListener('click',e=>{const a=e.targe
 document.getElementById('resultReload').addEventListener('click',()=>{if(!current)return;frame.src='about:blank';setTimeout(()=>{frame.src=current},30)});
 const originalClear=window.clearHistory;if(typeof originalClear==='function')window.clearHistory=function(){originalClear();refresh(localStorage.getItem(selectedKey)||'')};
 refresh(localStorage.getItem(selectedKey)||'');
-})();</script><script id="theme-selection-script">(function(){const picker=document.getElementById('themeSelect');if(!picker)return;const valid=['red','blue','green','purple','gold','light','pinkpop','candy','lavender','mintpop','sunshine'];let saved='red';try{saved=localStorage.getItem('sut9999_theme')||'red'}catch(e){}if(!valid.includes(saved))saved='red';document.body.dataset.theme=saved;picker.value=saved;picker.addEventListener('change',function(){document.body.dataset.theme=this.value;try{localStorage.setItem('sut9999_theme',this.value)}catch(e){}})})();</script><script id="loin-gate-script">(function(){"use strict";const gate=document.getElementById('loinGate');const form=document.getElementById('loinForm');const err=document.getElementById('loinError');const user=document.getElementById('loinUser');const pass=document.getElementById('loinPass');const key='loin_access_current_tab';function unlock(){document.documentElement.classList.add('loin-unlocked');gate.setAttribute('aria-hidden','true');user.value='';pass.value=''}try{if(sessionStorage.getItem(key)==='yes'){unlock();return}}catch(e){}document.getElementById('loinEye').addEventListener('click',()=>{const visible=pass.type==='text';pass.type=visible?'password':'text';document.getElementById('loinEye').textContent=visible?'ดู':'ซ่อน'});form.addEventListener('submit',function(e){e.preventDefault();const u=user.value.trim(),p=pass.value;/* Credentials are checked in the browser; use server authentication for real security. */const ok=(u.length===2&&u.charCodeAt(0)===116&&u.charCodeAt(1)===105)&&(p.length===4&&[49,50,51,52].every((n,i)=>p.charCodeAt(i)===n));if(ok){try{sessionStorage.setItem(key,'yes')}catch(e){}unlock()}else{err.textContent='ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';pass.value='';pass.focus()}});user.focus()})();</script></body></html>
+})();</script><script id="theme-selection-script">(function(){const picker=document.getElementById('themeSelect');if(!picker)return;const valid=['red','blue','green','purple','gold','light','pinkpop','candy','lavender','mintpop','sunshine'];let saved='red';try{saved=localStorage.getItem('sut9999_theme')||'red'}catch(e){}if(!valid.includes(saved))saved='red';document.body.dataset.theme=saved;picker.value=saved;picker.addEventListener('change',function(){document.body.dataset.theme=this.value;try{localStorage.setItem('sut9999_theme',this.value)}catch(e){}})})();</script><script id="loin-gate-script">(function(){"use strict";
+const gate=document.getElementById('loinGate'),form=document.getElementById('loinForm'),err=document.getElementById('loinError'),user=document.getElementById('loinUser'),pass=document.getElementById('loinPass');
+const sessionKey='loin_access_current_tab',roleKey='sut9999_current_role',usersKey='sut9999_local_users_v1';
+const adminName='santi',adminPassword='satuk';
+const analyticsKey='sut9999_analytics_v1',activeKey='sut9999_active_sessions_v1',currentUserKey='sut9999_current_username',tabIdKey='sut9999_tab_identifier';
+let tabId=sessionStorage.getItem(tabIdKey);if(!tabId){tabId=(window.crypto&&crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random());sessionStorage.setItem(tabIdKey,tabId)}
+function getStore(key,fallback){try{const v=JSON.parse(localStorage.getItem(key)||'null');return v&&typeof v==='object'?v:fallback}catch(e){return fallback}}
+function saveStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){}}
+function logActivity(username,event){const logs=getStore(analyticsKey,[]);if(!Array.isArray(logs))return;logs.push({at:Date.now(),username,event});saveStore(analyticsKey,logs.slice(-3000))}
+function heartbeat(){if(sessionStorage.getItem(sessionKey)!=='yes')return;const now=Date.now(),sessions=getStore(activeKey,{});for(const [id,v] of Object.entries(sessions)){if(!v||now-v.at>90000)delete sessions[id]}sessions[tabId]={at:now,username:sessionStorage.getItem(currentUserKey)||'ไม่ทราบชื่อ'};saveStore(activeKey,sessions)}
+function stopHeartbeat(){const sessions=getStore(activeKey,{});delete sessions[tabId];saveStore(activeKey,sessions)}
+function dateKey(time){const d=new Date(time);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function refreshStats(){if(!isAdmin())return;heartbeat();const logs=getStore(analyticsKey,[]),sessions=getStore(activeKey,{}),now=Date.now(),valid=Object.values(sessions).filter(x=>x&&now-x.at<90000),logins=(Array.isArray(logs)?logs:[]).filter(x=>x.event==='เข้าสู่ระบบ');document.getElementById('statOnline').textContent=String(valid.length);document.getElementById('statTotal').textContent=String(logins.length);document.getElementById('statToday').textContent=String(logins.filter(x=>dateKey(x.at)===dateKey(now)).length);document.getElementById('statUnique').textContent=String(new Set(logins.map(x=>x.username)).size);const days=document.getElementById('statDays');days.replaceChildren();for(let i=0;i<7;i++){const date=new Date(now);date.setHours(12,0,0,0);date.setDate(date.getDate()-i);const tr=document.createElement('tr');for(const val of [date.toLocaleDateString('th-TH'),String(logins.filter(x=>dateKey(x.at)===dateKey(date.getTime())).length)]){const td=document.createElement('td');td.textContent=val;tr.append(td)}days.append(tr)}const recent=document.getElementById('statRecent');recent.replaceChildren();for(const item of (Array.isArray(logs)?logs:[]).slice(-25).reverse()){const tr=document.createElement('tr');for(const val of [new Date(item.at).toLocaleString('th-TH'),item.username,item.event]){const td=document.createElement('td');td.textContent=val;tr.append(td)}recent.append(tr)}}
+setInterval(()=>{heartbeat();if(isAdmin()&&!document.getElementById('admin-users-page').hidden)refreshStats()},20000);
+window.addEventListener('pagehide',()=>{if(sessionStorage.getItem(sessionKey)==='yes')stopHeartbeat()});
+window.addEventListener('storage',e=>{if((e.key===analyticsKey||e.key===activeKey)&&isAdmin()&&!document.getElementById('admin-users-page').hidden)refreshStats()});
+function readUsers(){try{const data=JSON.parse(localStorage.getItem(usersKey)||'[]');return Array.isArray(data)?data.filter(x=>x&&typeof x.username==='string'&&typeof x.password==='string'):[]}catch(e){return []}}
+function writeUsers(items){localStorage.setItem(usersKey,JSON.stringify(items))}
+function isAdmin(){try{return sessionStorage.getItem(sessionKey)==='yes'&&sessionStorage.getItem(roleKey)==='admin'}catch(e){return false}}
+const adminNav=document.getElementById('adminUsersNav'),adminPage=document.getElementById('admin-users-page');
+function setRole(role){const admin=role==='admin';adminNav.hidden=!admin;if(!admin&&!adminPage.hidden){document.querySelector('.navbtn[data-page="analysis-page"]')?.click()}if(admin){renderUsers();refreshStats()}}
+function unlock(role){document.documentElement.classList.add('loin-unlocked');gate.setAttribute('aria-hidden','true');user.value='';pass.value='';setRole(role)}
+try{if(sessionStorage.getItem(sessionKey)==='yes'){unlock(sessionStorage.getItem(roleKey)==='admin'?'admin':'user')}}catch(e){}
+document.getElementById('loinEye').addEventListener('click',()=>{const visible=pass.type==='text';pass.type=visible?'password':'text';document.getElementById('loinEye').textContent=visible?'ดู':'ซ่อน'});
+form.addEventListener('submit',e=>{e.preventDefault();const u=user.value.trim(),p=pass.value;const role=u===adminName&&p===adminPassword?'admin':(u==='ti'&&p==='1234'||readUsers().some(x=>x.username===u&&x.password===p))?'user':null;
+if(role){try{sessionStorage.setItem(sessionKey,'yes');sessionStorage.setItem(roleKey,role);sessionStorage.setItem(currentUserKey,u)}catch(e){}logActivity(u,'เข้าสู่ระบบ');heartbeat();err.textContent='';unlock(role)}else{err.textContent='ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';pass.value='';pass.focus()}});
+const addForm=document.getElementById('adminAddForm'),message=document.getElementById('adminUsersMessage'),tbody=document.getElementById('adminUsersList');
+function renderUsers(){if(!isAdmin())return;tbody.replaceChildren();const list=readUsers();const names=[{username:'ti',fixed:true},...list.map(x=>({username:x.username,fixed:false}))];names.forEach((entry,i)=>{const tr=document.createElement('tr'),num=document.createElement('td'),name=document.createElement('td'),action=document.createElement('td');num.textContent=String(i+1);name.textContent=entry.username;if(entry.fixed){action.textContent='บัญชีเริ่มต้น'}else{const btn=document.createElement('button');btn.type='button';btn.textContent='ลบผู้ใช้';btn.addEventListener('click',()=>{if(!isAdmin())return;if(!confirm('ลบบัญชี '+entry.username+' ใช่หรือไม่?'))return;writeUsers(readUsers().filter(x=>x.username!==entry.username));message.textContent='ลบบัญชีเรียบร้อย';renderUsers()});action.append(btn)}tr.append(num,name,action);tbody.append(tr)})}
+addForm.addEventListener('submit',e=>{e.preventDefault();if(!isAdmin())return;const name=document.getElementById('adminNewUser').value.trim(),password=document.getElementById('adminNewPass').value;if(!/^[A-Za-z0-9_.-]{2,40}$/.test(name)||password.length<4){message.textContent='กรุณาตรวจสอบชื่อผู้ใช้และรหัสผ่าน';return}if([adminName,'ti'].includes(name)||readUsers().some(x=>x.username===name)){message.textContent='ชื่อผู้ใช้นี้มีอยู่แล้ว';return}try{const list=readUsers();list.push({username:name,password});writeUsers(list);addForm.reset();message.textContent='เพิ่มผู้ใช้ '+name+' เรียบร้อยแล้ว';renderUsers()}catch(e){message.textContent='ไม่สามารถบันทึกบัญชีในเบราว์เซอร์นี้ได้'}});
+document.getElementById('statRefresh').addEventListener('click',refreshStats);
+document.getElementById('statExport').addEventListener('click',()=>{if(!isAdmin())return;const logs=getStore(analyticsKey,[]);const escape=v=>'"'+String(v??'').replaceAll('\"','\"\"')+'"';const csv='\ufeffวันที่และเวลา,ชื่อผู้ใช้,เหตุการณ์\r\n'+(Array.isArray(logs)?logs:[]).map(x=>[new Date(x.at).toLocaleString('th-TH'),x.username,x.event].map(escape).join(',')).join('\r\n');const a=document.createElement('a'),url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.href=url;a.download='สถิติการเข้าใช้งาน.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+adminNav.addEventListener('click',e=>{if(!isAdmin()){e.stopImmediatePropagation();adminPage.hidden=true;adminNav.hidden=true;return}renderUsers();refreshStats()},true);
+document.getElementById('logoutTopButton').addEventListener('click',()=>{if(sessionStorage.getItem(sessionKey)==='yes'){logActivity(sessionStorage.getItem(currentUserKey)||'ไม่ทราบชื่อ','ออกจากระบบ');stopHeartbeat()}try{sessionStorage.removeItem(sessionKey);sessionStorage.removeItem(roleKey);sessionStorage.removeItem(currentUserKey)}catch(e){}document.querySelector('.navbtn[data-page="analysis-page"]')?.click();adminNav.hidden=true;adminPage.hidden=true;document.documentElement.classList.remove('loin-unlocked');gate.removeAttribute('aria-hidden');err.textContent='';form.reset();pass.type='password';document.getElementById('loinEye').textContent='ดู';user.focus()});
+if(document.documentElement.classList.contains('loin-unlocked'))heartbeat();else user.focus();
+})();</script><script>
+(function(){
+ const section=document.getElementById('trendSection');
+ const grid=document.getElementById('trendGrid');
+ if(!section||!grid)return;
+ function mostLikely(id){
+  const data=multiHistoryCache[id];
+  if(!data||!data.candidates.length)return null;
+  const counts=Array(10).fill(0);
+  for(const c of data.candidates.slice(0,30))counts[c.next[0]]++;
+  return counts.map((votes,d)=>({d,votes})).sort((a,b)=>b.votes-a.votes||a.d-b.d)[0];
+ }
+ function update(){
+  if(!multiHistoryCache.hundred||!multiHistoryCache.ten||!multiHistoryCache.unit||!multiHistoryCache.lowerTen||!multiHistoryCache.lowerUnit)return;
+  const h=mostLikely('hundred'),t=mostLikely('ten'),u=mostLikely('unit'),lt=mostLikely('lowerTen'),lu=mostLikely('lowerUnit');
+  if([h,t,u,lt,lu].some(x=>!x))return;
+  const top3=h.d*100+t.d*10+u.d,top2=t.d*10+u.d,bottom2=lt.d*10+lu.d;
+  const hundred=top3<=449?'ต่ำ':top3>=500?'สูง':'ไม่จัดกลุ่ม';
+  const items=[
+   ['สูง–ต่ำหลักร้อย',hundred,String(top3).padStart(3,'0')+' (ประมาณจาก ร้อย+สิบ+หน่วย)'],
+   ['สูง–ต่ำบน',top2<=49?'ต่ำ':'สูง',String(top2).padStart(2,'0')+' (หลักสิบและหน่วยบน)'],
+   ['สูง–ต่ำล่าง',bottom2<=49?'ต่ำ':'สูง',String(bottom2).padStart(2,'0')+' (หลักสิบล่างและหน่วยล่าง)'],
+   ['คู่–คี่บน',u.d%2===0?'คู่':'คี่','หลักหน่วยบน '+u.d],
+   ['คู่–คี่ล่าง',lu.d%2===0?'คู่':'คี่','หลักหน่วยล่าง '+lu.d]
+  ];
+  grid.replaceChildren();
+  for(const [label,result,detail] of items){
+   const tile=document.createElement('div');tile.className='trend-tile';
+   const name=document.createElement('div');name.className='trend-name';name.textContent=label;
+   const value=document.createElement('div');value.className='trend-pick';value.textContent=result;
+   const desc=document.createElement('div');desc.className='trend-detail';desc.textContent=detail;
+   tile.append(name,value,desc);grid.append(tile);
+  }
+ }
+ document.addEventListener('lucky:multi-updated',update);
+ update();
+})();
+</script>
+
+<style id="trend-stats-muted-green-contrast">
+/* ตารางสถิติ: เขียวหม่นอ่านง่าย ตัวอักษรดำทุกช่อง ยกเว้นสถานะถูก */
+#trendStatsSection .multi-history-detail table{background:#c3d9bc!important;color:#111!important;border:1px solid #789a77!important}
+#trendStatsSection .multi-history-detail th{background:linear-gradient(135deg,#779b78,#a7c4a0)!important;color:#080f08!important;font-weight:900!important;border:1px solid #719273!important}
+#trendStatsSection .multi-history-detail td{background:#d5e3cd!important;color:#101710!important;border:1px solid #9ab298!important;font-weight:700!important;text-shadow:none!important}
+#trendStatsSection .multi-history-detail tr:nth-child(even) td{background:#c2d6bb!important}
+#trendStatsSection .multi-history-detail tr.multi-miss td{color:#111!important}
+#trendStatsSection .multi-history-detail tr.multi-hit td{background:#c8ddbd!important;color:#101710!important;font-weight:800!important}
+#trendStatsSection .multi-history-detail tr.multi-hit td:last-child{background:linear-gradient(125deg,#edff50 0%,#c9ff00 43%,#69f51e 100%)!important;color:#173600!important;font-weight:1000!important;border:2px solid #91d400!important;box-shadow:inset 0 0 12px #f6ff83,0 0 10px #bbff36!important;text-shadow:0 0 3px #fff!important}
+#trendStatsSection .multi-history-detail tr:not(.multi-hit) td:last-child{box-shadow:none!important}
+</style>
+</body></html>
 
 <style id="lock-fit-layout">#lockCard{max-width:100%;min-width:0}#lockCard .lock-scroll{overflow-x:visible!important;max-height:none!important}#lockCard .lock-table{width:100%!important;min-width:0!important;table-layout:fixed!important}#lockCard .lock-table th,#lockCard .lock-table td{overflow-wrap:anywhere;white-space:normal!important;padding:7px 4px!important;font-size:clamp(11px,1.6vw,16px)!important}#lockCard .controls label{min-width:0;flex:1 1 180px}#lockCard select{max-width:100%;width:100%}@media(max-width:520px){#lockCard .lock-table th,#lockCard .lock-table td{font-size:11px!important;padding:5px 2px!important}}</style>
 </html>
@@ -877,3 +1128,58 @@ refresh(localStorage.getItem(selectedKey)||'');
 @media(max-width:600px){#multiSection .multi-table th:nth-child(1){width:15%!important}#multiSection .multi-table th:nth-child(2){width:14%!important}#multiSection .multi-table th:nth-child(3){width:27%!important}#multiSection .multi-table th:nth-child(4){width:29%!important}#multiSection .multi-table th:nth-child(5){width:15%!important}}
 </style>
 </html>
+
+<script id="trend-stat-history-feature">
+(function(){
+ const typeEl=document.getElementById('trendStatType'),countEl=document.getElementById('trendStatCount');
+ const list=document.getElementById('trendStatButtons'),detail=document.getElementById('trendStatDetail'),status=document.getElementById('trendStatStatus');
+ const types={hundred:{label:'สูง–ต่ำหลักร้อย',index:0},top:{label:'สูง–ต่ำบน',index:1},bottom:{label:'สูง–ต่ำล่าง',index:3},oddTop:{label:'คู่–คี่บน',index:2},oddBottom:{label:'คู่–คี่ล่าง',index:4}};
+ function actual(row,type){
+  if(type==='hundred'){const n=row[0]*100+row[1]*10+row[2];return n<=449?'ต่ำ':n>=500?'สูง':'ไม่จัดกลุ่ม';}
+  if(type==='top')return row[1]*10+row[2]<=49?'ต่ำ':'สูง';
+  if(type==='bottom')return row[3]*10+row[4]<=49?'ต่ำ':'สูง';
+  return row[types[type].index]%2===0?'คู่':'คี่';
+ }
+ function predicted(d,type){
+  if(type==='hundred')return d<=3?'ต่ำ':d>=5?'สูง':'ไม่จัดกลุ่ม';
+  if(type==='top'||type==='bottom')return d<=4?'ต่ำ':'สูง';
+  return d%2===0?'คู่':'คี่';
+ }
+ function predictions(row,f,n,type){return [...new Set(picks(seed(row,f),n).map(d=>predicted(Number(d),type)))];}
+ function resultText(row){return row.slice(0,3).join('')+'-'+row.slice(3).join('');}
+ function showDetail(c,rows,type,n){
+  detail.replaceChildren();const title=document.createElement('h3');title.textContent='ผลย้อนหลังสูตร '+(c.i+1)+' — '+compactFormulaName(c.f);detail.append(title);
+  const wrap=document.createElement('div');wrap.className='multi-history-scroll';const table=document.createElement('table');
+  const head=document.createElement('tr');for(const h of ['งวด','งวดก่อนหน้า','คาดการณ์','ผลจริง','ประเภทจริง','สถานะ']){const th=document.createElement('th');th.textContent=h;head.append(th)}table.append(head);
+  function append(vals,hit){const tr=document.createElement('tr');if(hit!==null)tr.className=hit?'multi-hit':'multi-miss';for(const v of vals){const td=document.createElement('td');td.textContent=v;tr.append(td)}table.append(tr)}
+  for(let j=1;j<rows.length;j++){const guess=predictions(rows[j-1],c.f,n,type),real=actual(rows[j],type);const ok=real!=='ไม่จัดกลุ่ม'&&guess.includes(real);append([j,resultText(rows[j-1]),guess.join(' / '),resultText(rows[j]),real,real==='ไม่จัดกลุ่ม'?'ไม่จัดกลุ่ม':ok?'ถูก':'ไม่ถูก'],real==='ไม่จัดกลุ่ม'?null:ok)}
+  append(['ถัดไป',resultText(rows.at(-1)),predictions(rows.at(-1),c.f,n,type).join(' / '),'รอผล','—','—'],null);
+  wrap.append(table);detail.append(wrap);
+ }
+ function run(){
+  try{
+   const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด');
+   const type=typeEl.value,n=Number(countEl.value);status.textContent='กำลังคำนวณ...';
+   const candidates=formulas.map((f,i)=>{let hits=0,valid=0;for(let j=1;j<rows.length;j++){const real=actual(rows[j],type);if(real==='ไม่จัดกลุ่ม')continue;valid++;if(predictions(rows[j-1],f,n,type).includes(real))hits++}return {f,i,hits,valid,next:predictions(rows.at(-1),f,n,type)}});
+   candidates.sort((a,b)=>b.hits-a.hits||(b.valid?b.hits/b.valid:0)-(a.valid?a.hits/a.valid:0)||a.f.length-b.f.length||a.i-b.i);
+   list.replaceChildren();detail.replaceChildren();
+   candidates.slice(0,20).forEach((c,i)=>{const btn=document.createElement('button');btn.type='button';btn.className='multi-history-formula';btn.textContent='#'+(i+1)+' · '+compactFormulaName(c.f)+' · ถูก '+c.hits+'/'+c.valid;btn.onclick=()=>{for(const b of list.children)b.setAttribute('aria-pressed','false');btn.setAttribute('aria-pressed','true');showDetail(c,rows,type,n)};list.append(btn);if(i===0)btn.click()});
+   status.textContent=types[type].label+' • ทดสอบ '+rows.length+' งวด • แสดง 20 สูตรอันดับแรกจาก '+formulas.length.toLocaleString('en-US')+' สูตร • คลิกปุ่มสีเขียวเพื่อดูย้อนหลัง';
+  }catch(e){status.textContent='⚠ '+e.message;list.replaceChildren();detail.replaceChildren()}
+ }
+ document.getElementById('trendStatRun').addEventListener('click',run);
+ typeEl.addEventListener('change',run);countEl.addEventListener('change',run);
+ document.getElementById('trendOpenStats').addEventListener('click',()=>{const btn=document.querySelector('.navbtn[data-page="trend-stats-page"]');if(btn)btn.click();run()});
+})();
+</script>
+<style id="trend-stats-responsive">
+#trendStatsSection .multi-history-list{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+#trendStatsSection .multi-history-formula{width:max-content;max-width:100%;background:linear-gradient(120deg,#caff50,#55ed68)!important;color:#113416!important;font-weight:900;border:1px solid #369a3d;border-radius:11px;padding:9px 12px}
+#trendStatsSection .multi-history-formula[aria-pressed="true"]{outline:3px solid #ffdb57}
+#trendStatsSection .multi-history-scroll{overflow-x:visible;max-height:none}
+#trendStatsSection table{width:100%;table-layout:fixed;border-collapse:collapse}
+#trendStatsSection th,#trendStatsSection td{white-space:normal;overflow-wrap:anywhere;text-align:center;padding:8px 3px;font-size:clamp(10px,1.2vw,15px)}
+#trendStatsSection tr.multi-hit td{background:#b8ff39!important;color:#124600!important;font-weight:900}
+#trendStatsSection tr.multi-miss td{color:#111!important}
+@media(max-width:560px){#trendStatsSection th,#trendStatsSection td{font-size:10px;padding:6px 2px}}
+</style>
