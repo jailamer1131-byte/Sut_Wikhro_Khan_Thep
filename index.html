@@ -204,7 +204,18 @@ tr:nth-child(even),.multi-table tbody tr:nth-child(even),#analysis-page .card .t
 </style>
 
 
-</head></html>
+<style id="login-style-2026">
+html.login-locked body{visibility:hidden}html.login-locked #loginOverlay{visibility:visible}
+#loginOverlay{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(135deg,#dbeafe,#f0fdf4,#fef9c3);color:#172554}
+#loginOverlay[hidden]{display:none!important}
+#loginOverlay form{background:white;width:min(420px,100%);border-radius:22px;padding:30px;box-shadow:0 18px 55px #33415544;display:grid;gap:13px;border:2px solid #bfdbfe}
+#loginOverlay h2{text-align:center;margin:0;color:#1e40af}#loginOverlay label{font-weight:700;display:grid;gap:6px}
+#loginOverlay input{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #94a3b8;background:white!important;color:#111827!important;font:inherit}
+#loginOverlay button{padding:13px;background:#1d4ed8;color:white;border:0;border-radius:10px;font-weight:800;cursor:pointer}
+#loginOverlay .loginError{color:#b91c1c;min-height:20px}
+#logoutButton2026{position:fixed;top:12px;right:12px;z-index:9990;border:0;border-radius:12px;background:#b91c1c;color:white;padding:9px 14px;font-weight:700;cursor:pointer}
+#logoutButton2026[hidden]{display:none!important}
+</style><script>document.documentElement.classList.add('login-locked');</script></head></html>
 <style id="multi-responsive-no-scroll">
 /* Section 4: fit all columns inside the card without horizontal or vertical scrolling */
 #multiSection .tablewrap{overflow:visible!important;max-height:none!important;width:100%;}
@@ -552,7 +563,7 @@ body[data-theme] #logoutTopButton{color:#fff!important}
 body[data-theme] #loinGate .loin-panel{color:#241538!important}
 @media (prefers-contrast:more){body[data-theme] .card{border-width:2px!important}body[data-theme] input:focus-visible,body[data-theme] select:focus-visible,body[data-theme] button:focus-visible{outline:3px solid var(--theme-edge)!important;outline-offset:2px}}
 </style>
-<body>
+<body><div id="loginOverlay" role="dialog" aria-modal="true" aria-labelledby="loginHeading"><form id="loginForm2026"><h2 id="loginHeading">🔐 เข้าสู่ระบบ</h2><p style="text-align:center;margin:0">สูตรวิเคราะห์ขั้นเทพ</p><label>ชื่อผู้ใช้<input id="loginUser2026" autocomplete="username" required></label><label>รหัสผ่าน<input id="loginPass2026" type="password" autocomplete="current-password" required></label><button type="submit">เข้าสู่ระบบ</button><div id="loginError2026" class="loginError" role="alert"></div></form></div><button type="button" id="logoutButton2026" hidden>🚪 ออกจากระบบ</button>
 
 <header><main style="padding:0"><h1>✨ สูตรวิเคราะห์ขั้นเทพ</h1><div>วิเคราะห์ 9,999 สูตร • สถิติย้อนหลัง • เลขเด่น 1–9 ตัว</div><small>เว็บแอปใช้งานออฟไลน์ บันทึกข้อมูลในเบราว์เซอร์ของเครื่อง</small></main></header><main>
 <div aria-label="เลือกธีมสีโปรแกรม" class="theme-switcher" role="group"><label for="themeSelect">🎨 เลือกธีมโปรแกรม</label><select id="themeSelect"><option value="red">🔴 แดง–ดำ (เดิม)</option><option value="blue">🔵 น้ำเงินเข้ม</option><option value="green">🟢 เขียวมรกต</option><option value="purple">🟣 ม่วงแฟนตาซี</option><option value="gold">🟡 ทองหรู</option><option value="light">⚪ ขาวสบายตา</option><option value="pinkpop">💗 ชมพูป๊อปเรืองแสง</option><option value="candy">🍬 ฟ้าลูกกวาด</option><option value="lavender">🦄 ม่วงลาเวนเดอร์</option><option value="mintpop">🍀 มิ้นต์สดใส</option><option value="sunshine">🌈 เหลืองพาสเทลสดใส</option></select></div><nav class="appnav"><button class="navbtn active" data-page="analysis-page" type="button">📊 วิเคราะห์สูตร</button><button class="navbtn" data-page="version2-page" type="button">📋 สูตร Version 2</button><button class="navbtn" data-page="ranking-page" type="button">🏆 จัดอันดับสูตรทั้ง 9,999 สูตร</button><button class="navbtn" data-page="trend-stats-page" type="button">📈 สถิติสูงต่ำคู่คี่</button><button class="navbtn" data-page="manual-page" type="button">🧩 จัดกลุ่มเลข</button><button class="navbtn" data-page="history-page" type="button">🔗 ผลย้อนหลัง</button><button class="navbtn" data-page="sheet-import-page" type="button">📥 นำเข้าผล</button></nav>
@@ -1282,7 +1293,19 @@ $('win8Run').addEventListener('click',render);$('win8Limit').addEventListener('c
 selectors.addEventListener('change',()=>{if(mode.value==='manual')render()});
 document.querySelector('[data-page="version2-page"]').addEventListener('click',render);
 })();
-</script></body>
+</script><script id="login-ti-test-2026">(()=>{'use strict';
+const users={ti:'1234',test:'1234'};
+const overlay=document.getElementById('loginOverlay');
+const form=document.getElementById('loginForm2026');
+const user=document.getElementById('loginUser2026');
+const pass=document.getElementById('loginPass2026');
+const error=document.getElementById('loginError2026');
+const logout=document.getElementById('logoutButton2026');
+function setLogin(ok){overlay.hidden=ok;logout.hidden=!ok;document.documentElement.classList.toggle('login-locked',!ok);if(!ok){pass.value='';error.textContent='';user.focus();}}
+form.addEventListener('submit',e=>{e.preventDefault();const name=user.value.trim().toLowerCase();if(Object.prototype.hasOwnProperty.call(users,name)&&pass.value===users[name]){setLogin(true);pass.value='';}else{error.textContent='ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';pass.value='';pass.focus();}});
+logout.addEventListener('click',()=>setLogin(false));
+setLogin(false);
+})();</script></body>
 <style id="lock-fit-layout">#lockCard{max-width:100%;min-width:0}#lockCard .lock-scroll{overflow-x:visible!important;max-height:none!important}#lockCard .lock-table{width:100%!important;min-width:0!important;table-layout:fixed!important}#lockCard .lock-table th,#lockCard .lock-table td{overflow-wrap:anywhere;white-space:normal!important;padding:7px 4px!important;font-size:clamp(11px,1.6vw,16px)!important}#lockCard .controls label{min-width:0;flex:1 1 180px}#lockCard select{max-width:100%;width:100%}@media(max-width:520px){#lockCard .lock-table th,#lockCard .lock-table td{font-size:11px!important;padding:5px 2px!important}}</style>
 
 <style>
