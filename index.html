@@ -1267,23 +1267,23 @@ function render(){
   for(let j=start;j<rows.length;j++){
    body+='<tr><td class="v2-index">'+(j)+'</td><td class="v2-prev">'+fmt(rows[j-1])+'</td>';
    picksByFormula.forEach((f,i)=>{const pred=picks(seed(rows[j-1],f.f),n);const level=v2HitLevel(pred,rows[j],target);const ok=level>0;if(ok)hitCounts[i]++;
-    body+='<td class="v2-digits v2-formula-'+i+' '+(level===2?'v2-cell-hit-four':ok?'v2-cell-hit':'v2-cell-miss')+'" title="'+(ok?'ถูก':'ไม่ถูก')+'">'+pred.join(',<wbr>')+'</td>';});
+    body+='<td class="v2-digits v2-formula-'+i+' '+(level===2?'v2-cell-hit-four':ok?'v2-cell-hit':'v2-cell-miss')+'" title="'+(ok?'ถูก':'ไม่ถูก')+'">'+pred.join('')+'</td>';});
    const freq=Array(10).fill(0);
    picksByFormula.forEach(f=>picks(seed(rows[j-1],f.f),n).forEach(d=>freq[Number(d)]++));
    const duplicates=freq.map((count,d)=>({d,count})).filter(x=>x.count>=3).sort((a,b)=>b.count-a.count||a.d-b.d);
    if(duplicates.length){duplicateDraws++;let anyHit=false;duplicates.slice(0,6).forEach(({d,count})=>{const stat=duplicateStats[d];stat.occurrences++;stat.frequency+=count;if(target.length===1&&Number(rows[j][target[0]])===d){stat.hits++;anyHit=true}});if(target.length>1){anyHit=v2StrictHit(duplicates.slice(0,6).map(x=>x.d),rows[j],target);if(anyHit)duplicateStats[duplicates[0].d].hits++;}if(anyHit)duplicateAnyHit++;}
    const dupDigits=duplicates.slice(0,6).map(x=>x.d);const dupLevel=dupDigits.length?v2HitLevel(dupDigits,rows[j],target):0;const dupHit=dupLevel>0; // ใช้กติกาตรวจถูกเดียวกับเลขเด่นทั้ง 5 สูตร
-   body+='<td class="v2-digits v2-dup-digits '+(dupLevel===2?'v2-cell-hit-four':dupHit?'v2-cell-hit':'v2-cell-miss')+'" title="'+(dupDigits.length?(dupHit?'ถูก':'ไม่ถูก'):'ไม่มีเลขซ้ำ 3 สูตรขึ้นไป')+'">'+(dupDigits.length?dupDigits.join(',<wbr>'):'—')+'</td>';
+   body+='<td class="v2-digits v2-dup-digits '+(dupLevel===2?'v2-cell-hit-four':dupHit?'v2-cell-hit':'v2-cell-miss')+'" title="'+(dupDigits.length?(dupHit?'ถูก':'ไม่ถูก'):'ไม่มีเลขซ้ำ 3 สูตรขึ้นไป')+'">'+(dupDigits.length?dupDigits.join(''):'—')+'</td>';
    body+='<td class="v2-result">'+fmt(rows[j])+'</td></tr>';
   }
   body+='<tr><td class="v2-next-label">ถัดไป</td><td class="v2-prev">'+fmt(rows.at(-1))+'</td>';
-  picksByFormula.forEach(f=>body+='<td class="v2-next">'+f.next.join(',<wbr>')+'</td>');
+  picksByFormula.forEach(f=>body+='<td class="v2-next">'+f.next.join('')+'</td>');
   const nextFreq=Array(10).fill(0);picksByFormula.forEach(f=>f.next.forEach(d=>nextFreq[Number(d)]++));
   const nextDup=nextFreq.map((count,d)=>({d,count})).filter(x=>x.count>=3).sort((a,b)=>b.count-a.count||a.d-b.d).slice(0,6);
-  body+='<td class="v2-next v2-dup-next">'+(nextDup.length?nextDup.map(x=>x.d).join(',<wbr>'):'—')+'</td>';
+  body+='<td class="v2-next v2-dup-next">'+(nextDup.length?nextDup.map(x=>x.d).join(''):'—')+'</td>';
   body+='<td class="v2-result">รอผล</td></tr>';table.tBodies[0].innerHTML=body;
   const shown=rows.length-start;
-  $('win8Summary').innerHTML=picksByFormula.map((f,i)=>'<div class="v2-stat"><strong>สูตร '+(i+1)+' · #'+f.id+'</strong>'+esc(shortFormula(f.f))+'<div>ถูก '+hitCounts[i]+'/'+shown+' งวด ('+(100*hitCounts[i]/shown).toFixed(1)+'%)</div><div>งวดถัดไป: <b>'+f.next.join(',')+'</b></div></div>').join('');
+  $('win8Summary').innerHTML=picksByFormula.map((f,i)=>'<div class="v2-stat"><strong>สูตร '+(i+1)+' · #'+f.id+'</strong>'+esc(shortFormula(f.f))+'<div>ถูก '+hitCounts[i]+'/'+shown+' งวด ('+(100*hitCounts[i]/shown).toFixed(1)+'%)</div><div>งวดถัดไป: <b>'+f.next.join('')+'</b></div></div>').join('');
   $('win8Summary').insertAdjacentHTML('beforeend','<div class="v2-stat"><strong>เลขซ้ำ 3–5 สูตร</strong><div>พบเลขซ้ำ ≥3 สูตร '+duplicateDraws+'/'+shown+' งวด</div><div>ถูกตามหลักที่เลือก '+duplicateAnyHit+'/'+duplicateDraws+' งวด'+(duplicateDraws?' ('+(100*duplicateAnyHit/duplicateDraws).toFixed(1)+'%)':'')+'</div></div>');
   $('win8Message').textContent='';
  }catch(e){$('win8Message').textContent='⚠ '+e.message;table.tHead.innerHTML='';table.tBodies[0].innerHTML='';$('win8Summary').innerHTML='';}
@@ -1479,23 +1479,23 @@ function render(){
   for(let j=start;j<rows.length;j++){
    body+='<tr><td class="v2-index">'+(j)+'</td><td class="v2-prev">'+fmt(rows[j-1])+'</td>';
    picksByFormula.forEach((f,i)=>{const pred=picks(seed(rows[j-1],f.f),n);const level=v2HitLevel(pred,rows[j],target);const ok=level>0;if(ok)hitCounts[i]++;
-    body+='<td class="v2-digits v2-formula-'+i+' '+(level===2?'v2-cell-hit-four':ok?'v2-cell-hit':'v2-cell-miss')+'" title="'+(ok?'ถูก':'ไม่ถูก')+'">'+pred.join(',<wbr>')+'</td>';});
+    body+='<td class="v2-digits v2-formula-'+i+' '+(level===2?'v2-cell-hit-four':ok?'v2-cell-hit':'v2-cell-miss')+'" title="'+(ok?'ถูก':'ไม่ถูก')+'">'+pred.join('')+'</td>';});
    const freq=Array(10).fill(0);
    picksByFormula.forEach(f=>picks(seed(rows[j-1],f.f),n).forEach(d=>freq[Number(d)]++));
    const duplicates=freq.map((count,d)=>({d,count})).filter(x=>x.count>=3).sort((a,b)=>b.count-a.count||a.d-b.d);
    if(duplicates.length){duplicateDraws++;let anyHit=false;duplicates.slice(0,6).forEach(({d,count})=>{const stat=duplicateStats[d];stat.occurrences++;stat.frequency+=count;if(target.length===1&&Number(rows[j][target[0]])===d){stat.hits++;anyHit=true}});if(target.length>1){anyHit=v2StrictHit(duplicates.slice(0,6).map(x=>x.d),rows[j],target);if(anyHit)duplicateStats[duplicates[0].d].hits++;}if(anyHit)duplicateAnyHit++;}
    const dupDigits=duplicates.slice(0,6).map(x=>x.d);const dupLevel=dupDigits.length?v2HitLevel(dupDigits,rows[j],target):0;const dupHit=dupLevel>0; // ใช้กติกาตรวจถูกเดียวกับเลขเด่นทั้ง 5 สูตร
-   body+='<td class="v2-digits v2-dup-digits '+(dupLevel===2?'v2-cell-hit-four':dupHit?'v2-cell-hit':'v2-cell-miss')+'" title="'+(dupDigits.length?(dupHit?'ถูก':'ไม่ถูก'):'ไม่มีเลขซ้ำ 3 สูตรขึ้นไป')+'">'+(dupDigits.length?dupDigits.join(',<wbr>'):'—')+'</td>';
+   body+='<td class="v2-digits v2-dup-digits '+(dupLevel===2?'v2-cell-hit-four':dupHit?'v2-cell-hit':'v2-cell-miss')+'" title="'+(dupDigits.length?(dupHit?'ถูก':'ไม่ถูก'):'ไม่มีเลขซ้ำ 3 สูตรขึ้นไป')+'">'+(dupDigits.length?dupDigits.join(''):'—')+'</td>';
    body+='<td class="v2-result">'+fmt(rows[j])+'</td></tr>';
   }
   body+='<tr><td class="v2-next-label">ถัดไป</td><td class="v2-prev">'+fmt(rows.at(-1))+'</td>';
-  picksByFormula.forEach(f=>body+='<td class="v2-next">'+f.next.join(',<wbr>')+'</td>');
+  picksByFormula.forEach(f=>body+='<td class="v2-next">'+f.next.join('')+'</td>');
   const nextFreq=Array(10).fill(0);picksByFormula.forEach(f=>f.next.forEach(d=>nextFreq[Number(d)]++));
   const nextDup=nextFreq.map((count,d)=>({d,count})).filter(x=>x.count>=3).sort((a,b)=>b.count-a.count||a.d-b.d).slice(0,6);
-  body+='<td class="v2-next v2-dup-next">'+(nextDup.length?nextDup.map(x=>x.d).join(',<wbr>'):'—')+'</td>';
+  body+='<td class="v2-next v2-dup-next">'+(nextDup.length?nextDup.map(x=>x.d).join(''):'—')+'</td>';
   body+='<td class="v2-result">รอผล</td></tr>';table.tBodies[0].innerHTML=body;
   const shown=rows.length-start;
-  $('v2Summary').innerHTML=picksByFormula.map((f,i)=>'<div class="v2-stat"><strong>สูตร '+(i+1)+' · #'+f.id+'</strong>'+esc(shortFormula(f.f))+'<div>ถูก '+hitCounts[i]+'/'+shown+' งวด ('+(100*hitCounts[i]/shown).toFixed(1)+'%)</div><div>งวดถัดไป: <b>'+f.next.join(',')+'</b></div></div>').join('');
+  $('v2Summary').innerHTML=picksByFormula.map((f,i)=>'<div class="v2-stat"><strong>สูตร '+(i+1)+' · #'+f.id+'</strong>'+esc(shortFormula(f.f))+'<div>ถูก '+hitCounts[i]+'/'+shown+' งวด ('+(100*hitCounts[i]/shown).toFixed(1)+'%)</div><div>งวดถัดไป: <b>'+f.next.join('')+'</b></div></div>').join('');
   $('v2Summary').insertAdjacentHTML('beforeend','<div class="v2-stat"><strong>เลขซ้ำ 3–5 สูตร</strong><div>พบเลขซ้ำ ≥3 สูตร '+duplicateDraws+'/'+shown+' งวด</div><div>ถูกตามหลักที่เลือก '+duplicateAnyHit+'/'+duplicateDraws+' งวด'+(duplicateDraws?' ('+(100*duplicateAnyHit/duplicateDraws).toFixed(1)+'%)':'')+'</div></div>');
   $('v2Message').textContent='';
  }catch(e){$('v2Message').textContent='⚠ '+e.message;table.tHead.innerHTML='';table.tBodies[0].innerHTML='';$('v2Summary').innerHTML='';}
@@ -1586,23 +1586,23 @@ function render(){
   for(let j=start;j<rows.length;j++){
    body+='<tr><td class="v2-index">'+(j)+'</td><td class="v2-prev">'+fmt(rows[j-1])+'</td>';
    picksByFormula.forEach((f,i)=>{const pred=picks(seed(rows[j-1],f.f),n);const level=v2HitLevel(pred,rows[j],target);const ok=level>0;if(ok)hitCounts[i]++;
-    body+='<td class="v2-digits v2-formula-'+i+' '+(level===2?'v2-cell-hit-four':ok?'v2-cell-hit':'v2-cell-miss')+'" title="'+(ok?'ถูก':'ไม่ถูก')+'">'+pred.join(',<wbr>')+'</td>';});
+    body+='<td class="v2-digits v2-formula-'+i+' '+(level===2?'v2-cell-hit-four':ok?'v2-cell-hit':'v2-cell-miss')+'" title="'+(ok?'ถูก':'ไม่ถูก')+'">'+pred.join('')+'</td>';});
    const freq=Array(10).fill(0);
    picksByFormula.forEach(f=>picks(seed(rows[j-1],f.f),n).forEach(d=>freq[Number(d)]++));
    const duplicates=freq.map((count,d)=>({d,count})).filter(x=>x.count>=1).sort((a,b)=>b.count-a.count||a.d-b.d);
    if(duplicates.length){duplicateDraws++;let anyHit=false;duplicates.slice(0,3).forEach(({d,count})=>{const stat=duplicateStats[d];stat.occurrences++;stat.frequency+=count;if(target.length===1&&Number(rows[j][target[0]])===d){stat.hits++;anyHit=true}});if(target.length>1){anyHit=v2StrictHit(duplicates.slice(0,3).map(x=>x.d),rows[j],target);if(anyHit)duplicateStats[duplicates[0].d].hits++;}if(anyHit)duplicateAnyHit++;}
    const dupDigits=duplicates.slice(0,3).map(x=>x.d);const dupLevel=dupDigits.length?v2HitLevel(dupDigits,rows[j],target):0;const dupHit=dupLevel>0; // ใช้กติกาตรวจถูกของวิเคราะห์รูด 10 สูตร
-   body+='<td class="v2-digits v2-dup-digits '+(dupLevel===2?'v2-cell-hit-four':dupHit?'v2-cell-hit':'v2-cell-miss')+'" title="'+(dupDigits.length?(dupHit?'ถูก':'ไม่ถูก'):'ไม่มีเลขเด่น')+'">'+(dupDigits.length?dupDigits.join(',<wbr>'):'—')+'</td>';
+   body+='<td class="v2-digits v2-dup-digits '+(dupLevel===2?'v2-cell-hit-four':dupHit?'v2-cell-hit':'v2-cell-miss')+'" title="'+(dupDigits.length?(dupHit?'ถูก':'ไม่ถูก'):'ไม่มีเลขเด่น')+'">'+(dupDigits.length?dupDigits.join(''):'—')+'</td>';
    body+='<td class="v2-result">'+fmt(rows[j])+'</td></tr>';
   }
   body+='<tr><td class="v2-next-label">ถัดไป</td><td class="v2-prev">'+fmt(rows.at(-1))+'</td>';
-  picksByFormula.forEach(f=>body+='<td class="v2-next">'+f.next.join(',<wbr>')+'</td>');
+  picksByFormula.forEach(f=>body+='<td class="v2-next">'+f.next.join('')+'</td>');
   const nextFreq=Array(10).fill(0);picksByFormula.forEach(f=>f.next.forEach(d=>nextFreq[Number(d)]++));
   const nextDup=nextFreq.map((count,d)=>({d,count})).filter(x=>x.count>=1).sort((a,b)=>b.count-a.count||a.d-b.d).slice(0,3);
-  body+='<td class="v2-next v2-dup-next">'+(nextDup.length?nextDup.map(x=>x.d).join(',<wbr>'):'—')+'</td>';
+  body+='<td class="v2-next v2-dup-next">'+(nextDup.length?nextDup.map(x=>x.d).join(''):'—')+'</td>';
   body+='<td class="v2-result">รอผล</td></tr>';table.tBodies[0].innerHTML=body;
   const shown=rows.length-start;
-  $('v2RoodSummary').innerHTML=picksByFormula.map((f,i)=>'<div class="v2-stat"><strong>สูตร '+(i+1)+' · #'+f.id+'</strong>'+esc(shortFormula(f.f))+'<div>ถูก '+hitCounts[i]+'/'+shown+' งวด ('+(100*hitCounts[i]/shown).toFixed(1)+'%)</div><div>งวดถัดไป: <b>'+f.next.join(',')+'</b></div></div>').join('');
+  $('v2RoodSummary').innerHTML=picksByFormula.map((f,i)=>'<div class="v2-stat"><strong>สูตร '+(i+1)+' · #'+f.id+'</strong>'+esc(shortFormula(f.f))+'<div>ถูก '+hitCounts[i]+'/'+shown+' งวด ('+(100*hitCounts[i]/shown).toFixed(1)+'%)</div><div>งวดถัดไป: <b>'+f.next.join('')+'</b></div></div>').join('');
   $('v2RoodSummary').insertAdjacentHTML('beforeend','<div class="v2-stat"><strong>เลขเด่นซ้ำจาก 10 สูตร</strong><div>พบเลขเด่น '+duplicateDraws+'/'+shown+' งวด</div><div>ถูกตามหลักที่เลือก '+duplicateAnyHit+'/'+duplicateDraws+' งวด'+(duplicateDraws?' ('+(100*duplicateAnyHit/duplicateDraws).toFixed(1)+'%)':'')+'</div></div>');
   $('v2RoodMessage').textContent='';
  }catch(e){$('v2RoodMessage').textContent='⚠ '+e.message;table.tHead.innerHTML='';table.tBodies[0].innerHTML='';$('v2RoodSummary').innerHTML='';}
