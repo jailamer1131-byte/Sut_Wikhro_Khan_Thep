@@ -204,18 +204,86 @@ tr:nth-child(even),.multi-table tbody tr:nth-child(even),#analysis-page .card .t
 </style>
 
 
-<style id="login-style-2026">
-html.login-locked body{visibility:hidden}html.login-locked #loginOverlay{visibility:visible}
-#loginOverlay{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(135deg,#dbeafe,#f0fdf4,#fef9c3);color:#172554}
-#loginOverlay[hidden]{display:none!important}
-#loginOverlay form{background:white;width:min(420px,100%);border-radius:22px;padding:30px;box-shadow:0 18px 55px #33415544;display:grid;gap:13px;border:2px solid #bfdbfe}
-#loginOverlay h2{text-align:center;margin:0;color:#1e40af}#loginOverlay label{font-weight:700;display:grid;gap:6px}
-#loginOverlay input{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #94a3b8;background:white!important;color:#111827!important;font:inherit}
-#loginOverlay button{padding:13px;background:#1d4ed8;color:white;border:0;border-radius:10px;font-weight:800;cursor:pointer}
-#loginOverlay .loginError{color:#b91c1c;min-height:20px}
-#logoutButton2026{position:fixed;top:12px;right:12px;z-index:9990;border:0;border-radius:12px;background:#b91c1c;color:white;padding:9px 14px;font-weight:700;cursor:pointer}
-#logoutButton2026[hidden]{display:none!important}
-</style><script>document.documentElement.classList.add('login-locked');</script></head></html>
+
+<style id="multi-table-fit-screen-2026">
+/* Fit the six-column analysis table into its available screen width. */
+#multiSection,#multiSection .multi-side-layout,#multiSection .tablewrap{min-width:0;max-width:100%;box-sizing:border-box}
+#multiSection .multi-side-layout{display:block;width:100%}
+#multiSection .tablewrap{width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+#multiSection .multi-table{width:100%;min-width:0!important;table-layout:fixed;border-collapse:collapse}
+#multiSection .multi-table th,#multiSection .multi-table td{box-sizing:border-box;min-width:0;padding:7px 5px;text-align:center;vertical-align:middle;overflow-wrap:anywhere;word-break:normal}
+#multiSection .multi-table th{font-size:clamp(11px,1.05vw,15px);line-height:1.3}
+#multiSection .multi-table td{font-size:clamp(11px,1.05vw,14px)}
+#multiSection .multi-table th:nth-child(1){width:15%}
+#multiSection .multi-table th:nth-child(2){width:11%}
+#multiSection .multi-table th:nth-child(3){width:17%}
+#multiSection .multi-table th:nth-child(4){width:27%}
+#multiSection .multi-table th:nth-child(5){width:14%}
+#multiSection .multi-table th:nth-child(6){width:16%}
+#multiSection .multi-table select{display:block;width:100%;max-width:100%;min-width:0!important;box-sizing:border-box;padding:7px 2px;font-size:clamp(11px,1vw,14px)}
+#multiSection .multi-history-button{max-width:100%;white-space:normal;padding:6px 5px;font-size:clamp(10px,1vw,13px)}
+#multiSection .multi-digit{min-width:0;width:auto;height:auto;min-height:30px;padding:3px 5px;font-size:clamp(14px,1.6vw,22px)}
+@media(max-width:680px){
+ #multiSection .tablewrap{overflow-x:auto}
+ #multiSection .multi-table{min-width:590px!important}
+ #multiSection .multi-table th{font-size:12px}
+ #multiSection .multi-table td{font-size:12px}
+ #multiSection .multi-table select{font-size:12px;padding:6px 2px}
+}
+</style>
+<style id="multi-history-comparison-2026">
+.multi-history-pager{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0}
+.multi-compare-table{border-collapse:separate;border-spacing:3px;width:max-content;min-width:100%;font-size:13px}
+.multi-compare-table th,.multi-compare-table td{padding:8px 9px;text-align:center;white-space:nowrap;border-radius:5px}
+.multi-compare-table th{background:#24467d;color:#fff}
+.multi-compare-table td:first-child{text-align:left;font-weight:700;position:sticky;left:0;background:#e8f1ff;color:#182d4c;z-index:1}
+.multi-compare-hit{background:#b6f2cb!important;color:#155e31!important;font-weight:800}
+.multi-compare-miss{background:#ffd1d1!important;color:#8b2020!important;font-weight:800}
+.multi-compare-next{background:#cdeeff!important;color:#135f8d!important;font-weight:800}
+.multi-history-scroll{overflow-x:auto;max-width:100%;padding-bottom:8px}
+</style><style id="multi-compare-vertical-layout-2026">
+#multiHistoryPanel .multi-history-scroll{max-width:100%;overflow-x:auto;overflow-y:auto;max-height:75vh}
+#multiHistoryPanel .multi-compare-vertical{width:100%!important;min-width:680px!important;table-layout:fixed!important;border-spacing:2px!important}
+#multiHistoryPanel .multi-compare-vertical th,#multiHistoryPanel .multi-compare-vertical td{min-width:0!important;max-width:none!important;width:auto!important;padding:7px 3px!important;text-align:center!important;white-space:nowrap!important;font-size:clamp(10px,1vw,13px)!important}
+#multiHistoryPanel .multi-compare-vertical tr>*:first-child{width:100px!important;min-width:100px!important;max-width:100px!important;position:sticky!important;left:0!important;z-index:2!important;background:#eaf1ff!important;color:#193b62!important;font-weight:800!important}
+#multiHistoryPanel .multi-compare-vertical thead th{position:sticky!important;top:0!important;z-index:3!important;background:#254777!important;color:white!important}
+#multiHistoryPanel .multi-compare-vertical thead th:first-child{z-index:4!important}
+#multiHistoryPanel .multi-compare-vertical .multi-compare-hit{background:linear-gradient(135deg,#b9ff43,#faff55 48%,#63ed6e)!important;color:#114b13!important;font-weight:900!important}
+#multiHistoryPanel .multi-compare-vertical .multi-compare-miss{background:#ffd8dc!important;color:#a31d30!important}
+#multiHistoryPanel .multi-compare-vertical .multi-compare-next{background:#d3f1ff!important;color:#07588c!important}
+</style><style id="multi-compare-duplicate-style">
+#multiHistoryPanel .multi-compare-table th:nth-child(2){background:#186b43!important;color:#fff!important;min-width:66px!important}
+#multiHistoryPanel .multi-compare-table .multi-compare-duplicate{background:linear-gradient(135deg,#d8ff9c,#fff59d)!important;color:#174d20!important;font-weight:900!important;min-width:66px!important;letter-spacing:1px}
+#multiHistoryPanel .multi-compare-table th:nth-child(3),#multiHistoryPanel .multi-compare-table td:nth-child(3){min-width:58px!important}
+</style><style id="multi-image-style">
+.multi-image-options{padding:12px 14px;margin:12px 0;border-radius:13px;background:#eaf7ff;border:1px solid #b8dcec;color:#000!important}
+.multi-image-checks{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:9px}
+.multi-image-checks label{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;font-weight:600;font-size:14px;color:#000!important}
+.multi-image-checks input{width:17px;height:17px;accent-color:#138e61}
+#multiImageOptions strong,#multiImageOptions label,#multiImageOptions .muted,#multiImageStatus{color:#000!important}
+</style><style id="multi-image-black-text-force">
+html body #multiSection #multiImageOptions,
+html body #multiSection #multiImageOptions strong,
+html body #multiSection #multiImageOptions label,
+html body #multiSection #multiImageOptions label *,
+html body #multiSection #multiImageOptions .muted,
+html body #multiSection #multiImageOptions #multiImageStatus {
+ color:#000000 !important;
+ -webkit-text-fill-color:#000000 !important;
+ opacity:1 !important;
+ text-shadow:none !important;
+ filter:none !important;
+}
+html body #multiSection #multiImageOptions label {font-weight:700!important;}
+</style><style id="v2-png-choice-css">
+#v2PngChoice{display:flex;align-items:center;flex-wrap:wrap;gap:12px;background:#e5f7ff;color:#111!important;padding:10px 14px;border-radius:14px;border:1px solid #a8d9ef}
+#v2PngChoice strong,#v2PngChoice label{color:#111!important}
+#v2PngChoice label{display:inline-flex;align-items:center;gap:5px;font-weight:700}
+#v2PngChoice input{accent-color:#079a7c;width:17px;height:17px}
+</style><style id="v2-png-force-black-labels">
+#v2PngChoice,#v2PngChoice *,#v2PngChoice strong,#v2PngChoice label,#v2PngChoice label *,#v2PngChoice input + span {color:#000000!important;-webkit-text-fill-color:#000000!important;text-shadow:none!important;opacity:1!important}
+#v2PngChoice input[type="checkbox"]{accent-color:#079a7c!important}
+</style><style id="v2-png-theme-style">#v2PngTheme{min-width:210px;background:#fff!important;color:#111!important;border:2px solid #9cd9d1;border-radius:12px;padding:9px}#version2-page .v2-png-theme-label{color:#fff;font-weight:700;display:flex;flex-direction:column;gap:6px}</style><style id="simple-login-css">#simpleLoginGate{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(130deg,#e0f7ff,#fbe5f6,#eaffd7);color:#17233b}#simpleLoginGate[hidden]{display:none!important}#simpleLoginGate form{width:min(420px,100%);padding:30px;border-radius:24px;background:#fff;box-shadow:0 18px 65px #34447740;display:grid;gap:12px}#simpleLoginGate h2{margin:0;text-align:center;color:#23578d}#simpleLoginGate label{font-weight:700;display:grid;gap:5px;color:#17233b!important}#simpleLoginGate input{background:#fff!important;color:#111!important;border:1px solid #a3b6ce;border-radius:10px;padding:12px;width:100%;font:inherit}#simpleLoginGate button{background:linear-gradient(120deg,#1689d2,#5bc7ef)!important;color:#fff!important;border-radius:12px;padding:12px;font-weight:800}#simpleLoginError{color:#b91c1c;min-height:22px}#simpleLogout{margin-left:auto;background:#b91c1c!important;color:#fff!important}</style></head></html>
 <style id="multi-responsive-no-scroll">
 /* Section 4: fit all columns inside the card without horizontal or vertical scrolling */
 #multiSection .tablewrap{overflow:visible!important;max-height:none!important;width:100%;}
@@ -563,12 +631,12 @@ body[data-theme] #logoutTopButton{color:#fff!important}
 body[data-theme] #loinGate .loin-panel{color:#241538!important}
 @media (prefers-contrast:more){body[data-theme] .card{border-width:2px!important}body[data-theme] input:focus-visible,body[data-theme] select:focus-visible,body[data-theme] button:focus-visible{outline:3px solid var(--theme-edge)!important;outline-offset:2px}}
 </style>
-<body><div id="loginOverlay" role="dialog" aria-modal="true" aria-labelledby="loginHeading"><form id="loginForm2026"><h2 id="loginHeading">🔐 เข้าสู่ระบบ</h2><p style="text-align:center;margin:0">สูตรวิเคราะห์ขั้นเทพ</p><label>ชื่อผู้ใช้<input id="loginUser2026" autocomplete="username" required></label><label>รหัสผ่าน<input id="loginPass2026" type="password" autocomplete="current-password" required></label><button type="submit">เข้าสู่ระบบ</button><div id="loginError2026" class="loginError" role="alert"></div></form></div><button type="button" id="logoutButton2026" hidden>🚪 ออกจากระบบ</button>
+<body><div id="simpleLoginGate" role="dialog" aria-modal="true" aria-labelledby="simpleLoginTitle"><form id="simpleLoginForm"><h2 id="simpleLoginTitle">🔐 เข้าสู่ระบบ</h2><p style="text-align:center;margin:0">สูตรวิเคราะห์ขั้นเทพ 9,999 สูตร</p><label>ชื่อผู้ใช้<input id="simpleLoginUser" autocomplete="username" required></label><label>รหัสผ่าน<input id="simpleLoginPass" type="password" autocomplete="current-password" required></label><button type="submit">เข้าสู่ระบบ</button><span id="simpleLoginError" role="alert"></span></form></div>
 
 <header><main style="padding:0"><h1>✨ สูตรวิเคราะห์ขั้นเทพ</h1><div>วิเคราะห์ 9,999 สูตร • สถิติย้อนหลัง • เลขเด่น 1–9 ตัว</div><small>เว็บแอปใช้งานออฟไลน์ บันทึกข้อมูลในเบราว์เซอร์ของเครื่อง</small></main></header><main>
-<div aria-label="เลือกธีมสีโปรแกรม" class="theme-switcher" role="group"><label for="themeSelect">🎨 เลือกธีมโปรแกรม</label><select id="themeSelect"><option value="red">🔴 แดง–ดำ (เดิม)</option><option value="blue">🔵 น้ำเงินเข้ม</option><option value="green">🟢 เขียวมรกต</option><option value="purple">🟣 ม่วงแฟนตาซี</option><option value="gold">🟡 ทองหรู</option><option value="light">⚪ ขาวสบายตา</option><option value="pinkpop">💗 ชมพูป๊อปเรืองแสง</option><option value="candy">🍬 ฟ้าลูกกวาด</option><option value="lavender">🦄 ม่วงลาเวนเดอร์</option><option value="mintpop">🍀 มิ้นต์สดใส</option><option value="sunshine">🌈 เหลืองพาสเทลสดใส</option></select></div><nav class="appnav"><button class="navbtn active" data-page="analysis-page" type="button">📊 วิเคราะห์สูตร</button><button class="navbtn" data-page="version2-page" type="button">📋 สูตร Version 2</button><button class="navbtn" data-page="ranking-page" type="button">🏆 จัดอันดับสูตรทั้ง 9,999 สูตร</button><button class="navbtn" data-page="trend-stats-page" type="button">📈 สถิติสูงต่ำคู่คี่</button><button class="navbtn" data-page="manual-page" type="button">🧩 จัดกลุ่มเลข</button><button class="navbtn" data-page="history-page" type="button">🔗 ผลย้อนหลัง</button><button class="navbtn" data-page="sheet-import-page" type="button">📥 นำเข้าผล</button></nav>
+<div aria-label="เลือกธีมสีโปรแกรม" class="theme-switcher" role="group"><label for="themeSelect">🎨 เลือกธีมโปรแกรม</label><select id="themeSelect"><option value="red">🔴 แดง–ดำ (เดิม)</option><option value="blue">🔵 น้ำเงินเข้ม</option><option value="green">🟢 เขียวมรกต</option><option value="purple">🟣 ม่วงแฟนตาซี</option><option value="gold">🟡 ทองหรู</option><option value="light">⚪ ขาวสบายตา</option><option value="pinkpop">💗 ชมพูป๊อปเรืองแสง</option><option value="candy">🍬 ฟ้าลูกกวาด</option><option value="lavender">🦄 ม่วงลาเวนเดอร์</option><option value="mintpop">🍀 มิ้นต์สดใส</option><option value="sunshine">🌈 เหลืองพาสเทลสดใส</option></select></div><nav class="appnav"><button class="navbtn active" data-page="analysis-page" type="button">📊 วิเคราะห์สูตร</button><button class="navbtn" data-page="version2-page" type="button">📋 วิเคราะห์ เด่น วินบน-ล่าง</button><button class="navbtn" data-page="ranking-page" type="button">🏆 จัดอันดับสูตรทั้ง 9,999 สูตร</button><button class="navbtn" data-page="trend-stats-page" type="button">📈 สถิติสูงต่ำคู่คี่</button><button class="navbtn" data-page="manual-page" type="button">🧩 จัดกลุ่มเลข</button><button class="navbtn" data-page="history-page" type="button">🔗 ผลย้อนหลัง</button><button class="navbtn" data-page="sheet-import-page" type="button">📥 นำเข้าผล</button><button id="simpleLogout" class="navbtn" type="button">🚪 ออกจากระบบ</button></nav>
 
-<div class="app-page" id="sheet-import-page" hidden><section class="card"><h2>📥 นำเข้าผลจาก Google Sheets</h2><p class="muted">อ่านชื่อรายการจากแถว 2–3 (เริ่มคอลัมน์ B) และแสดงผลย้อนหลังจากแถว 7 ของคอลัมน์เดียวกันเท่านั้น กด “ใช้ผลนี้” เพื่อส่งข้อมูลไปยังหน้ากรอกผลย้อนหลัง</p><div class="controls"><button type="button" id="sheetPageRefresh">🔄 โหลดข้อมูลจาก Google Sheets</button><input id="sheetPageSearch" type="search" placeholder="ค้นหาชื่อหวย เช่น นิเคอิ บ่าย" style="min-width:210px;flex:1"/><a href="https://docs.google.com/spreadsheets/d/1e81v5f4RFYywjPIaUXcmJav9oQMtiT3-kUcD6hE3Ku0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">เปิด Google Sheets ต้นทาง</a></div><p id="sheetPageStatus" role="status" class="muted">กดโหลดข้อมูลเพื่อแสดงรายการ</p><div class="tablewrap" style="overflow-x:auto"><table id="sheetPageTable" style="width:100%;min-width:640px"><thead><tr><th>รายการ</th><th>ตำแหน่ง</th><th>ผลย้อนหลัง</th><th>จำนวนงวด</th><th>นำเข้า</th></tr></thead><tbody></tbody></table></div><p class="muted">ข้อมูลอ่านจาก Google Sheets ขณะกดโหลด ไม่ได้บันทึกข้อมูลถาวรลงไฟล์ HTML • ต้องเปิดสิทธิ์ให้เข้าถึงชีตได้</p></section></div><div class="app-page" hidden="" id="version2-page"><section class="card"><h2>📋 สูตร Version 2</h2><div class="controls"><label>เลือกสูตรอัตโนมัติ<select id="v2Mode"><option value="best">5 สูตรที่แม่นยำสูงสุดย้อนหลัง</option><option value="first">สูตรลำดับ 1–5</option><option value="manual">เลือกสูตรเอง</option></select></label><label>จำนวนเลขเด่น<select id="v2DigitCount"><option value="1">เด่น 1 ตัว</option><option value="2">เด่น 2 ตัว</option><option value="3">เด่น 3 ตัว</option><option value="4">เด่น 4 ตัว</option><option value="5">เด่น 5 ตัว</option><option value="6">เด่น 6 ตัว</option><option value="7">เด่น 7 ตัว</option><option value="8">เด่น 8 ตัว</option><option value="9">เด่น 9 ตัว</option></select></label><label>หลักเด่นที่ใช้ตรวจผล<select id="v2Target"><option value="r">ร</option><option value="s">ส</option><option value="n">น</option><option value="sn">สน</option><option value="rsn">รสน</option><option value="sl">สล</option><option value="nl">นล</option><option value="bottom">ล่าง</option><option value="both">บนล่าง</option></select></label><label>แสดงผลย้อนหลัง<input id="v2Limit" type="number" min="1" step="1" value="9" placeholder="เช่น 4 หรือ 9" /></label><label style="flex:0 0 auto"><button class="secondary" id="v2All" type="button">แสดงทั้งหมด</button></label><button id="v2Run" type="button">🔄 วิเคราะห์ Version 2</button><label style="min-width:230px;flex:1 1 260px">ข้อความใต้ภาพ PNG<input id="v2PngFooterText" type="text" maxlength="100" placeholder="พิมพ์ชื่อหรือข้อความที่ต้องการ" autocomplete="off" style="width:100%" /></label><button id="v2CopyImage" type="button">📸 คัดลอกผลเป็นภาพ PNG</button><span id="v2CopyImageStatus" class="muted" role="status"></span></div><div class="v2-selectors" hidden="" id="v2Selectors"></div><p class="muted" id="v2Message" role="status"></p><div class="v2-scroll"><table class="v2-table" id="v2Table"><thead></thead><tbody></tbody></table></div><div class="v2-summary" id="v2Summary"></div><div id="v2RoodSection" style="margin-top:30px;padding-top:20px;border-top:2px solid var(--border,#ddd)"><h2>🎯 วิเคราะห์รูด</h2><div class="controls" id="v2RoodControls" style="margin:12px 0"><label>เลือกสูตรอัตโนมัติ<select id="v2RoodMode"><option value="best">10 สูตรที่แม่นยำสูงสุดย้อนหลัง</option><option value="first">สูตรลำดับ 1–10</option><option value="manual">เลือกสูตรเอง</option></select></label><label>จำนวนเลขเด่น (วิเคราะห์รูด)<select id="v2RoodDigitCount"><option value="1">เด่น 1 ตัว</option><option value="2">เด่น 2 ตัว</option><option value="3">เด่น 3 ตัว</option><option value="4">เด่น 4 ตัว</option><option value="5">เด่น 5 ตัว</option><option value="6">เด่น 6 ตัว</option><option value="7">เด่น 7 ตัว</option><option value="8">เด่น 8 ตัว</option><option value="9">เด่น 9 ตัว</option></select></label><label>หลักเด่นที่ใช้ตรวจผล<select id="v2RoodTarget"><option value="r">ร</option><option value="s">ส</option><option value="n">น</option><option value="sn">สน</option><option value="rsn">รสน</option><option value="sl">สล</option><option value="nl">นล</option><option value="bottom">ล่าง</option><option value="both">บนล่าง</option><option value="all">รสนสลนล</option></select></label><label>แสดงผลย้อนหลัง<input id="v2RoodLimit" type="number" min="1" step="1" value="9" /></label><button class="secondary" id="v2RoodAll" type="button">แสดงทั้งหมด</button><button id="v2RoodRun" type="button">🎯 วิเคราะห์รูด</button></div><div class="v2-selectors" hidden id="v2RoodSelectors"></div><p class="muted" id="v2RoodMessage" role="status"></p><div class="v2-scroll"><table class="v2-table" id="v2RoodTable"><thead></thead><tbody></tbody></table></div><div class="v2-summary" id="v2RoodSummary"></div></div><div id="v2CopiedTableSection" style="margin-top:30px;padding-top:20px;border-top:2px solid var(--border,#ddd)"><h2>🎲 วิน 7-9 บน ล่าง</h2><div class="controls" style="margin:12px 0"><label>เลือกสูตรอัตโนมัติ<select id="win8Mode"><option value="best">5 สูตรที่แม่นยำสูงสุดย้อนหลัง</option><option value="first">สูตรลำดับ 1–5</option><option value="manual">เลือกสูตรเอง</option></select></label><label>จำนวนเลขเด่น<select id="win8DigitCount"><option value="7">เด่น 7 ตัว</option><option value="8" selected>เด่น 8 ตัว</option><option value="9">เด่น 9 ตัว</option></select></label><label>หลักเด่นที่ใช้ตรวจผล<select id="win8Target"><option value="top" selected>บน</option><option value="bottom">ล่าง</option></select></label><label>แสดงผลย้อนหลัง<input id="win8Limit" type="number" min="1" step="1" value="9" /></label><button class="secondary" id="win8All" type="button">แสดงทั้งหมด</button><button id="win8Run" type="button">🎲 วิเคราะห์วิน 7-9 บน ล่าง</button></div><div class="v2-selectors" hidden id="win8Selectors"></div><p class="muted" id="win8Message" role="status"></p><div class="v2-scroll"><table class="v2-table" id="win8Table"><thead></thead><tbody></tbody></table></div><div class="v2-summary" id="win8Summary"></div></div><p class="muted">หมายเหตุ: ผลคาดการณ์เป็นการคำนวณจากสถิติย้อนหลัง ไม่รับประกันผลในอนาคต</p></section></div><div class="app-page" hidden="" id="results-page"><section class="card" id="savedResultSection"><h2 id="resultPageTitle">📋 ผล — ยังไม่ได้เลือกชื่อหวย</h2><p class="muted">แสดงเว็บไซต์ผลย้อนหลังที่เลือกจากหน้าวิเคราะห์สูตรภายในหน้านี้โดยตรง เพื่อให้เข้าถึงเว็บต้นทางได้แม้เว็บไซต์ไม่อนุญาตให้ฝัง โปรแกรมจะไม่เปิดเว็บต้นทางอัตโนมัติเมื่อเลือกชื่อหวย (เบราว์เซอร์ไม่สามารถตรวจสอบการปฏิเสธ iframe ของทุกเว็บไซต์ได้อย่างแม่นยำ)</p><div class="controls" style="margin:14px 0;display:flex;gap:10px;flex-wrap:wrap"><button id="resultReload" type="button">🔄 โหลดหน้าเว็บใหม่</button><a href="#" id="resultOpenSource" rel="noopener noreferrer" style="display:none;padding:10px 15px;background:#0284c7;color:#fff;text-decoration:none;border-radius:10px" target="_blank">🔗 เปิดเว็บต้นทาง</a></div><p class="muted" id="resultPageStatus" role="status">เลือกชื่อหวยจากส่วนที่ 1 เพื่อเลือกข้อมูล แล้วกดปุ่มเปิดเว็บผลเมื่อจำเป็น</p><iframe id="resultEmbeddedSite" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:min(75vh,900px);min-height:540px;display:none;border:1px solid #b96b7b;border-radius:12px;background:#fff" title="เว็บไซต์ผลย้อนหลังที่เลือก"></iframe></section></div><div class="app-page" hidden="" id="history-page"><section class="card" id="result-links"><h2>🔗 ลิงก์ดูผลย้อนหลังจาก Excel</h2><p class="muted">รายชื่อและลิงก์นำมาจากชีท “ผลย้อนหลัง” ในไฟล์ New.xlsx คลิกชื่อเพื่อเปิดเว็บต้นทางในแท็บใหม่</p><div class="linktools"><input aria-label="ค้นหาชื่อผลย้อนหลัง" id="linksearch" placeholder="ค้นหาชื่อผลย้อนหลัง เช่น นิเคอิ ลาว ฮานอย" type="search"/><button class="secondary" id="clearlinksearch" type="button">ล้างคำค้นหา</button></div><div class="linkcount" id="linkcount"></div><div class="linkgrid" id="linkgrid"></div></section></div><div class="app-page" hidden="" id="manual-page">
+<div class="app-page" id="sheet-import-page" hidden><section class="card"><h2>📥 นำเข้าผลจาก Google Sheets</h2><p class="muted">อ่านชื่อรายการจากแถว 2–3 (เริ่มคอลัมน์ B) และแสดงผลย้อนหลังจากแถว 7 ของคอลัมน์เดียวกันเท่านั้น กด “ใช้ผลนี้” เพื่อส่งข้อมูลไปยังหน้ากรอกผลย้อนหลัง</p><div class="controls"><button type="button" id="sheetPageRefresh">🔄 โหลดข้อมูลจาก Google Sheets</button><input id="sheetPageSearch" type="search" placeholder="ค้นหาชื่อหวย เช่น นิเคอิ บ่าย" style="min-width:210px;flex:1"/><a href="https://docs.google.com/spreadsheets/d/1e81v5f4RFYywjPIaUXcmJav9oQMtiT3-kUcD6hE3Ku0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">เปิด Google Sheets ต้นทาง</a></div><p id="sheetPageStatus" role="status" class="muted">กดโหลดข้อมูลเพื่อแสดงรายการ</p><div class="tablewrap" style="overflow-x:auto"><table id="sheetPageTable" style="width:100%;min-width:640px"><thead><tr><th>รายการ</th><th>ตำแหน่ง</th><th>ผลย้อนหลัง</th><th>จำนวนงวด</th><th>นำเข้า</th></tr></thead><tbody></tbody></table></div><p class="muted">ข้อมูลอ่านจาก Google Sheets ขณะกดโหลด ไม่ได้บันทึกข้อมูลถาวรลงไฟล์ HTML • ต้องเปิดสิทธิ์ให้เข้าถึงชีตได้</p></section></div><div class="app-page" hidden="" id="version2-page"><section class="card"><h2>📋 วิเคราะห์ เด่น วินบน-ล่าง</h2><div class="controls"><label>เลือกสูตรอัตโนมัติ<select id="v2Mode"><option value="best">5 สูตรที่แม่นยำสูงสุดย้อนหลัง</option><option value="first">สูตรลำดับ 1–5</option><option value="manual">เลือกสูตรเอง</option></select></label><label>จำนวนเลขเด่น<select id="v2DigitCount"><option value="1">เด่น 1 ตัว</option><option value="2">เด่น 2 ตัว</option><option value="3">เด่น 3 ตัว</option><option value="4">เด่น 4 ตัว</option><option value="5">เด่น 5 ตัว</option><option value="6">เด่น 6 ตัว</option><option value="7">เด่น 7 ตัว</option><option value="8">เด่น 8 ตัว</option><option value="9">เด่น 9 ตัว</option></select></label><label>หลักเด่นที่ใช้ตรวจผล<select id="v2Target"><option value="r">ร</option><option value="s">ส</option><option value="n">น</option><option value="sn">สน</option><option value="rsn">รสน</option><option value="sl">สล</option><option value="nl">นล</option><option value="bottom">ล่าง</option><option value="both">บนล่าง</option></select></label><label>แสดงผลย้อนหลัง<input id="v2Limit" type="number" min="1" step="1" value="9" placeholder="เช่น 4 หรือ 9" /></label><label style="flex:0 0 auto"><button class="secondary" id="v2All" type="button">แสดงทั้งหมด</button></label><button id="v2Run" type="button">🔄 วิเคราะห์ Version 2</button><label style="min-width:230px;flex:1 1 260px">ข้อความใต้ภาพ PNG<input id="v2PngFooterText" type="text" maxlength="100" value="มาเอดะ พารวย นะมั่งนะมี เงินทองไหลมา ชาลีติ" placeholder="พิมพ์ชื่อหรือข้อความที่ต้องการ" autocomplete="off" style="width:100%" /></label><div id="v2PngChoice" class="v2-png-choice"><strong>☑ เลือกข้อมูลที่จะแสดงในภาพ</strong><label><input type="checkbox" value="rood" checked> เด่น</label><label><input type="checkbox" value="top" checked> บน</label><label><input type="checkbox" value="bottom" checked> ล่าง</label><label><input type="checkbox" value="both" checked> บนล่าง</label><label><input type="checkbox" value="formulaDuplicates" checked> เลขซ้ำจากสูตร</label></div><label class="v2-png-theme-label" for="v2PngTheme">🎨 ธีมสีของภาพ PNG<select id="v2PngTheme"><option value="pastel">🌸 พาสเทลหวาน (เดิม)</option><option value="candy">🍭 ลูกกวาดสดใส</option><option value="mint">🍀 เขียวมิ้นต์–เหลือง</option><option value="ocean">🌊 ฟ้า–น้ำเงินสดใส</option><option value="sunset">🌅 ชมพู–ส้ม–เหลือง</option><option value="purple">💜 ม่วงลาเวนเดอร์</option></select></label><button id="v2CopyImage" type="button">📸 คัดลอกผลเป็นภาพ PNG</button><span id="v2CopyImageStatus" class="muted" role="status"></span></div><div class="v2-selectors" hidden="" id="v2Selectors"></div><p class="muted" id="v2Message" role="status"></p><div class="v2-scroll"><table class="v2-table" id="v2Table"><thead></thead><tbody></tbody></table></div><div class="v2-summary" id="v2Summary"></div><div id="v2RoodSection" style="margin-top:30px;padding-top:20px;border-top:2px solid var(--border,#ddd)"><h2>🎯 วิเคราะห์รูด</h2><div class="controls" id="v2RoodControls" style="margin:12px 0"><label>เลือกสูตรอัตโนมัติ<select id="v2RoodMode"><option value="best">10 สูตรที่แม่นยำสูงสุดย้อนหลัง</option><option value="first">สูตรลำดับ 1–10</option><option value="manual">เลือกสูตรเอง</option></select></label><label>จำนวนเลขเด่น (วิเคราะห์รูด)<select id="v2RoodDigitCount"><option value="1">เด่น 1 ตัว</option><option value="2">เด่น 2 ตัว</option><option value="3">เด่น 3 ตัว</option><option value="4">เด่น 4 ตัว</option><option value="5">เด่น 5 ตัว</option><option value="6">เด่น 6 ตัว</option><option value="7">เด่น 7 ตัว</option><option value="8">เด่น 8 ตัว</option><option value="9">เด่น 9 ตัว</option></select></label><label>หลักเด่นที่ใช้ตรวจผล<select id="v2RoodTarget"><option value="r">ร</option><option value="s">ส</option><option value="n">น</option><option value="sn">สน</option><option value="rsn">รสน</option><option value="sl">สล</option><option value="nl">นล</option><option value="bottom">ล่าง</option><option value="both">บนล่าง</option><option value="all">รสนสลนล</option></select></label><label>แสดงผลย้อนหลัง<input id="v2RoodLimit" type="number" min="1" step="1" value="9" /></label><button class="secondary" id="v2RoodAll" type="button">แสดงทั้งหมด</button><button id="v2RoodRun" type="button">🎯 วิเคราะห์รูด</button></div><div class="v2-selectors" hidden id="v2RoodSelectors"></div><p class="muted" id="v2RoodMessage" role="status"></p><div class="v2-scroll"><table class="v2-table" id="v2RoodTable"><thead></thead><tbody></tbody></table></div><div class="v2-summary" id="v2RoodSummary"></div></div><div id="v2CopiedTableSection" style="margin-top:30px;padding-top:20px;border-top:2px solid var(--border,#ddd)"><h2>🎲 วินบน 7-9</h2><div class="controls" style="margin:12px 0"><label>เลือกสูตรอัตโนมัติ<select id="win8Mode"><option value="best">5 สูตรที่แม่นยำสูงสุดย้อนหลัง</option><option value="first">สูตรลำดับ 1–5</option><option value="manual">เลือกสูตรเอง</option></select></label><label>จำนวนเลขเด่น<select id="win8DigitCount"><option value="7">เด่น 7 ตัว</option><option value="8" selected>เด่น 8 ตัว</option><option value="9">เด่น 9 ตัว</option></select></label><label>แสดงผลย้อนหลัง<input id="win8Limit" type="number" min="1" step="1" value="9" /></label><button class="secondary" id="win8All" type="button">แสดงทั้งหมด</button><button id="win8Run" type="button">🎲 วิเคราะห์วิน 7-9 บน ล่าง</button></div><div class="v2-selectors" hidden id="win8Selectors"></div><p class="muted" id="win8Message" role="status"></p><div class="v2-scroll"><table class="v2-table" id="win8Table"><thead></thead><tbody></tbody></table></div><div class="v2-summary" id="win8Summary"></div></div><div id="v2WinBottomSection" style="margin-top:30px;padding-top:20px;border-top:2px solid var(--border,#ddd)"><h2>🎲 วินล่าง 7-9</h2><div class="controls" style="margin:12px 0"><label>เลือกสูตรอัตโนมัติ<select id="winBottomMode"><option value="best">5 สูตรที่แม่นยำสูงสุดย้อนหลัง</option><option value="first">สูตรลำดับ 1–5</option><option value="manual">เลือกสูตรเอง</option></select></label><label>จำนวนเลขเด่น<select id="winBottomDigitCount"><option value="7">เด่น 7 ตัว</option><option value="8" selected>เด่น 8 ตัว</option><option value="9">เด่น 9 ตัว</option></select></label><label>แสดงผลย้อนหลัง<input id="winBottomLimit" type="number" min="1" step="1" value="9" /></label><button class="secondary" id="winBottomAll" type="button">แสดงทั้งหมด</button><button id="winBottomRun" type="button">🎲 วิเคราะห์วิน 7-9 บน ล่าง</button></div><div class="v2-selectors" hidden id="winBottomSelectors"></div><p class="muted" id="winBottomMessage" role="status"></p><div class="v2-scroll"><table class="v2-table" id="winBottomTable"><thead></thead><tbody></tbody></table></div><div class="v2-summary" id="winBottomSummary"></div></div><p class="muted">หมายเหตุ: ผลคาดการณ์เป็นการคำนวณจากสถิติย้อนหลัง ไม่รับประกันผลในอนาคต</p></section></div><div class="app-page" hidden="" id="results-page"><section class="card" id="savedResultSection"><h2 id="resultPageTitle">📋 ผล — ยังไม่ได้เลือกชื่อหวย</h2><p class="muted">แสดงเว็บไซต์ผลย้อนหลังที่เลือกจากหน้าวิเคราะห์สูตรภายในหน้านี้โดยตรง เพื่อให้เข้าถึงเว็บต้นทางได้แม้เว็บไซต์ไม่อนุญาตให้ฝัง โปรแกรมจะไม่เปิดเว็บต้นทางอัตโนมัติเมื่อเลือกชื่อหวย (เบราว์เซอร์ไม่สามารถตรวจสอบการปฏิเสธ iframe ของทุกเว็บไซต์ได้อย่างแม่นยำ)</p><div class="controls" style="margin:14px 0;display:flex;gap:10px;flex-wrap:wrap"><button id="resultReload" type="button">🔄 โหลดหน้าเว็บใหม่</button><a href="#" id="resultOpenSource" rel="noopener noreferrer" style="display:none;padding:10px 15px;background:#0284c7;color:#fff;text-decoration:none;border-radius:10px" target="_blank">🔗 เปิดเว็บต้นทาง</a></div><p class="muted" id="resultPageStatus" role="status">เลือกชื่อหวยจากส่วนที่ 1 เพื่อเลือกข้อมูล แล้วกดปุ่มเปิดเว็บผลเมื่อจำเป็น</p><iframe id="resultEmbeddedSite" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:min(75vh,900px);min-height:540px;display:none;border:1px solid #b96b7b;border-radius:12px;background:#fff" title="เว็บไซต์ผลย้อนหลังที่เลือก"></iframe></section></div><div class="app-page" hidden="" id="history-page"><section class="card" id="result-links"><h2>🔗 ลิงก์ดูผลย้อนหลังจาก Excel</h2><p class="muted">รายชื่อและลิงก์นำมาจากชีท “ผลย้อนหลัง” ในไฟล์ New.xlsx คลิกชื่อเพื่อเปิดเว็บต้นทางในแท็บใหม่</p><div class="linktools"><input aria-label="ค้นหาชื่อผลย้อนหลัง" id="linksearch" placeholder="ค้นหาชื่อผลย้อนหลัง เช่น นิเคอิ ลาว ฮานอย" type="search"/><button class="secondary" id="clearlinksearch" type="button">ล้างคำค้นหา</button></div><div class="linkcount" id="linkcount"></div><div class="linkgrid" id="linkgrid"></div></section></div><div class="app-page" hidden="" id="manual-page">
 <section class="card" id="manualSection"><h2>🧩 จัดกลุ่มเลข (กรอกเอง)</h2><p class="muted">กรอกเลขเด่นแต่ละหลักด้วยตนเอง ระบบนี้ทำงานแยกจากสูตรวิเคราะห์ 9,999 สูตรและส่วนที่ 5 โดยสิ้นเชิง • กรอกตัวเลข 0–9 ติดกันหรือคั่นด้วยช่องว่างก็ได้</p>
 <div class="manual-panel"><h3>1. จัดกลุ่มเลข 3 ตัวบน (000–999)</h3><div class="four-controls"><label>หลักร้อย<input id="manualH" inputmode="numeric" maxlength="40" placeholder="เช่น 1234"/></label><label>หลักสิบ<input id="manualT" inputmode="numeric" maxlength="40" placeholder="เช่น 567"/></label><label>หลักหน่วย<input id="manualU" inputmode="numeric" maxlength="40" placeholder="เช่น 890"/></label><label>สิบหน่วย<input id="manualP" inputmode="numeric" maxlength="40" placeholder="เช่น 12345"/></label></div><label class="toggle-condition"><input checked="" id="manualUseP" type="checkbox"/> ใช้เงื่อนไขสิบหน่วย (ต้องมีอย่างน้อย 1 ตัวอยู่ในชุดสิบหน่วย)</label><div class="group-filters manual-filters" id="manualThreeFilters"></div><div class="controls"><button id="manualThreeRun" type="button">✦ จัดกลุ่มเลข</button><button class="secondary" id="manualThreeCopy" type="button">คัดลอกผล</button></div><p class="muted" id="manualThreeCount">ยังไม่ได้จัดกลุ่ม</p><div class="responsive-number-list" id="manualThreeResults"></div></div>
 <h2 style="margin-top:24px">2. จัดกลุ่มเลข 2 ตัว (บน / ล่าง)</h2><div class="group-filters manual-filters" id="manualTwoFilters"></div><div id="manualTwoPanels"></div>
@@ -580,7 +648,7 @@ body[data-theme] #loinGate .loin-panel{color:#241538!important}
 13" spellcheck="false"></textarea><div class="controls" style="margin-top:12px"><label for="historyPasteOrder" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">ลำดับข้อมูลที่วาง <select aria-label="เลือกลำดับผลย้อนหลัง" id="historyPasteOrder"><option value="oldFirst">บนลงล่าง (บนสุดเก่า → ล่างสุดใหม่)</option><option value="newFirst">ล่างขึ้นบน (บนสุดใหม่ → ล่างสุดเก่า)</option></select></label><button class="secondary" onclick="formatHistoryInput()" type="button">✨ จัดรูปแบบเป็น 123-45</button><button class="secondary" onclick="reverseHistoryOrder()" type="button">🔃 กลับลำดับบน–ล่าง</button><button class="secondary" onclick="clearHistory()">ล้างข้อมูล</button></div></section>
 <section class="card"><h2>2. ตั้งค่าการวิเคราะห์</h2><div class="controls"><label>วิเคราะห์หลัก<select id="target"><option value="hundred">ร้อย</option><option value="ten">สิบ</option><option value="unit">หน่วย</option><option value="lowerTen">สิบล่าง</option><option value="lowerUnit">หน่วยล่าง</option><option value="top3">ร้อยสิบหน่วย</option><option value="top2">สิบหน่วย</option><option value="bottom2">สิบล่างหน่วยล่าง</option><option selected="" value="topBottom">บนล่าง</option></select></label><label>จำนวนเลขเด่น<select id="count"></select></label><input id="topN" type="hidden" value="99"/><label>เรียงอันดับ<select id="sort"><option value="rate">อัตราถูก (%)</option><option value="hits">จำนวนครั้งถูก</option></select></label></div><p class="muted">สูตรคำนวณจากผลของงวดก่อนหน้า เพื่อเทียบกับผลของงวดถัดไป (ไม่ใช้ข้อมูลงวดที่ต้องทาย)</p><button class="analyze-main-button" id="run" onclick="analyze()">🔎 วิเคราะห์สูตร</button><div id="status"></div></section>
 <section class="card" hidden="" id="summary"><h2>3. สรุปผลการวิเคราะห์</h2><div class="stats" id="stats"></div><div class="two"><div><h3>เลขเด่นจากสูตรอันดับ 1 (รวมสูตรที่มีอัตราถูกสูงสุดเท่ากัน)</h3><div class="digits" id="digits"></div><div class="secondary-digits-block" hidden="" id="secondaryDigitsBlock"><h4>เลขรอง (รวมเด่นและรองไม่เกิน 7 ตัว)</h4><div class="secondary-digits" id="secondaryDigits"></div></div></div><div aria-hidden="true" hidden=""><div id="votes"></div><div id="voteSequence"></div></div></div><div class="ai-mode" id="aiMode"><h3>🤖 โหมด AI วิเคราะห์แนวโน้มเลขเด่น</h3><p class="muted">วิเคราะห์สถิติผลย้อนหลังของหวยที่เลือก แยกหลักร้อย สิบ หน่วย สิบล่าง และหน่วยล่าง โดยให้น้ำหนักงวดล่าสุดและตรวจรูปแบบการเปลี่ยนเลข (เป็นการประเมินเชิงสถิติ ไม่ใช่ AI ออนไลน์หรือการทำนายผลที่แน่นอน)</p><div class="controls"><button id="aiLoadBtn" type="button">🤖 โหลด AI วิเคราะห์เลขเด่น</button><button class="secondary" id="aiCopyBtn" type="button">📋 คัดลอกผล AI</button><span class="muted" id="aiStatus"></span></div><div aria-live="polite" id="aiOutput"></div><div class="lucky-sets" hidden="" id="aiLuckySets"><h3>🤖 จัดกลุ่มเลขเด่น AI แยกตามหลัก</h3><p class="lucky-note">จับคู่เลขเด่น 3 ตัวของแต่ละหลักตามลำดับร้อย–สิบ–หน่วย และสิบล่าง–หน่วยล่าง โดยคงเลขซ้ำได้</p><div class="lucky-grid"><div class="lucky-panel"><h4>AI 3 ตัวบน <span id="aiLucky3Count"></span></h4><div class="ai-source" id="aiLucky3Source"></div><div class="lucky-numbers" id="aiLucky3"></div><button class="lucky-copy" data-copy-ai="aiLucky3" type="button">📋 คัดลอก 3 ตัวบน</button></div><div class="lucky-panel"><h4>AI 2 ตัวบน <span id="aiLucky2TopCount"></span></h4><div class="ai-source" id="aiLucky2TopSource"></div><div class="lucky-numbers" id="aiLucky2Top"></div><button class="lucky-copy" data-copy-ai="aiLucky2Top" type="button">📋 คัดลอก 2 ตัวบน</button></div><div class="lucky-panel"><h4>AI 2 ตัวล่าง <span id="aiLucky2BottomCount"></span></h4><div class="ai-source" id="aiLucky2BottomSource"></div><div class="lucky-numbers" id="aiLucky2Bottom"></div><button class="lucky-copy" data-copy-ai="aiLucky2Bottom" type="button">📋 คัดลอก 2 ตัวล่าง</button></div></div></div></div></section>
-<section class="card" id="multiSection"><h2>4. วิเคราะห์เลขเด่นแยกตามหลัก</h2><p class="muted">เลือกจำนวนเลขที่ใช้ทดสอบสูตร 1–9 ตัวแยกแต่ละหลัก แล้วกำหนดจำนวนเลขเด่นที่ต้องการแสดง 1–9 ตัว โปรแกรมจะรวบรวมเลขจากสูตรที่มีผลย้อนหลังดีที่สุดตามลำดับ</p><div class="tablewrap"><table class="multi-table"><thead><tr><th>เลือกจำนวนผล</th><th>หลัก</th><th>เด่น</th><th>สถิติสูตรอันดับ 1 / สูตรย้อนหลัง</th><th>วิเคราะห์สูตรละ</th></tr></thead><tbody id="multiBody"></tbody></table></div><div aria-live="polite" class="multi-history-panel" hidden="" id="multiHistoryPanel"></div><div class="controls" style="margin-top:14px"><button id="multiRun" type="button">🔎 วิเคราะห์เลขแยกหลัก</button><button class="secondary" id="multiCopy" type="button">📋 คัดลอกตารางเลขเด่น</button><span class="muted" id="multiStatus"></span></div></section>
+<section class="card" id="multiSection"><h2>4. วิเคราะห์เลขเด่นแยกตามหลัก</h2><p class="muted">เลือกจำนวนเลขที่ใช้ทดสอบสูตร 1–9 ตัวแยกแต่ละหลัก แล้วกำหนดจำนวนเลขเด่นที่ต้องการแสดง 1–9 ตัว โปรแกรมจะรวบรวมเลขจากสูตรที่มีผลย้อนหลังดีที่สุดตามลำดับ</p><div id="multiImageOptions" class="multi-image-options"><strong>☑ เลือกหลักที่จะแสดงในภาพ</strong><div id="multiImageChecks" class="multi-image-checks"></div><span class="muted" id="multiImageStatus" role="status"></span></div><div class="controls" style="margin-top:14px"><button id="multiRun" type="button">🔎 วิเคราะห์เลขแยกหลัก</button><button class="secondary" id="multiImageCopy" type="button">📸 คัดลอกผลเป็นภาพ PNG</button><span class="muted" id="multiStatus"></span></div><div class="multi-side-layout"><div class="tablewrap"><table class="multi-table"><thead><tr><th>เลือกจำนวนผล</th><th>หลัก</th><th>เด่น</th><th>สถิติสูตรอันดับ 1 / สูตรย้อนหลัง</th><th>วิเคราะห์สูตรละ</th><th>จำนวนงวดย้อนหลัง</th></tr></thead><tbody id="multiBody"></tbody></table></div></div><div aria-live="polite" class="multi-history-panel" hidden="" id="multiHistoryPanel"></div></section>
 <section aria-labelledby="trendHeading" class="card" id="trendSection">
 <h2 id="trendHeading">📈 ทำนายงวดถัดไป — สูง ต่ำ คู่ คี่</h2>
 <p class="muted">วิเคราะห์จากสูตรที่ทำผลงานย้อนหลังดีที่สุดในแต่ละหลัก โดยใช้เลขคาดการณ์ 1 ตัวต่อสูตร และสรุปเสียงส่วนใหญ่จาก 30 สูตรอันดับแรกของแต่ละหลัก</p>
@@ -695,8 +763,8 @@ function updateSummaryFormulaCount(value){
  if(document.getElementById('history').value.trim()) analyze();
 }
 function analyze(){try{const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด เพื่อทดสอบสูตร');const count=+document.getElementById('count').value;const target=targets[document.getElementById('target').value];const selectedTarget=document.getElementById('target');const sort=document.getElementById('sort').value;const total=rows.length-1;latest=rows.at(-1);lastCount=count;ranked=formulas.map((f,i)=>{let hits=0;for(let j=1;j<rows.length;j++){if(hit(picks(seed(rows[j-1],f),count),rows[j],target))hits++;}return {id:i+1,f,hits,total,rate:hits/total,next:picks(seed(latest,f),count)};});ranked.sort((a,b)=>sort==='hits'?(b.hits-a.hits||b.rate-a.rate||a.f.length-b.f.length||a.id-b.id):(b.rate-a.rate||b.hits-a.hits||a.f.length-b.f.length||a.id-b.id));const topN=Math.min(9999,Math.max(1,Math.trunc(Number(document.getElementById('topN').value)||99)));document.getElementById('topN').value=topN;const votes=Array(10).fill(0);ranked.slice(0,topN).forEach(r=>r.next.forEach(d=>votes[d]++));const order=Array.from({length:10},(_,i)=>i).sort((a,b)=>votes[b]-votes[a]||a-b);luckyVoteOrder=order.slice();const best=ranked[0].next;const tiedTop=ranked.filter(r=>r.hits===ranked[0].hits);const tiedDigits=[...new Set(tiedTop.flatMap(r=>r.next))];const primaryDigits=tiedDigits.slice(0,7);const secondaryNeeded=Math.max(0,7-primaryDigits.length);const secondaryDigits=[];const secondaryRates=new Map();for(const r of ranked){if(r.hits===ranked[0].hits)continue;for(const d of r.next){if(!primaryDigits.includes(d)&&!secondaryDigits.includes(d)){secondaryDigits.push(d);secondaryRates.set(d,pct(r.hits,total));if(secondaryDigits.length>=secondaryNeeded)break;}}if(secondaryDigits.length>=secondaryNeeded)break;}const tiedRate=pct(ranked[0].hits,total);document.getElementById('stats').innerHTML=`<div class="stat">งวดย้อนหลัง<strong>${rows.length}</strong></div><div class="stat">คู่ทดสอบ<strong>${total}</strong></div><div class="stat">สูตรอันดับ 1 ถูก<strong>${ranked[0].hits}/${total}</strong></div><div class="stat">อัตราถูกอันดับ 1<strong>${pct(ranked[0].hits,total)}</strong></div>`;document.getElementById('digits').innerHTML=primaryDigits.map(d=>`<div class="tied-digit-item"><small class="tied-digit-rate">${tiedRate}</small><span class="digit">${d}</span></div>`).join('');document.getElementById('secondaryDigits').innerHTML=secondaryDigits.map(d=>`<div class="secondary-digit-item"><small class="secondary-digit-rate">${secondaryRates.get(d)}</small><span class="secondary-digit">${d}</span></div>`).join('');document.getElementById('secondaryDigitsBlock').hidden=secondaryDigits.length===0;document.getElementById('votes').innerHTML=order.map(d=>`<div style="display:flex;align-items:center;gap:9px;margin:5px 0"><b style="width:20px">${d}</b><div style="height:13px;background:#dfe8ff;border-radius:6px;flex:1;overflow:hidden"><div style="height:100%;background:#5277df;width:${topN?votes[d]/topN*100:0}%"></div></div><span style="width:45px">${votes[d]}</span></div>`).join('');document.getElementById('voteSequence').innerHTML=order.map((d,i)=>`<span class="vote-sequence-digit" title="อันดับ ${i+1}: ${votes[d]} คะแนน">${d}</span>`).join('');renderLuckySets();document.getElementById('summary').hidden=false;document.getElementById('rankSection').hidden=false;document.getElementById('status').textContent=`วิเคราะห์สำเร็จ ${ranked.length} สูตร`;renderTable();analyzeMulti();localStorage.setItem(key,document.getElementById('history').value);}catch(e){document.getElementById('status').textContent='⚠ '+e.message;}}
-const multiTargets=[['hundred','ร้อย',7],['ten','สิบ',7],['unit','หน่วย',7],['lowerTen','สิบล่าง',3],['lowerUnit','หน่วยล่าง',3],['top3','ร้อยสิบหน่วย',7],['top2','สิบหน่วย',7],['topWin','วินบน',7],['bottom2','สิบล่างหน่วยล่าง',4],['bottomWin','วินล่าง',7],['topBottom','บนล่าง',4]];
-function initMulti(){const tbody=document.getElementById('multiBody');multiTargets.forEach(([id,label,initial])=>{let tr=document.createElement('tr');let td1=document.createElement('td');let sel=document.createElement('select');sel.id='multi-'+id;sel.setAttribute('aria-label','จำนวนเลขเด่น '+label);for(let n=1;n<=9;n++){let opt=document.createElement('option');opt.value=n;opt.textContent=n+' ตัว';sel.append(opt)}sel.value=localStorage.getItem('lucky999_multi_'+id)||initial;sel.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_'+id,sel.value);if(latest.length)analyzeMulti()});td1.append(sel);let tdFormula=document.createElement('td');let formulaSelect=document.createElement('select');formulaSelect.id='multi-formula-'+id;formulaSelect.setAttribute('aria-label','วิเคราะห์สูตรละกี่ตัว '+label);for(let k=1;k<=9;k++){const option=document.createElement('option');option.value=k;option.textContent=k+' ตัว';formulaSelect.append(option)}const savedFormula=localStorage.getItem('lucky999_multi_formula_'+id);formulaSelect.value= savedFormula&&Number(savedFormula)>=1&&Number(savedFormula)<=9?savedFormula:(localStorage.getItem('lucky999_multi_analysis_count')||'1');formulaSelect.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_formula_'+id,formulaSelect.value);if(latest.length)analyzeMulti()});tdFormula.append(formulaSelect);let td2=document.createElement('td');td2.textContent=label;let td3=document.createElement('td');td3.id='multi-out-'+id;td3.textContent='—';let td4=document.createElement('td');td4.id='multi-stat-'+id;td4.textContent='—';const view=document.createElement('button');view.type='button';view.className='multi-history-button';view.textContent='📊 ดูสูตรย้อนหลัง';view.addEventListener('click',()=>showMultiHistory(id));td4.append(document.createElement('br'),view);tr.append(td1,td2,td3,td4,tdFormula);tbody.append(tr)});document.getElementById('multiRun').addEventListener('click',analyzeMulti)}
+const multiTargets=[['hundred','ร้อย',7],['ten','สิบ',7],['unit','หน่วย',7],['lowerTen','สิบล่าง',3],['lowerUnit','หน่วยล่าง',3],['top3','ร้อยสิบหน่วย',7],['top2','สิบหน่วย',7],['bottom2','สิบล่างหน่วยล่าง',4]];
+function initMulti(){const tbody=document.getElementById('multiBody');multiTargets.forEach(([id,label,initial])=>{let tr=document.createElement('tr');let td1=document.createElement('td');let sel=document.createElement('select');sel.id='multi-'+id;sel.setAttribute('aria-label','จำนวนเลขเด่น '+label);for(let n=1;n<=9;n++){let opt=document.createElement('option');opt.value=n;opt.textContent=n+' ตัว';sel.append(opt)}sel.value=localStorage.getItem('lucky999_multi_'+id)||initial;sel.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_'+id,sel.value);if(latest.length)analyzeMulti()});td1.append(sel);let tdFormula=document.createElement('td');let formulaSelect=document.createElement('select');formulaSelect.id='multi-formula-'+id;formulaSelect.setAttribute('aria-label','วิเคราะห์สูตรละกี่ตัว '+label);for(let k=1;k<=9;k++){const option=document.createElement('option');option.value=k;option.textContent=k+' ตัว';formulaSelect.append(option)}const savedFormula=localStorage.getItem('lucky999_multi_formula_'+id);formulaSelect.value= savedFormula&&Number(savedFormula)>=1&&Number(savedFormula)<=9?savedFormula:(localStorage.getItem('lucky999_multi_analysis_count')||'1');formulaSelect.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_formula_'+id,formulaSelect.value);if(latest.length)analyzeMulti()});tdFormula.append(formulaSelect);let td2=document.createElement('td');td2.textContent=label;let td3=document.createElement('td');td3.id='multi-out-'+id;td3.textContent='—';let td4=document.createElement('td');td4.id='multi-stat-'+id;td4.textContent='—';const view=document.createElement('button');view.type='button';view.className='multi-history-button';view.textContent='📊 ดูสูตรย้อนหลัง';view.addEventListener('click',()=>showMultiHistory(id));td4.append(document.createElement('br'),view);let tdWindow=document.createElement('td');let windowSelect=document.createElement('select');windowSelect.id='multi-window-'+id;windowSelect.setAttribute('aria-label','จำนวนงวดย้อนหลัง '+label);windowSelect.dataset.saved=localStorage.getItem('lucky999_multi_window_'+id)||'all';windowSelect.addEventListener('change',()=>{localStorage.setItem('lucky999_multi_window_'+id,windowSelect.value);windowSelect.dataset.saved=windowSelect.value;analyzeMulti()});tdWindow.append(windowSelect);tr.append(td1,td2,td3,td4,tdFormula,tdWindow);tbody.append(tr)});document.getElementById('multiRun').addEventListener('click',analyzeMulti)}
 function compactFormulaName(f){
  const symbols=['ร','ส','น','สล','นล'];
  const counts=new Map();
@@ -707,25 +775,96 @@ const multiHistoryCache={};let multiHistoryOpen=null;
 function showMultiHistory(id,refresh=false){
  const panel=document.getElementById('multiHistoryPanel');
  if(!refresh&&multiHistoryOpen===id&&!panel.hidden){panel.hidden=true;multiHistoryOpen=null;return}
- const data=multiHistoryCache[id];if(!data){panel.hidden=false;panel.textContent='กรุณากดวิเคราะห์เลขแยกหลักก่อน';return}
+ const base=multiHistoryCache[id];if(!base){panel.hidden=false;panel.textContent='กรุณากดวิเคราะห์เลขแยกหลักก่อน';return}
+ // หน้าดูสูตรใช้จำนวนเลขจากช่อง «เลือกจำนวนผล/เลขเด่น» ของหลักนี้
+ // ไม่ใช้ค่า «วิเคราะห์สูตรละ» ซึ่งยังคงใช้กับตารางหลักตามเดิม
+ const perFormula=Math.max(1,Math.min(9,Number(document.getElementById('multi-'+id)?.value)||1));
+ const rows=base.rows,last=rows[rows.length-1],target=base.target;
+ const candidates=formulas.map((f,i)=>{
+  let hits=0;
+  for(let j=1;j<rows.length;j++)if(hitMultiStrict(picks(seed(rows[j-1],f),perFormula),rows[j],target,id))hits++;
+  return {f,i,hits,next:picks(seed(last,f),perFormula)};
+ });
+ candidates.sort((a,b)=>b.hits-a.hits||a.f.length-b.f.length||a.i-b.i);
+ const data={...base,perFormula,candidates};
  multiHistoryOpen=id;panel.hidden=false;panel.replaceChildren();
  const heading=document.createElement('h3');heading.textContent='📊 สูตรย้อนหลัง — '+data.label;panel.append(heading);
- const note=document.createElement('p');note.textContent=(id==='topWin'?'เงื่อนไข: ต้องถูกทั้งหลักสิบและหลักหน่วยในงวดเดียวกัน • ':id==='bottomWin'?'เงื่อนไข: ต้องถูกทั้งหลักสิบล่างและหลักหน่วยล่างในงวดเดียวกัน • ':'')+'วิเคราะห์สูตรละ '+data.perFormula+' ตัว | ผลย้อนหลัง '+data.rows.length+' งวด | คลิกสูตรเพื่อดูผลตรวจย้อนหลังทีละงวด';panel.append(note);
+ const note=document.createElement('p');note.textContent=(id==='topWin'?'เงื่อนไข: ต้องถูกทั้งหลักสิบและหลักหน่วยในงวดเดียวกัน • ':id==='bottomWin'?'เงื่อนไข: ต้องถูกทั้งหลักสิบล่างและหลักหน่วยล่างในงวดเดียวกัน • ':'')+'ใช้เลขเด่น '+data.perFormula+' ตัว | ผลย้อนหลัง '+data.rows.length+' งวด | คลิกสูตรเพื่อดูผลตรวจย้อนหลังทีละงวด';panel.append(note);
  const close=document.createElement('button');close.type='button';close.className='secondary';close.textContent='ปิดรายละเอียด';close.onclick=()=>{panel.hidden=true;multiHistoryOpen=null};panel.append(close);
  const list=document.createElement('div');list.className='multi-history-list';panel.append(list);
  const detail=document.createElement('div');detail.className='multi-history-detail';panel.append(detail);
  const makeCell=(tr,value,tag='td')=>{const cell=document.createElement(tag);cell.textContent=value;tr.append(cell);return cell};
- data.candidates.slice(0,20).forEach((candidate,index)=>{const btn=document.createElement('button');btn.type='button';btn.className='multi-history-formula';btn.textContent='#'+(index+1)+' · '+compactFormulaName(candidate.f)+' · ถูก '+candidate.hits+'/'+(data.rows.length-1);btn.title='สูตร '+(candidate.i+1)+' — คลิกดูผลย้อนหลัง';btn.onclick=()=>{
- detail.replaceChildren();const title=document.createElement('h4');title.textContent='ผลย้อนหลังสูตร '+(candidate.i+1)+' — '+compactFormulaName(candidate.f);detail.append(title);
- const wrap=document.createElement('div');wrap.className='multi-history-scroll';const table=document.createElement('table');const head=document.createElement('tr');['งวดที่ตรวจ','งวดก่อนหน้า','เลขเด่นที่คำนวณ','ผลที่ออก','สถานะ'].forEach(v=>makeCell(head,v,'th'));table.append(head);
- for(let j=1;j<data.rows.length;j++){const prev=data.rows[j-1],current=data.rows[j],pred=picks(seed(prev,candidate.f),data.perFormula),ok=hitMultiStrict(pred,current,data.target,id),tr=document.createElement('tr');[j,prev.slice(0,3).join('')+'-'+prev.slice(3).join(''),pred.join(','),current.slice(0,3).join('')+'-'+current.slice(3).join(''),ok?'ถูก':'ไม่ถูก'].forEach(v=>makeCell(tr,v));tr.className=ok?'multi-hit':'multi-miss';table.append(tr)}
- const next=document.createElement('tr');['ถัดไป',data.rows.at(-1).slice(0,3).join('')+'-'+data.rows.at(-1).slice(3).join(''),candidate.next.join(','),'รอผล','—'].forEach(v=>makeCell(next,v));table.append(next);wrap.append(table);detail.append(wrap);};list.append(btn);if(index===0)btn.click()});
+ const pageSize=10;let page=0;
+ const pager=document.createElement('div');pager.className='multi-history-pager';panel.insertBefore(pager,detail);
+ const prevButton=document.createElement('button');prevButton.type='button';prevButton.textContent='◀ ก่อนหน้า';prevButton.className='secondary';
+ const pageInfo=document.createElement('strong');
+ const nextButton=document.createElement('button');nextButton.type='button';nextButton.textContent='ถัดไป ▶';nextButton.className='secondary';
+ pager.append(prevButton,pageInfo,nextButton);
+ const renderPage=()=>{
+  list.replaceChildren();detail.replaceChildren();
+  const totalPages=Math.max(1,Math.ceil(data.candidates.length/pageSize));page=Math.min(Math.max(page,0),totalPages-1);
+  pageInfo.textContent='หน้า '+(page+1)+' / '+totalPages+' • สูตร '+(page*pageSize+1)+'–'+Math.min((page+1)*pageSize,data.candidates.length)+' จาก '+data.candidates.length+' สูตร';
+  prevButton.disabled=page===0;nextButton.disabled=page>=totalPages-1;
+  const table=document.createElement('table');table.className='multi-compare-table multi-compare-vertical';
+  const selected=data.candidates.slice(page*pageSize,(page+1)*pageSize);
+  // คัดเฉพาะสูตรที่มีจำนวนครั้งถูกสูงสุด (รวมสูตรที่คะแนนเท่ากัน)
+  const bestHits=data.candidates.length?Math.max(...data.candidates.map(x=>x.hits)):0;
+  const bestCandidates=data.candidates.filter(x=>x.hits===bestHits);
+  const duplicateDigits=(previousRow)=>{
+   if(!previousRow||bestCandidates.length<2)return '—';
+   const frequency=new Map();
+   bestCandidates.forEach(candidate=>{
+    const digits=new Set(picks(seed(previousRow,candidate.f),data.perFormula).map(String));
+    digits.forEach(d=>frequency.set(d,(frequency.get(d)||0)+1));
+   });
+   return [...frequency.entries()].filter(([digit,count])=>count>=2)
+    .sort((a,b)=>b[1]-a[1]||Number(a[0])-Number(b[0]))
+    .map(([digit])=>digit).join('')||'—';
+  };
+  const thead=document.createElement('thead'),hr=document.createElement('tr');
+  makeCell(hr,'ผลที่ออก','th');
+  const duplicateHeader=makeCell(hr,'เลขซ้ำ','th');duplicateHeader.title='เลขที่ปรากฏในอย่างน้อย 2 สูตรจากกลุ่มสูตรที่ถูกมากที่สุด (รวมสูตรที่คะแนนสูงสุดเท่ากัน)';
+  selected.forEach((candidate,idx)=>{
+   const rank=page*pageSize+idx+1;
+   const cell=makeCell(hr,'สูตร '+rank,'th');
+   cell.title='สูตร '+(candidate.i+1);
+  });
+  thead.append(hr);table.append(thead);
+  const tbody=document.createElement('tbody');
+  const scoreRow=document.createElement('tr');makeCell(scoreRow,'ถูก / ทดสอบ','th');makeCell(scoreRow,'สูงสุด '+bestHits+' ครั้ง');
+  selected.forEach(candidate=>makeCell(scoreRow,candidate.hits+' / '+(data.rows.length-1)));
+  tbody.append(scoreRow);
+  for(let j=1;j<data.rows.length;j++){
+   const tr=document.createElement('tr');makeCell(tr,data.rows[j].slice(0,3).join('')+'-'+data.rows[j].slice(3,5).join(''),'th');
+   const duplicateCell=makeCell(tr,duplicateDigits(data.rows[j-1]));duplicateCell.className='multi-compare-duplicate';
+   selected.forEach(candidate=>{
+    const pred=picks(seed(data.rows[j-1],candidate.f),data.perFormula);
+    const ok=hitMultiStrict(pred,data.rows[j],data.target,id);
+    const cell=makeCell(tr,pred.join(''));
+    cell.className=ok?'multi-compare-hit':'multi-compare-miss';
+    cell.title='งวด '+j+' · '+pred.join('')+' · ผล '+data.rows[j].slice(0,3).join('')+'-'+data.rows[j].slice(3).join('');
+    cell.setAttribute('aria-label',cell.title+(ok?' · ถูก':' · ไม่ถูก'));
+   });
+   tbody.append(tr);
+  }
+  const futureRow=document.createElement('tr');makeCell(futureRow,'งวดถัดไป','th');
+  const futureDup=makeCell(futureRow,duplicateDigits(data.rows[data.rows.length-1]));futureDup.className='multi-compare-duplicate';
+  selected.forEach(candidate=>{const cell=makeCell(futureRow,candidate.next.join(''));cell.className='multi-compare-next'});
+  tbody.append(futureRow);table.append(tbody);
+  const wrap=document.createElement('div');wrap.className='multi-history-scroll';wrap.append(table);detail.append(wrap);
+  const legend=document.createElement('p');legend.className='muted';legend.textContent='เลขซ้ำ: เลขที่พบในอย่างน้อย 2 สูตรจากสูตรที่ถูกสูงสุด '+bestHits+' ครั้ง (จำนวน '+bestCandidates.length+' สูตร) • สีเขียว = ถูก • สีแดง = ไม่ถูก • สีฟ้า = งวดถัดไป';detail.append(legend);
+ };
+ prevButton.onclick=()=>{page--;renderPage()};nextButton.onclick=()=>{page++;renderPage()};renderPage();
  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 function analyzeMulti(){try{
- const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด');
- const last=rows[rows.length-1],total=rows.length-1;
+ const allRows=parse();
+ if(allRows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวด');
  for(const [id,label] of multiTargets){
+  const selector=document.getElementById('multi-window-'+id);
+  const savedCount=selector?.value||localStorage.getItem('lucky999_multi_window_'+id)||'all';
+  const rowCount=savedCount==='all'?allRows.length:Math.max(2,Number(savedCount)||allRows.length);
+  const rows=allRows.slice(-rowCount),last=rows[rows.length-1],total=rows.length-1;
   const perFormula=Number(document.getElementById('multi-formula-'+id).value)||1;
   const n=Number(document.getElementById('multi-'+id).value),target=id==='topWin'?[1,2]:id==='bottomWin'?[3,4]:targets[id];
   const candidates=formulas.map((f,i)=>{
@@ -915,7 +1054,7 @@ restore();makeFilters('manualThreeFilters','threeMode',calcThree);makeFilters('m
 </script><script>
 (function(){
 const button=document.getElementById('multiCopy');if(!button)return;
-const labelPairs=[['hundred','ร้อย'],['ten','สิบ'],['unit','หน่วย'],['lowerTen','สิบล่าง'],['lowerUnit','หน่วยล่าง'],['top3','ร้อยสิบหน่วย'],['top2','สิบหน่วย'],['topWin','วินบน'],['bottom2','สิบล่างหน่วยล่าง'],['bottomWin','วินล่าง'],['topBottom','บนล่าง']];
+const labelPairs=[['hundred','ร้อย'],['ten','สิบ'],['unit','หน่วย'],['lowerTen','สิบล่าง'],['lowerUnit','หน่วยล่าง'],['top3','ร้อยสิบหน่วย'],['top2','สิบหน่วย'],['bottom2','สิบล่างหน่วยล่าง']];
 function collect(){
  const selected=localStorage.getItem('lucky999_selected_history_source')||'';
  const picker=document.getElementById('historySourceSelect');
@@ -1210,22 +1349,23 @@ sync();
   document.getElementById('v2Run')?.click();
   document.getElementById('v2RoodRun')?.click();
   document.getElementById('win8Run')?.click();
+  document.getElementById('winBottomRun')?.click();
  });
 })();
 </script>
-<script id="win8-independent-analysis-2026">
+<script id="win-top-analysis-2026">
 (function(){
 'use strict';
 const $=id=>document.getElementById(id);
 const table=$('win8Table'), mode=$('win8Mode'), selectors=$('win8Selectors');
-const digitCount=$('win8DigitCount'), targetSelect=$('win8Target');
-const targetMap={top:[0,1,2],bottom:[3,4]};
+const digitCount=$('win8DigitCount');
+const fixedTarget='top';const targetMap={top:[0,1,2],bottom:[3,4]};
 function v2HitLevel(pred,row,target){
  const digits=new Set(pred.map(String));
  const has=pos=>digits.has(String(row[pos]));
- if(targetSelect.value==='top' || targetSelect.value==='bottom'){
+ if(fixedTarget==='top' || fixedTarget==='bottom'){
   const top=[0,1,2].some(has), bottom=[3,4].some(has);
-  return (targetSelect.value==='top'?top:bottom)?1:0;
+  return (fixedTarget==='top'?top:bottom)?1:0;
  }
  return target.every(has)?1:0;
 }
@@ -1244,7 +1384,7 @@ function initialize(){
 function render(){
  try{
   initialize();const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวดที่หน้า วิเคราะห์สูตร');
-  const target=targetMap[targetSelect.value]||[0,1,2], total=rows.length-1, n=Number(digitCount.value)||3;
+  const target=targetMap[fixedTarget]||[0,1,2], total=rows.length-1, n=Number(digitCount.value)||3;
   let selected;
   if(mode.value==='manual')selected=Array.from({length:5},(_,i)=>Number($('win8Select'+i).value));
   else if(mode.value==='first')selected=[0,1,2,3,4];
@@ -1258,7 +1398,7 @@ function render(){
   const rawLimit=$('win8Limit').value.trim();const max=rawLimit===''?0:Number(rawLimit);if(!Number.isInteger(max)||max<0)throw Error('กรุณาระบุจำนวนงวดเป็นจำนวนเต็มบวก หรือกดแสดงทั้งหมด');const start=max?Math.max(1,rows.length-max):1;
   let head='<tr><th rowspan="2">งวดที่ตรวจ</th><th rowspan="2">กรอกผลย้อนหลัง</th>';
   picksByFormula.forEach((f,i)=>head+='<th colspan="1" class="v2-formula-head v2-formula-'+i+'" title="'+esc(f.f.map(k=>names[k]).join(' + '))+'">สูตร '+(i+1)+'<small style="display:block;color:inherit">'+esc(shortFormula(f.f))+' · #'+f.id+'</small></th>');
-  head+='<th rowspan="2" class="v2-dup-heading">เลขซ้ำ 5 สูตร วิน '+(targetSelect.value==='top'?'บน':'ล่าง')+'</th><th rowspan="2">ผลที่ออก</th></tr><tr>';
+  head+='<th rowspan="2" class="v2-dup-heading">เลขซ้ำ 5 สูตร วิน '+(fixedTarget==='top'?'บน':'ล่าง')+'</th><th rowspan="2">ผลที่ออก</th></tr><tr>';
   for(let i=0;i<5;i++)head+='<th>เลขเด่น</th>';
   head+='</tr>';table.tHead.innerHTML=head;
   let body='',hitCounts=[0,0,0,0,0];
@@ -1289,23 +1429,206 @@ function render(){
  }catch(e){$('win8Message').textContent='⚠ '+e.message;table.tHead.innerHTML='';table.tBodies[0].innerHTML='';$('win8Summary').innerHTML='';}
 }
 mode.addEventListener('change',()=>{selectors.hidden=mode.value!=='manual';render()});
-$('win8Run').addEventListener('click',render);$('win8Limit').addEventListener('change',render);$('win8Limit').addEventListener('input',()=>{if($('win8Limit').value!==''&&Number($('win8Limit').value)>=1)render()});digitCount.addEventListener('change',render);targetSelect.addEventListener('change',render);$('win8All').addEventListener('click',()=>{$('win8Limit').value='';render()});
+$('win8Run').addEventListener('click',render);$('win8Limit').addEventListener('change',render);$('win8Limit').addEventListener('input',()=>{if($('win8Limit').value!==''&&Number($('win8Limit').value)>=1)render()});digitCount.addEventListener('change',render);$('win8All').addEventListener('click',()=>{$('win8Limit').value='';render()});
 selectors.addEventListener('change',()=>{if(mode.value==='manual')render()});
 document.querySelector('[data-page="version2-page"]').addEventListener('click',render);
 })();
-</script><script id="login-ti-test-2026">(()=>{'use strict';
-const users={ti:'1234',test:'1234'};
-const overlay=document.getElementById('loginOverlay');
-const form=document.getElementById('loginForm2026');
-const user=document.getElementById('loginUser2026');
-const pass=document.getElementById('loginPass2026');
-const error=document.getElementById('loginError2026');
-const logout=document.getElementById('logoutButton2026');
-function setLogin(ok){overlay.hidden=ok;logout.hidden=!ok;document.documentElement.classList.toggle('login-locked',!ok);if(!ok){pass.value='';error.textContent='';user.focus();}}
-form.addEventListener('submit',e=>{e.preventDefault();const name=user.value.trim().toLowerCase();if(Object.prototype.hasOwnProperty.call(users,name)&&pass.value===users[name]){setLogin(true);pass.value='';}else{error.textContent='ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';pass.value='';pass.focus();}});
-logout.addEventListener('click',()=>setLogin(false));
-setLogin(false);
-})();</script></body>
+</script>
+<script id="win-bottom-analysis-2026">
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const table=$('winBottomTable'), mode=$('winBottomMode'), selectors=$('winBottomSelectors');
+const digitCount=$('winBottomDigitCount');
+const fixedTarget='bottom';const targetMap={top:[0,1,2],bottom:[3,4]};
+function v2HitLevel(pred,row,target){
+ const digits=new Set(pred.map(String));
+ const has=pos=>digits.has(String(row[pos]));
+ if(fixedTarget==='top' || fixedTarget==='bottom'){
+  const top=[0,1,2].some(has), bottom=[3,4].some(has);
+  return (fixedTarget==='top'?top:bottom)?1:0;
+ }
+ return target.every(has)?1:0;
+}
+function v2StrictHit(pred,row,target){return v2HitLevel(pred,row,target)>0;}
+function shortFormula(f){const counts=new Map();f.forEach(k=>counts.set(k,(counts.get(k)||0)+1));return '('+Array.from(counts,([k,n])=>names[k].replace(/ร้อย/g,'ร').replace(/สิบล่าง/g,'สล').replace(/หน่วยล่าง/g,'นล').replace(/สิบ/g,'ส').replace(/หน่วย/g,'น')+(n>1?'x'+n:'' )).join('+')+')';}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function initialize(){
+ if(selectors.children.length)return;
+ for(let i=0;i<5;i++){
+  const label=document.createElement('label');label.textContent='สูตร '+(i+1);
+  const sel=document.createElement('select');sel.id='winBottomSelect'+i;
+  formulas.forEach((f,j)=>{const op=document.createElement('option');op.value=j;op.textContent='#'+(j+1)+' '+f.map(k=>names[k]).join('+');sel.appendChild(op)});
+  sel.value=String(i);label.appendChild(sel);selectors.appendChild(label);
+ }
+}
+function render(){
+ try{
+  initialize();const rows=parse();if(rows.length<2)throw Error('กรุณากรอกผลย้อนหลังอย่างน้อย 2 งวดที่หน้า วิเคราะห์สูตร');
+  const target=targetMap[fixedTarget]||[0,1,2], total=rows.length-1, n=Number(digitCount.value)||3;
+  let selected;
+  if(mode.value==='manual')selected=Array.from({length:5},(_,i)=>Number($('winBottomSelect'+i).value));
+  else if(mode.value==='first')selected=[0,1,2,3,4];
+  else{
+   const scores=formulas.map((f,i)=>{let hits=0;for(let j=1;j<rows.length;j++)if(v2StrictHit(picks(seed(rows[j-1],f),n),rows[j],target))hits++;return {i,hits};});
+   scores.sort((a,b)=>b.hits-a.hits||formulas[a.i].length-formulas[b.i].length||a.i-b.i);
+   selected=scores.slice(0,5).map(x=>x.i);
+  }
+  const picksByFormula=selected.map(i=>({id:i+1,f:formulas[i],next:picks(seed(rows.at(-1),formulas[i]),n)}));
+  const fmt=r=>r.slice(0,3).join('')+'-'+r.slice(3).join('');
+  const rawLimit=$('winBottomLimit').value.trim();const max=rawLimit===''?0:Number(rawLimit);if(!Number.isInteger(max)||max<0)throw Error('กรุณาระบุจำนวนงวดเป็นจำนวนเต็มบวก หรือกดแสดงทั้งหมด');const start=max?Math.max(1,rows.length-max):1;
+  let head='<tr><th rowspan="2">งวดที่ตรวจ</th><th rowspan="2">กรอกผลย้อนหลัง</th>';
+  picksByFormula.forEach((f,i)=>head+='<th colspan="1" class="v2-formula-head v2-formula-'+i+'" title="'+esc(f.f.map(k=>names[k]).join(' + '))+'">สูตร '+(i+1)+'<small style="display:block;color:inherit">'+esc(shortFormula(f.f))+' · #'+f.id+'</small></th>');
+  head+='<th rowspan="2" class="v2-dup-heading">เลขซ้ำ 5 สูตร วิน '+(fixedTarget==='top'?'บน':'ล่าง')+'</th><th rowspan="2">ผลที่ออก</th></tr><tr>';
+  for(let i=0;i<5;i++)head+='<th>เลขเด่น</th>';
+  head+='</tr>';table.tHead.innerHTML=head;
+  let body='',hitCounts=[0,0,0,0,0];
+  const duplicateStats=Array.from({length:10},(_,digit)=>({digit,occurrences:0,hits:0,frequency:0}));
+  let duplicateDraws=0, duplicateAnyHit=0;
+  for(let j=start;j<rows.length;j++){
+   body+='<tr><td class="v2-index">'+(j)+'</td><td class="v2-prev">'+fmt(rows[j-1])+'</td>';
+   picksByFormula.forEach((f,i)=>{const pred=picks(seed(rows[j-1],f.f),n);const level=v2HitLevel(pred,rows[j],target);const ok=level>0;if(ok)hitCounts[i]++;
+    body+='<td class="v2-digits v2-formula-'+i+' '+(level===2?'v2-cell-hit-four':ok?'v2-cell-hit':'v2-cell-miss')+'" title="'+(ok?'ถูก':'ไม่ถูก')+'">'+pred.join('')+'</td>';});
+   const freq=Array(10).fill(0);
+   picksByFormula.forEach(f=>picks(seed(rows[j-1],f.f),n).forEach(d=>freq[Number(d)]++));
+   const duplicates=freq.map((count,d)=>({d,count})).filter(x=>x.count>=3).sort((a,b)=>b.count-a.count||a.d-b.d);
+   if(duplicates.length){duplicateDraws++;let anyHit=false;duplicates.slice(0,6).forEach(({d,count})=>{const stat=duplicateStats[d];stat.occurrences++;stat.frequency+=count;if(target.length===1&&Number(rows[j][target[0]])===d){stat.hits++;anyHit=true}});if(target.length>1){anyHit=v2StrictHit(duplicates.slice(0,6).map(x=>x.d),rows[j],target);if(anyHit)duplicateStats[duplicates[0].d].hits++;}if(anyHit)duplicateAnyHit++;}
+   const dupDigits=duplicates.slice(0,6).map(x=>x.d);const dupLevel=dupDigits.length?v2HitLevel(dupDigits,rows[j],target):0;const dupHit=dupLevel>0; // ใช้กติกาตรวจถูกเดียวกับเลขเด่นทั้ง 5 สูตร
+   body+='<td class="v2-digits v2-dup-digits '+(dupLevel===2?'v2-cell-hit-four':dupHit?'v2-cell-hit':'v2-cell-miss')+'" title="'+(dupDigits.length?(dupHit?'ถูก':'ไม่ถูก'):'ไม่มีเลขซ้ำ 3 สูตรขึ้นไป')+'">'+(dupDigits.length?dupDigits.join(''):'—')+'</td>';
+   body+='<td class="v2-result">'+fmt(rows[j])+'</td></tr>';
+  }
+  body+='<tr><td class="v2-next-label">ถัดไป</td><td class="v2-prev">'+fmt(rows.at(-1))+'</td>';
+  picksByFormula.forEach(f=>body+='<td class="v2-next">'+f.next.join('')+'</td>');
+  const nextFreq=Array(10).fill(0);picksByFormula.forEach(f=>f.next.forEach(d=>nextFreq[Number(d)]++));
+  const nextDup=nextFreq.map((count,d)=>({d,count})).filter(x=>x.count>=3).sort((a,b)=>b.count-a.count||a.d-b.d).slice(0,6);
+  body+='<td class="v2-next v2-dup-next">'+(nextDup.length?nextDup.map(x=>x.d).join(''):'—')+'</td>';
+  body+='<td class="v2-result">รอผล</td></tr>';table.tBodies[0].innerHTML=body;
+  const shown=rows.length-start;
+  $('winBottomSummary').innerHTML=picksByFormula.map((f,i)=>'<div class="v2-stat"><strong>สูตร '+(i+1)+' · #'+f.id+'</strong>'+esc(shortFormula(f.f))+'<div>ถูก '+hitCounts[i]+'/'+shown+' งวด ('+(100*hitCounts[i]/shown).toFixed(1)+'%)</div><div>งวดถัดไป: <b>'+f.next.join('')+'</b></div></div>').join('');
+  $('winBottomSummary').insertAdjacentHTML('beforeend','<div class="v2-stat"><strong>เลขซ้ำ 3–5 สูตร</strong><div>พบเลขซ้ำ ≥3 สูตร '+duplicateDraws+'/'+shown+' งวด</div><div>ถูกตามหลักที่เลือก '+duplicateAnyHit+'/'+duplicateDraws+' งวด'+(duplicateDraws?' ('+(100*duplicateAnyHit/duplicateDraws).toFixed(1)+'%)':'')+'</div></div>');
+  $('winBottomMessage').textContent='';
+ }catch(e){$('winBottomMessage').textContent='⚠ '+e.message;table.tHead.innerHTML='';table.tBodies[0].innerHTML='';$('winBottomSummary').innerHTML='';}
+}
+mode.addEventListener('change',()=>{selectors.hidden=mode.value!=='manual';render()});
+$('winBottomRun').addEventListener('click',render);$('winBottomLimit').addEventListener('change',render);$('winBottomLimit').addEventListener('input',()=>{if($('winBottomLimit').value!==''&&Number($('winBottomLimit').value)>=1)render()});digitCount.addEventListener('change',render);$('winBottomAll').addEventListener('click',()=>{$('winBottomLimit').value='';render()});
+selectors.addEventListener('change',()=>{if(mode.value==='manual')render()});
+document.querySelector('[data-page="version2-page"]').addEventListener('click',render);
+})();
+</script><script id="multi-window-selector-2026">(()=>{'use strict';
+const history=document.getElementById('history');if(!history)return;
+function update(){const count=history.value.split(/\r?\n/).filter(x=>/\d{3}\s*[-–]\s*\d{2}/.test(x)).length;
+ document.querySelectorAll('[id^="multi-window-"]').forEach(sel=>{
+  const value=sel.value||sel.dataset.saved||'all';sel.replaceChildren();
+  const all=document.createElement('option');all.value='all';all.textContent='ทั้งหมด ('+count+' งวด)';sel.append(all);
+  for(let n=2;n<=count;n++){const option=document.createElement('option');option.value=String(n);option.textContent=n+' งวด';sel.append(option)}
+  sel.value=value==='all'?'all':String(Math.min(Math.max(2,Number(value)||2),Math.max(2,count)));
+ });
+}
+history.addEventListener('input',update);
+document.getElementById('multiRun')?.addEventListener('click',update);
+update();
+})();</script>
+<style id="multi-window-style-2026">
+#multiSection .multi-side-layout{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:14px}
+#multiSection .multi-side-layout>.tablewrap{min-width:0;overflow-x:auto}
+#multiSection .multi-window-box{background:linear-gradient(155deg,#e9f6ff,#f1fff3);border:2px solid #a8d4ed;border-radius:15px;padding:14px;color:#172b43;display:grid;gap:10px}
+#multiSection .multi-window-box h3{margin:0;font-size:17px;color:#124d7e}
+#multiSection .multi-window-box select{width:100%;background:white;color:#162b42;padding:9px;border-radius:9px}
+#multiSection .multi-window-box p{margin:0;font-weight:700}
+#multiSection .multi-window-box small{line-height:1.5}
+@media(max-width:850px){#multiSection .multi-side-layout{grid-template-columns:1fr}#multiSection .multi-window-box{grid-row:1}}
+</style><style id="multi-compare-fit-v2-bright-2026">
+/* Compact comparison grid: preserve readable numbers, scroll horizontally only when needed. */
+#multiHistoryPanel{max-width:100%;min-width:0;box-sizing:border-box}
+#multiHistoryPanel .multi-history-detail{min-width:0;max-width:100%}
+#multiHistoryPanel .multi-history-scroll{width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:visible!important;height:auto!important;max-height:none!important;box-sizing:border-box;-webkit-overflow-scrolling:touch}
+#multiHistoryPanel .multi-history-scroll .multi-compare-table{border-collapse:separate!important;border-spacing:2px!important;width:max-content!important;min-width:100%!important;table-layout:auto!important;font-size:clamp(10px,1vw,13px)!important}
+#multiHistoryPanel .multi-history-scroll .multi-compare-table th,#multiHistoryPanel .multi-history-scroll .multi-compare-table td{padding:5px 6px!important;font-size:clamp(10px,1vw,13px)!important;white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;line-height:1.3!important;min-width:36px!important;text-align:center!important;border-radius:5px!important}
+#multiHistoryPanel .multi-compare-table th{background:#254777!important;color:white!important;font-weight:800!important}
+#multiHistoryPanel .multi-compare-table th:first-child,#multiHistoryPanel .multi-compare-table td:first-child{min-width:115px!important;max-width:180px!important;text-align:left!important;position:sticky!important;left:0;z-index:2}
+#multiHistoryPanel .multi-compare-table td:first-child{background:#eaf1ff!important;color:#193b62!important}
+#multiHistoryPanel .multi-compare-table th:first-child{z-index:3}
+#multiHistoryPanel .multi-compare-table th:nth-child(2),#multiHistoryPanel .multi-compare-table td:nth-child(2){min-width:65px!important}
+#multiHistoryPanel .multi-compare-table .multi-compare-hit{background:linear-gradient(135deg,#b9ff43 0%,#faff55 48%,#63ed6e 100%)!important;color:#114b13!important;font-weight:900!important;box-shadow:inset 0 0 0 1px #65ba24!important}
+#multiHistoryPanel .multi-compare-table .multi-compare-miss{background:#ffd8dc!important;color:#a31d30!important;font-weight:800!important}
+#multiHistoryPanel .multi-compare-table .multi-compare-next{background:#d3f1ff!important;color:#07588c!important;font-weight:800!important}
+@media(max-width:650px){#multiHistoryPanel .multi-history-scroll .multi-compare-table th,#multiHistoryPanel .multi-history-scroll .multi-compare-table td{padding:4px 5px!important;font-size:11px!important;min-width:32px!important}#multiHistoryPanel .multi-compare-table th:first-child,#multiHistoryPanel .multi-compare-table td:first-child{min-width:100px!important;max-width:140px!important}}
+</style><script id="multi-copy-image-2026">
+(()=>{
+'use strict';
+const targets=[['hundred','ร้อย'],['ten','สิบ'],['unit','หน่วย'],['lowerTen','สิบล่าง'],['lowerUnit','หน่วยล่าง'],['top3','ร้อยสิบหน่วย'],['top2','สิบหน่วย'],['bottom2','สิบล่างหน่วยล่าง']];
+const container=document.getElementById('multiImageChecks'),button=document.getElementById('multiImageCopy'),status=document.getElementById('multiImageStatus');
+if(!container||!button)return;
+targets.forEach(([id,name],i)=>{
+ const label=document.createElement('label'),input=document.createElement('input');
+ input.type='checkbox';input.value=id;input.checked=i<3;input.setAttribute('aria-label','แสดง'+name+'ในภาพ');
+ label.append(input,document.createTextNode(name));container.append(label);
+});
+const digits=id=>[...document.querySelectorAll('#multi-out-'+id+' .multi-digit')].map(x=>x.textContent.trim()).join('');
+function roundRect(ctx,x,y,w,h,r,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
+function text(ctx,value,x,y,size,color,weight='700',align='left'){
+ ctx.font=weight+' '+size+'px "Noto Sans Thai",Tahoma,Arial,sans-serif';ctx.textAlign=align;ctx.fillStyle=color;ctx.fillText(value,x,y);
+}
+button.addEventListener('click',async()=>{
+ const selected=[...container.querySelectorAll('input:checked')].map(x=>x.value);
+ if(!selected.length){status.textContent='กรุณาเลือกอย่างน้อย 1 หลัก';return}
+ const items=selected.map(id=>({name:targets.find(x=>x[0]===id)[1],digits:digits(id),stat:document.getElementById('multi-stat-'+id)?.firstChild?.textContent?.trim()||'—',window:document.getElementById('multi-window-'+id)?.selectedOptions?.[0]?.textContent?.trim()||'ทั้งหมด'}));
+ if(items.every(x=>!x.digits)){status.textContent='กรุณากด วิเคราะห์เลขแยกหลัก ก่อนคัดลอกภาพ';return}
+ const w=800,cardH=142,h=218+items.length*(cardH+16)+72;
+ const canvas=document.createElement('canvas');canvas.width=w*2;canvas.height=h*2;
+ const c=canvas.getContext('2d');c.scale(2,2);
+ const bg=c.createLinearGradient(0,0,w,h);bg.addColorStop(0,'#dffaff');bg.addColorStop(.42,'#fff1f8');bg.addColorStop(1,'#fff8d6');c.fillStyle=bg;c.fillRect(0,0,w,h);
+ // Soft confetti, bubbles and sparkles, deterministic for consistent output.
+ const colors=['#ffd4ec','#baf2e8','#ffe48b','#bcdcff','#e4d0ff'];
+ for(let i=0;i<55;i++){
+  const x=(i*173+47)%w,y=(i*239+31)%h,r=3+(i*7)%11;
+  c.globalAlpha=.26;c.fillStyle=colors[i%colors.length];c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill();
+ }c.globalAlpha=1;
+ function pill(x,y,width,height,fill,stroke){
+  c.save();c.shadowColor='rgba(102,77,150,.16)';c.shadowBlur=17;c.shadowOffsetY=5;
+  roundRect(c,x,y,width,height,Math.min(height/2,34),fill);c.restore();
+  if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.beginPath();c.roundRect(x,y,width,height,Math.min(height/2,34));c.stroke()}
+ }
+ const head=c.createLinearGradient(20,24,w-20,178);head.addColorStop(0,'#7458df');head.addColorStop(.52,'#f16cb6');head.addColorStop(1,'#ffb65c');
+ pill(22,24,w-44,164,head,'#ffffff');
+ const picker=document.getElementById('historySourceSelect');
+ const selectedName=picker?.selectedOptions?.[0]?.textContent?.replace(/\s*\(ที่เลือกไว้\)\s*$/,'').trim()||'';
+ const title='วิเคราะห์ '+(picker?.value&&selectedName?selectedName:'เลขเด่นแยกตามหลัก');
+ let titleSize=39;
+ c.font='900 '+titleSize+'px "Noto Sans Thai",Tahoma,Arial,sans-serif';
+ while(c.measureText(title).width>w-100&&titleSize>20){titleSize-=2;c.font='900 '+titleSize+'px "Noto Sans Thai",Tahoma,Arial,sans-serif';}
+ text(c,'✦  ✨  ✦',w/2,66,22,'#fff9c9','800','center');
+ text(c,title,w/2,118,titleSize,'#ffffff','900','center');
+ text(c,'ผลวิเคราะห์เลขเด่นตามหลักที่เลือก',w/2,158,19,'#fffbea','600','center');
+ const cardColors=[['#edfff1','#a8efb8','#176b43'],['#fff1fb','#ffbbdf','#a02d75'],['#ecf5ff','#badcff','#235caa'],['#fff9e4','#ffe49b','#97600d'],['#f5eeff','#d7bcff','#6844a4']];
+ items.forEach((item,i)=>{
+  const y=210+i*(cardH+16),palette=cardColors[i%cardColors.length];
+  pill(22,y,w-44,cardH,palette[0],palette[1]);
+  pill(40,y+19,150,42,palette[1]);
+  text(c,item.name,115,y+49,22,palette[2],'900','center');
+  const value=item.digits||'—';
+  let size=49;c.font='900 '+size+'px "Noto Sans Thai",Tahoma,Arial,sans-serif';
+  while(c.measureText(value).width>520&&size>24){size-=2;c.font='900 '+size+'px "Noto Sans Thai",Tahoma,Arial,sans-serif'}
+  text(c,value,w-48,y+67,size,palette[2],'900','right');
+  roundRect(c,40,y+87,w-80,39,19,'rgba(255,255,255,.76)');
+  const stat='สูตรอันดับ 1: '+item.stat+'   •   ย้อนหลัง: '+item.window;
+  let statSize=16;c.font='600 '+statSize+'px "Noto Sans Thai",Tahoma,Arial,sans-serif';
+  while(c.measureText(stat).width>w-115&&statSize>12){statSize--;c.font='600 '+statSize+'px "Noto Sans Thai",Tahoma,Arial,sans-serif'}
+  text(c,stat,56,y+113,statSize,'#596579','600');
+ });
+ text(c,'✦  สถิติย้อนหลังไม่ใช่การรับประกันผลในอนาคต  ✦',w/2,h-33,16,'#677187','600','center');
+ try{
+  const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+  if(!blob)throw Error('สร้างภาพไม่สำเร็จ');
+  if(navigator.clipboard&&window.ClipboardItem&&window.isSecureContext){
+   try{await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);status.textContent='✅ คัดลอกภาพ PNG แล้ว ('+items.length+' หลัก)';return}catch(e){}
+  }
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='multi-position-analysis.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+  status.textContent='✅ ดาวน์โหลดภาพ PNG แล้ว (เบราว์เซอร์ไม่รองรับการคัดลอกภาพโดยตรง)';
+ }catch(e){status.textContent='⚠ '+e.message}
+});
+})();
+</script><script id="v2-png-theme-persist">(()=>{const select=document.getElementById('v2PngTheme');if(!select)return;try{const saved=localStorage.getItem('sut9999_png_theme');if(saved&&[...select.options].some(o=>o.value===saved))select.value=saved;}catch(e){}select.addEventListener('change',()=>{try{localStorage.setItem('sut9999_png_theme',select.value)}catch(e){}})})();</script><script id="simple-login-ti-test">(()=>{'use strict';const gate=document.getElementById('simpleLoginGate'),form=document.getElementById('simpleLoginForm'),u=document.getElementById('simpleLoginUser'),p=document.getElementById('simpleLoginPass'),err=document.getElementById('simpleLoginError'),logout=document.getElementById('simpleLogout');const users={ti:'1234',test:'1234'};function lock(){gate.hidden=false;u.value='';p.value='';err.textContent='';u.focus()}form.addEventListener('submit',e=>{e.preventDefault();const name=u.value.trim().toLowerCase();if(Object.prototype.hasOwnProperty.call(users,name)&&users[name]===p.value){gate.hidden=true;p.value='';err.textContent=''}else{err.textContent='ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';p.value='';p.focus()}});logout.addEventListener('click',lock);lock()})();</script></body>
 <style id="lock-fit-layout">#lockCard{max-width:100%;min-width:0}#lockCard .lock-scroll{overflow-x:visible!important;max-height:none!important}#lockCard .lock-table{width:100%!important;min-width:0!important;table-layout:fixed!important}#lockCard .lock-table th,#lockCard .lock-table td{overflow-wrap:anywhere;white-space:normal!important;padding:7px 4px!important;font-size:clamp(11px,1.6vw,16px)!important}#lockCard .controls label{min-width:0;flex:1 1 180px}#lockCard select{max-width:100%;width:100%}@media(max-width:520px){#lockCard .lock-table th,#lockCard .lock-table td{font-size:11px!important;padding:5px 2px!important}}</style>
 
 <style>
@@ -1631,111 +1954,98 @@ document.querySelector('[data-page="version2-page"]').addEventListener('click',r
    const labels={r:'ปักร้อย',s:'ปักสิบ',n:'ปักหน่วย',sl:'ปักสิบล่าง',nl:'ปักหน่วยล่าง',rsn:'รูดร้อยสิบหน่วยบน',bottom:'รูดล่าง',sn:'รูดสิบหน่วยบน',both:'บนล่าง'};
    return labels[target]||'บนล่าง';
  }
- function drawImage(name,main,second,topBottom,duplicates,winDigits,winDup,winLabel,footerText,percentages){
-   const W=720,H=930;const c=document.createElement('canvas');c.width=W*2;c.height=H*2;
+ function drawImage(name,main,second,topBottom,duplicates,winTopDigits,winTopDup,winBottomDigits,winBottomDup,footerText,percentages,choices){
+   const themeName=document.getElementById('v2PngTheme')?.value||'pastel';
+   const themePalettes={
+     pastel:['#fff5fc','#fff9e9','#e8faff','#fbe5f5','#edc7e5','#784c8b','#fff0f6','#edcde1','#956189','#e73535','#9974c2','#8c50c0','#fff3e2','#e6f7ff','#f2dbb4','#bce5f5','#e5f8ef','#f0e9ff','#b5e7d2','#d6c7f4','#b28a50','#548fa8','#5bb092','#9470c7','#48566b','#ffffffdc','#e8c8ed','#875ca7','#758092'],
+     candy:['#fff0f8','#e8faff','#fff9db','#ffd3ed','#ff91cf','#9b2675','#ffe1f2','#ff9ec8','#aa367b','#ff355b','#9b57e5','#8537db','#fff1ad','#d6f8ff','#ffc65b','#6adbf2','#d8ffca','#e8ddff','#69db9d','#ac87fa','#a96a14','#126d98','#169a68','#8548d4','#35415c','#fffdf4','#ffa4da','#8b35a0','#4d6480'],
+     mint:['#eaffed','#fffce2','#dff9ff','#d4fbe6','#7bdbad','#176a4b','#e4ffea','#85ddb0','#318d69','#e93d4e','#6e59ba','#7753bf','#fff3c1','#e6fff4','#ebd477','#80d7b3','#dcffdd','#e5f7ff','#7fdda3','#8bcfe6','#9b7b32','#278b65','#279b69','#377da7','#435e56','#ffffffed','#b2e9c6','#34745d','#54796d'],
+     ocean:['#e7faff','#e7f2ff','#d5f9ff','#d4f0ff','#80c6f5','#155d9c','#e0f5ff','#85c7ef','#277da5','#ef4457','#a36ce2','#7354c2','#e7f7ff','#d9eaff','#9bdef4','#8cb8ed','#d8fff5','#dfeaff','#7bdbc7','#a2baf7','#347b9c','#3778a9','#258f8c','#657ac9','#41586e','#ffffffec','#b0d9ff','#3c75a7','#5a7897'],
+     sunset:['#fff0e9','#fff7d9','#ffe6f0','#ffe0dc','#ffa6a6','#a54268','#ffe7e7','#ffb8ba','#aa5b71','#ed3445','#9b57c4','#9c5ac8','#fff0c7','#ffe9db','#f6d88c','#ffc7aa','#fff5d6','#ffe0f1','#f5d47c','#f2a6cb','#a46d29','#b56c4e','#b38a37','#b45c91','#685468','#fffdf4','#ffd3b3','#9b5d85','#8d7081'],
+     purple:['#f7eeff','#fff1fa','#eae8ff','#f0ddff','#cba8ef','#6f3d9a','#f7e6ff','#cfa9e9','#925ab3','#f04463','#ad6be0','#9650d1','#f9e5ff','#eae7ff','#ddc2f2','#c9c5ff','#e5f6ff','#eee5ff','#adddec','#c6b3f4','#9d72bb','#8d67b5','#5d9dc1','#8866c6','#5d4e7a','#ffffffed','#d7b5ed','#8053a5','#817193']
+   };
+   const base=themePalettes.pastel,selected=themePalettes[themeName]||base;
+   const remap=new Map(base.map((c,i)=>[c,selected[i]]));
+   const themeColor=(hex)=>remap.get(hex)||hex;
+   // ใช้เฉพาะรายการที่ผู้ใช้ติ๊กเลือก และจัดเรียงการ์ดให้ชิดกันโดยไม่มีช่องว่าง
+   const cards=[];
+   if(choices.both){
+     cards.push({label:'บนล่าง',digits:topBottom,rate:percentages.v2Formula,tone:'lavender'});
+   }
+   if(choices.formulaDuplicates){
+     cards.push({label:'เลขซ้ำจากสูตร',digits:duplicates,rate:percentages.v2Dup,tone:'mint',small:true});
+   }
+   if(choices.top){
+     cards.push({label:'วินบน',digits:winTopDigits,rate:percentages.winTopFormula,tone:'lavender'});
+     cards.push({label:'เลขซ้ำ 5 สูตร วินบน',digits:winTopDup,rate:percentages.winTopDup,tone:'mint',small:true});
+   }
+   if(choices.bottom){
+     cards.push({label:'วินล่าง',digits:winBottomDigits,rate:percentages.winBottomFormula,tone:'lavender'});
+     cards.push({label:'เลขซ้ำ 5 สูตร วินล่าง',digits:winBottomDup,rate:percentages.winBottomDup,tone:'mint',small:true});
+   }
+   const W=720,margin=16,headerH=82,roodH=choices.rood?250:0,rowH=126,duplicateRowH=84,gap=12;
+   const H=margin+headerH+gap+(roodH?roodH+gap:0)+cards.reduce((sum,card)=>sum+(card.small?duplicateRowH:rowH)+gap,0)+58+(footerText?84:0);
+   const c=document.createElement('canvas');c.width=W*2;c.height=H*2;
    const ctx=c.getContext('2d');ctx.scale(2,2);
-   // Pastel candy-card look: soft gradients, rounded cells and gentle glowing digits.
-   const bg=ctx.createLinearGradient(0,0,W,H);
-   bg.addColorStop(0,'#fff5fc');bg.addColorStop(.52,'#fff8e9');bg.addColorStop(1,'#eaf9ff');
-   ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-   function rounded(x,y,w,h,r,fill,stroke='#ead5ed'){
-     ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();
-     ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();
+   const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,themeColor('#fff5fc'));bg.addColorStop(.53,themeColor('#fff9e9'));bg.addColorStop(1,themeColor('#e8faff'));ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+   function rounded(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}
+   function text(value,x,y,size,color,weight='800',maxWidth=W-48,align='center'){
+     ctx.save();ctx.textAlign=align;ctx.textBaseline='middle';ctx.font=weight+' '+size+'px Tahoma, Arial, sans-serif';ctx.shadowColor='#ffffff';ctx.shadowBlur=7;ctx.fillStyle=color;ctx.fillText(String(value),x,y,maxWidth);ctx.restore();
    }
-   function glowText(value,x,y,size,color,glow,weight='800',maxWidth=W-48){
-     ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';
-     ctx.font=weight+' '+size+'px Tahoma, Arial, sans-serif';
-     ctx.shadowColor=glow;ctx.shadowBlur=17;ctx.shadowOffsetY=1;
-     ctx.fillStyle=color;ctx.fillText(String(value),x,y,maxWidth);ctx.restore();
+   rounded(margin,margin,W-margin*2,headerH,24,themeColor('#fbe5f5'),themeColor('#edc7e5'));
+   text('✿ รายการ '+name+' ✿',W/2,margin+headerH/2,37,themeColor('#784c8b'),'800',W-64);
+   let y=margin+headerH+gap;
+   if(choices.rood){
+     rounded(margin,y,W-margin*2,roodH,27,themeColor('#fff0f6'),themeColor('#edcde1'));
+     text('เด่น',W/2,y+39,35,themeColor('#956189'));
+     text(main||'—',W/2,y+151,151,themeColor('#e73535'),'900',215);
+     const secondary=Array.isArray(second)?second:second?[second]:[];
+     if(secondary[0]){text('เลขรองอันดับ 1',143,y+50,20,themeColor('#9974c2'),'700',215);text(secondary[0],143,y+156,88,themeColor('#8c50c0'),'900',150)}
+     if(secondary[1]){text('เลขรองอันดับ 1',W-143,y+50,20,themeColor('#9974c2'),'700',215);text(secondary[1],W-143,y+156,88,themeColor('#8c50c0'),'900',150)}
+     y+=roodH+gap;
    }
-   rounded(16,15,W-32,82,24,'#fce4f4','#edc7e5');
-   glowText('✿ รายการ '+name+' ✿',W/2,56,38,'#754a89','#f5badb','700',W-64);
-   rounded(16,109,W-32,247,26,'#fff0f6','#f0cde1');
-   // เลขเด่นอยู่กลางภาพ ส่วนเลขรองเรียงตามความถี่จากซ้ายไปขวา
-   // second is an array: [รองอันดับ 1, รองอันดับ 2] (อาจไม่มีหรือมีเพียง 1 ตัว)
-   const secondary=Array.isArray(second)?second:second?[second]:[];
-   glowText('เด่น',W/2,149,34,'#98638c','#f7d4ea','700',185);
-   glowText(main||'—',W/2,259,155,'#e53935','#ffb3bd','900',220);
-   if(secondary.length){
-     glowText('เลขรองอันดับ 1',secondary.length===1?172:155,158,20,'#9973c6','#dfc9ff','700',205);
-     glowText(secondary[0],secondary.length===1?172:155,260,88,'#8852bd','#dfc9ff','900',165);
-   }
-   if(secondary.length>1){
-     glowText('เลขรองอันดับ 1',565,158,20,'#9973c6','#dfc9ff','700',205);
-     glowText(secondary[1],565,260,88,'#8852bd','#dfc9ff','900',165);
-   }
-   rounded(16,370,214,130,20,'#eaf9ff','#bfe7f6');
-   rounded(242,370,W-258,130,20,'#f0eaff','#d8c8f4');
-   glowText(pngTargetLabel(),123,435,36,'#568da5','#bcefff','700',195);
-   glowText(topBottom||'—',473,435,69,'#9271c4','#dac7ff','900',428);
-   rounded(16,514,214,130,20,'#fff3df','#f6dfb8');
-   rounded(242,514,W-258,130,20,'#e7f9ef','#bde8d1');
-   glowText('เลขซ้ำบนล่าง',123,579,24,'#ba8b54','#ffe1a7','700',195);
-   glowText(duplicates||'—',473,579,43,'#5cae92','#b5f2d8','900',428);
-   rounded(16,657,214,120,20,'#eaf9ff','#bfe7f6');
-   rounded(242,657,W-258,120,20,'#f0eaff','#d8c8f4');
-   glowText('วิน'+winLabel,123,715,31,'#568da5','#bcefff','700',195);
-   glowText(winDigits||'—',473,715,62,'#9271c4','#dac7ff','900',428);
-   rounded(16,790,214,120,20,'#fff3df','#f6dfb8');
-   rounded(242,790,W-258,120,20,'#e7f9ef','#bde8d1');
-   glowText('เลขซ้ำ 5 สูตร วิน'+winLabel,123,850,22,'#ba8b54','#ffe1a7','700',195);
-   glowText(winDup||'—',473,850,43,'#5cae92','#b5f2d8','900',428);
-   // อัตราถูกย้อนหลังจากสรุปผลของตารางแต่ละชุด (ไม่ใช่ความน่าจะเป็นงวดหน้า)
-   function percentTag(value,x,y){
-     if(!value)return;
-     ctx.save();ctx.font='bold 17px Tahoma, Arial, sans-serif';ctx.textAlign='right';
-     ctx.fillStyle='#46566c';ctx.shadowColor='#ffffff';ctx.shadowBlur=4;
-     ctx.fillText('ย้อนหลัง '+value,x,y);ctx.restore();
-   }
-   percentTag(percentages.v2Formula,682,486);
-   percentTag(percentages.v2Dup,682,630);
-   percentTag(percentages.winFormula,682,762);
-   percentTag(percentages.winDup,682,896);
-   // Add a decorative footer only when the user has typed a message.
-   if(footerText){
-     const footerHeight=88;
-     const expanded=document.createElement('canvas');
-     expanded.width=W*2;expanded.height=(H+footerHeight)*2;
-     const ectx=expanded.getContext('2d');ectx.scale(2,2);
-     ectx.drawImage(c,0,0,W,H);
-     const footerBg=ectx.createLinearGradient(0,H,W,H+footerHeight);
-     footerBg.addColorStop(0,'#fce5f5');footerBg.addColorStop(1,'#e8f4ff');
-     ectx.fillStyle=footerBg;ectx.fillRect(0,H,W,footerHeight);
-     ectx.beginPath();ectx.roundRect(20,H+9,W-40,65,20);
-     ectx.fillStyle='#ffffffd9';ectx.fill();
-     ectx.strokeStyle='#e9c8ed';ectx.lineWidth=2;ectx.stroke();
-     ectx.textAlign='center';ectx.textBaseline='middle';
-     ectx.font='bold 31px Tahoma, Arial, sans-serif';
-     ectx.fillStyle='#875ca7';ectx.shadowColor='#e5c4ff';ectx.shadowBlur=12;
-     ectx.fillText('✿ '+footerText+' ✿',W/2,H+42,W-84);
-     return expanded;
-   }
+   cards.forEach((card,i)=>{
+     const isMint=card.tone==='mint';
+     const cardH=card.small?duplicateRowH:rowH;
+     rounded(margin,y,218,cardH,20,isMint?themeColor('#fff3e2'):themeColor('#e6f7ff'),isMint?themeColor('#f2dbb4'):themeColor('#bce5f5'));
+     rounded(246,y,W-262,cardH,20,isMint?themeColor('#e5f8ef'):themeColor('#f0e9ff'),isMint?themeColor('#b5e7d2'):themeColor('#d6c7f4'));
+     text(card.label,125,y+cardH/2,card.small?(card.label.length>12?16:20):(card.label.length>12?20:card.label.length>7?25:34),isMint?themeColor('#b28a50'):themeColor('#548fa8'),'800',196);
+     text(card.digits||'—',W-42,y+cardH/2-(card.rate?9:0),card.small?34:65,isMint?themeColor('#5bb092'):themeColor('#9470c7'),'900',W-304,'right');
+     if(card.rate)text('ย้อนหลัง '+card.rate,W-33,y+cardH-14,card.small?13:17,themeColor('#48566b'),'700',260,'right');
+     y+=cardH+gap;
+   });
+   if(footerText){rounded(margin,y,W-margin*2,69,19,themeColor('#ffffffdc'),themeColor('#e8c8ed'));text('✿ '+footerText+' ✿',W/2,y+35,29,themeColor('#875ca7'),'800',W-90);y+=84}
+   text('สถิติย้อนหลังไม่รับประกันผลในอนาคต',W/2,H-26,15,themeColor('#758092'),'500');
    return c;
  }
  btn.addEventListener('click',async()=>{
+   const choices=Object.fromEntries([...document.querySelectorAll('#v2PngChoice input')].map(input=>[input.value,input.checked]));
+   if(!Object.values(choices).some(Boolean)){status.textContent='กรุณาเลือกอย่างน้อย 1 รายการในภาพ';return;}
    const rows=document.querySelectorAll('#v2Table tbody tr');
-   if(!rows.length){status.textContent='กรุณากดวิเคราะห์ Version 2 ก่อน';return;}
-   const cells=rows[rows.length-1].querySelectorAll('td');
-   if(cells.length<9 || !cells[cells.length-1].textContent.includes('รอผล')){status.textContent='ไม่พบแถวรอผล กรุณาวิเคราะห์ใหม่';return;}
+   if((choices.both||choices.formulaDuplicates)&&!rows.length){status.textContent='กรุณากดวิเคราะห์ Version 2 ก่อน';return;}
+   const cells=rows.length?rows[rows.length-1].querySelectorAll('td'):[];
+   if((choices.both||choices.formulaDuplicates) && (cells.length<9 || !cells[cells.length-1].textContent.includes('รอผล'))){status.textContent='ไม่พบแถวรอผล กรุณาวิเคราะห์ใหม่';return;}
    const dup=textFrom(cells[7]);const formula1=textFrom(cells[2]);
    // ดึงเลขเด่น/รองจากแถว 'ถัดไป' ของตารางวิเคราะห์รูดเท่านั้น
    const roodRows=document.querySelectorAll('#v2RoodTable tbody tr');
    const roodCells=roodRows.length?roodRows[roodRows.length-1].querySelectorAll('td'):[];
-   if(roodCells.length<13 || !roodCells[roodCells.length-1].textContent.includes('รอผล')){
+   if(choices.rood && (roodCells.length<13 || !roodCells[roodCells.length-1].textContent.includes('รอผล'))){
      status.textContent='ไม่พบผลวิเคราะห์รูดงวดถัดไป กรุณากดวิเคราะห์รูดก่อน';return;
    }
-   const roodDigits=textFrom(roodCells[roodCells.length-2]).slice(0,3);
-   if(!roodDigits){status.textContent='ไม่พบเลขเด่นซ้ำในตารางวิเคราะห์รูด';return;}
+   const roodDigits=roodCells.length>=2?textFrom(roodCells[roodCells.length-2]).slice(0,3):'';
+   if(choices.rood&&!roodDigits){status.textContent='ไม่พบเลขเด่นซ้ำในตารางวิเคราะห์รูด';return;}
    const main=roodDigits[0],second=roodDigits.slice(1).split('');
    const footerText=(document.getElementById('v2PngFooterText')?.value||'').trim();
-   const winRows=document.querySelectorAll('#win8Table tbody tr');
-   const winCells=winRows.length?winRows[winRows.length-1].querySelectorAll('td'):[];
-   if(winCells.length<9 || !winCells[winCells.length-1].textContent.includes('รอผล')){
-     status.textContent='ไม่พบผลวิน 7-9 บน ล่าง กรุณากดวิเคราะห์สูตร รูด วิน ก่อน';return;
+   function getWinNext(tableId){
+     const winRows=document.querySelectorAll('#'+tableId+' tbody tr');
+     const cells=winRows.length?winRows[winRows.length-1].querySelectorAll('td'):[];
+     if(cells.length<9 || !cells[cells.length-1].textContent.includes('รอผล'))return null;
+     return {digits:textFrom(cells[2]),duplicate:textFrom(cells[7])};
    }
-   const winDigits=textFrom(winCells[2]);
-   const winDup=textFrom(winCells[7]);
-   const winLabel=document.getElementById('win8Target')?.value==='bottom'?'ล่าง':'บน';
+   const winTop=getWinNext('win8Table'),winBottom=getWinNext('winBottomTable');
+   if((choices.top&&!winTop)||(choices.bottom&&!winBottom)){
+     status.textContent='กรุณากด วิเคราะห์สูตร รูด วิน เพื่อคำนวณวินบนและวินล่างก่อน';return;
+   }
    function summaryRate(id,formulaIndex){
      const cards=Array.from(document.querySelectorAll('#'+id+' .v2-stat'));
      const card=formulaIndex==='duplicate'?cards[cards.length-1]:cards[formulaIndex];
@@ -1768,10 +2078,13 @@ document.querySelector('[data-page="version2-page"]').addEventListener('click',r
      rood:firstRoodDigitRate(),
      v2Formula:summaryRate('v2Summary',0),
      v2Dup:summaryRate('v2Summary','duplicate'),
-     winFormula:summaryRate('win8Summary',0),
+     winTopFormula:summaryRate('win8Summary',0),
+     winBottomFormula:summaryRate('winBottomSummary',0),
+     winTopDup:summaryRate('win8Summary','duplicate'),
+     winBottomDup:summaryRate('winBottomSummary','duplicate'),
      winDup:summaryRate('win8Summary','duplicate')
    };
-   const canvas=drawImage(nameFromPage(),main,second,formula1,dup,winDigits,winDup,winLabel,footerText,percentages);
+   const canvas=drawImage(nameFromPage(),main,second,formula1,dup,winTop?.digits||'',winTop?.duplicate||'',winBottom?.digits||'',winBottom?.duplicate||'',footerText,percentages,choices);
    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
    if(!blob){status.textContent='ไม่สามารถสร้างภาพ PNG ได้';return;}
    try{
