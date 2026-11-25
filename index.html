@@ -2861,3 +2861,33 @@ refresh.addEventListener('click',load);search.addEventListener('input',render);
 let once=false;document.querySelector('.navbtn[data-page="sheet-import-page"]')?.addEventListener('click',()=>{if(!once){once=true;load();}});
 })();
 </script>
+<style id="selected-lottery-heading-style">
+.app-page .selected-lottery-name{display:inline-block;max-width:100%;box-sizing:border-box;margin:4px 6px;padding:3px 10px;border-radius:8px;background:#e0efff;color:#174b85!important;font-size:.8em;font-weight:800;vertical-align:middle;white-space:normal;overflow-wrap:anywhere;line-height:1.4}
+.app-page .selected-lottery-name[hidden]{display:none!important}
+</style><script id="selected-lottery-heading-script">
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const sources=['mainSource','historySourceSelect','v2HistorySourceSelect','quickAiSource','roodSource'];
+let last='';
+function selected(id){const el=$(id);return el?.value?(el.selectedOptions[0]?.textContent||'').replace(/\s*\(ที่เลือกไว้\)\s*$/,'').trim():'';}
+function render(){
+ const name=selected('historySourceSelect')||selected('mainSource')||last;
+ document.querySelectorAll('.app-page').forEach(page=>{
+ const own=({'main-page':'mainSource','version2-page':'v2HistorySourceSelect','quick-ai-page':'quickAiSource','rood-tool-page':'roodSource'})[page.id];
+ const label=own?(selected(own)||name):name;
+ page.querySelectorAll('h2,h3').forEach(h=>{
+ if(h.id==='resultPageTitle'||h.id==='quickAiTitle')return;
+ let tag=h.querySelector(':scope > .selected-lottery-name');
+ if(!tag){tag=document.createElement('span');tag.className='selected-lottery-name';h.append(tag);}
+ if(tag.textContent!==label)tag.textContent=label;
+ tag.hidden=!label;
+ });
+ });
+}
+let pending=false;function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;render();});}
+document.addEventListener('change',e=>{if(sources.includes(e.target.id)){last=selected(e.target.id);schedule();}});
+document.addEventListener('click',e=>{if(e.target.closest('.navbtn'))schedule();});
+const observer=new MutationObserver(records=>{if(records.some(r=>!r.target.closest?.('.selected-lottery-name')))schedule();});
+document.querySelectorAll('.app-page').forEach(p=>observer.observe(p,{childList:true,subtree:true,characterData:true}));
+render();setInterval(render,1000);
+})();</script>
